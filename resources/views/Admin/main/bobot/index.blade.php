@@ -45,7 +45,7 @@
                                     <th>No</th>
                                     <th>Nama Parameter</th>
                                     <th>Nilai Bobot</th>
-                                    <th>Tanggal Diperbarui</th>
+                                    {{-- <th>Tanggal Diperbarui</th> --}}
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -55,7 +55,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_parameter }}</td>
                                     <td>{{ $item->bobot }}</td>
-                                    <td>{{ $item->updated_at }}</td>   
+                                    {{-- <td>{{ $item->update   d_at }}</td>    --}}
 
                                     <td>   
                                         <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>

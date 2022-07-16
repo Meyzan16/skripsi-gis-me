@@ -32,3 +32,6 @@ class KemiringanLerengController extends Controller
     }
 
 }
+
+
+

@@ -44,14 +44,13 @@
                             <a href="{{ route('admin.kegempaan.index') }}">Kegempaan</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('struktur-geologi.index') }}">Struktur Geologi</a>
+                            <a href="{{ route('admin.struktur-geologi.index') }}">Struktur Geologi</a>
                         </li>
                         
                     </ul>
                 </li>
 
                 
-
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
@@ -67,7 +66,41 @@
                         </li>
                     </ul>
                 </li>
+                
+                
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Kalkulasi Metode</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="{{ route('data-titik.index') }}"> Nilai Kegempaan (PGA) </a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="{{ route('data-titik.index') }}"> Nilai Struktur Geologi </a>
+                        </li>
+                        </li>
+                    </ul>
+                </li>
 
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Pengujian Data</span>
+                    </a>
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="{{ route('data-titik.index') }}"> Data Uji Gempa Lama </a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="{{ route('data-titik.index') }}"> Data Uji Gempa Realtime </a>
+                        </li>
+                        </li>
+                    </ul>
+                </li>
+
+                
 
                 {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>

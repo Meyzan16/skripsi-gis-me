@@ -41,6 +41,9 @@ Route::group([
             Route::get('/', [KegempaanController::class, 'index'])->name('admin.kegempaan.index');
         });
 
-        Route::resource('struktur-geologi', StrukturGeologiController::class);
+        Route::group(['prefix' => 'struktur-geologi' ], function(){
+            route::get('/', [StrukturGeologiController::class, 'index'])->name('admin.struktur-geologi.index');
+        });
+
 
     });
