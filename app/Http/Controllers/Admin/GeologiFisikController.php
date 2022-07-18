@@ -16,10 +16,6 @@ class GeologiFisikController extends Controller
         return view('admin.main.geologifisik.index',compact('data'));
     }
 
-   
-
-    
-
  
     public function update(Request $request, $id)
     {

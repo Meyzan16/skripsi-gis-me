@@ -78,7 +78,7 @@
                             <a href="{{ route('data-titik.index') }}"> Nilai Kegempaan (PGA) </a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('data-titik.index') }}"> Nilai Struktur Geologi </a>
+                            <a href="{{ route('admin.nilai-struktur-geologi.index') }}"> Nilai Struktur Geologi </a>
                         </li>
                         </li>
                     </ul>

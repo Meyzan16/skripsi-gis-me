@@ -43,6 +43,7 @@ Route::group([
 
         Route::group(['prefix' => 'struktur-geologi' ], function(){
             route::get('/', [StrukturGeologiController::class, 'index'])->name('admin.struktur-geologi.index');
+            route::get('/page-nilai-str-geologi', [StrukturGeologiController::class, 'view_geologi'])->name('admin.nilai-struktur-geologi.index');
         });
 
 
