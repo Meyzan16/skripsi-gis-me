@@ -284,8 +284,8 @@ function initMap() {
                                 }
                             }
 
-                            document.getElementById('location').value = results[0].formatted_address;;
-                            document.getElementById('searchInput').value = results[0].formatted_address;;
+                            document.getElementById('location').value = results[0].formatted_address;
+                            document.getElementById('searchInput').value = results[0].formatted_address;
                             document.getElementById('lat').value = lat;
                             document.getElementById('lng').value = long;
                         

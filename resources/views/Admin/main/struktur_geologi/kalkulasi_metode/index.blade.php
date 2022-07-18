@@ -15,7 +15,7 @@
 
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form form-horizontal mdi-responsive" action="{{ route('data-titik.store') }}" method="POST" >
+                            <form class="form form-horizontal mdi-responsive" action="{{ route('admin.nilai-struktur-geologi.proses_metode') }}" method="POST" >
                                 @csrf 
                                 <div class="form-body">
                                         <div class="row">
@@ -24,11 +24,17 @@
                                                     <label>Pilih Data Gempa</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                   <select name="" id="" class="form-control">
-                                                    <option value="">2007</option>
-                                                    <option value="">2009</option>
+                                                   <select name="option_gempa" id="option_gempa" class="form-control">
+ 
+                                                        <option value="">-- Pilih data --</option>   
+                                                        @foreach ($dataGempa as $item)
+                                                             <option value="{{ $item->id }}">{{ $item->tanggal }}</option>   
+                                                        @endforeach
+
                                                    </select>
-                                                </div>                                         
+                                                </div>    
+                                                
+                                                <input type="text" class="form-control" id="distance">
                                                 
                                                 <div class="col-sm-12 d-flex justify-content-end">
                                                     <button type="submit"  class="btn btn-primary me-1 mb-1">
@@ -41,7 +47,7 @@
                                                 </div>
                                               
                                      
-                                            </form>
+                            </form>
                                             
                                             <div
                                             id="map" style="height:400px; width: 900px;" class="my-3">
@@ -89,6 +95,10 @@
      
     </section>
 </div> 
+        @php
+            $ambilData_titik = json_encode($dataTitik);
+            $ambilData_gempa = json_encode($dataGempa);
+        @endphp
 @endsection
 
 @push('addon-script')
@@ -96,10 +106,10 @@
 
 google.maps.event.addDomListener(window, 'load', initMap);
 
-function initMap() {
-       
 
+function initMap() {
             //simpan lat lng bengkulu di varibel
+        
             var propertiPeta = {
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -111,20 +121,28 @@ function initMap() {
             }
             //tampilkan maps
             var map = new google.maps.Map(document.getElementById( 'map' ), propertiPeta);
-
-
-
-            var app = <?php echo json_encode($dataTitik); ?>;
-            showAll(map, app);
             
-              
+            
+            // var mk1 = -3.75982765;
+            // var mk2 = -4.517;
+         
+                    
+
+            var app_dataTitik = {!! $ambilData_titik !!};
+            // console.log(app_dataTitik);
+            showAll(map, app_dataTitik);
+
+           
+            var app_dataGempa = {!! $ambilData_gempa !!};
+            haversine_distance(map, app_dataTitik , app_dataGempa);
+           
 
 };
 
-function showAll(map, app){
-    var infowin = new google.maps.InfoWindow;
 
-    Array.prototype.forEach.call(app, function(data){
+function showAll(map, app_dataTitik){
+    var infowin = new google.maps.InfoWindow;
+    Array.prototype.forEach.call(app_dataTitik, function(data){
         var marker = new google.maps.Marker({
                 map: map,
                 position:  new google.maps.LatLng(data.latitude, data.longitude),
@@ -140,6 +158,68 @@ function showAll(map, app){
     });
 }
 
+function rad(x) {return x*Math.PI/180;}
+
+function haversine_distance(map, app_dataTitik, app_dataGempa) {
+
+      var R = 6371; // Radius of the Earth in miles
+      var tujuan_lat1 = app_dataTitik[0].latitude  //tujuan
+      var asal_lat2 = app_dataGempa[0].latitude  //asal 
+
+      var tujuan_lng = app_dataTitik[0].longitude //tujuan
+      var asal_lng = app_dataGempa[0].longitude //asal
+
+
+      var difflat = rad(asal_lat2 - tujuan_lat1); // Rdaerah asal dikurang tujuan
+      var dLong = rad(asal_lng - tujuan_lng); // Rdaerah asal dikurang tujuan
+
+      var a = Math.sin(difflat/2) * Math.sin(difflat/2) + Math.cos(rad(asal_lat2)) * Math.cos(rad(tujuan_lat1)) * Math.sin(dLong/2) * Math.sin(dLong/2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      var d = R * c;
+      
+
+
+
+      
+      console.log(d);
+
+    //   var km = round(d * 1.609344, 2).' KM ';
+
+    //   console.log(km);
+      
+}
+
+
+
+function getCurrent(lat, lng) {
+
+        var lat1 = lat; 
+        var lon1 = lng;
+
+        var lat2 = 42.741; 
+        var lon2 = -71.3161; 
+
+        Number.prototype.toRad = function() {
+        return this * Math.PI / 180;
+        }
+        var R = 6371; // km 
+        //has a problem with the .toRad() method below.
+        var x1 = lat2-lat1;
+        var dLat = x1.toRad();  
+        var x2 = lon2-lon1;
+        var dLon = x2.toRad();  
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                        Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                        Math.sin(dLon/2) * Math.sin(dLon/2);  
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+        var d = R * c; 
+
+        console.log(d);
+
+        alert(d);
+        var distance1 = d
+        document.getElementById('distance').value = distance1;
+}
 
 
 
