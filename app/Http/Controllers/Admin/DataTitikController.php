@@ -10,11 +10,7 @@ use App\Models\kemiringan_lereng;
 
 class DataTitikController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $data =  data_titik::all();
@@ -32,8 +28,7 @@ class DataTitikController extends Controller
 
   
     public function store(Request $request)
-    {
-        
+    {      
         data_titik::create([
             'kecamatan' => $request->kecamatan,
             'id_geologi_fisik' => $request->id_geologi_fisik,
@@ -42,9 +37,7 @@ class DataTitikController extends Controller
             'longitude' => $request->longitude,
             'alamat' => $request->location,
         ]);
-
         return redirect()->route('data-titik.index')->with('success' , 'Data Berhasil DiTambahkan');
-
     }
 
    
@@ -62,4 +55,6 @@ class DataTitikController extends Controller
         data_titik::findorfail($id)->delete();
         return redirect()->route('data-titik.index')->with(['success' =>  'Data Berhasil dihapus']);
     }
+
+    
 }

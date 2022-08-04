@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\geologi_fisik;
 use App\Models\kecamatan;
 use App\Models\kemiringan_lereng;
+use App\Models\nilai_struktur_geologi;
 
 class data_titik extends Model
 {
@@ -27,4 +28,9 @@ class data_titik extends Model
         return $this->belongsTo(kemiringan_lereng::class, 'id_kemiringan_lereng');
     }
     
+    public function nilai_struktur_geologi()
+    {
+        return $this->hasMany(nilai_struktur_geologi::class);
+    }
+
 }

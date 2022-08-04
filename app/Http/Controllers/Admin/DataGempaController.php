@@ -21,6 +21,11 @@ class DataGempaController extends Controller
         return view('admin.main.data-gempa.index', compact('data'));
     }
 
+    public function create()
+    {
+        return view('admin.main.data-gempa.create');
+    }
+
     public function store(Request $request)
     {
         $latitude_dpn_koma = $request->latitude;
