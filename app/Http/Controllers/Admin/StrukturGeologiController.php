@@ -35,7 +35,7 @@ class StrukturGeologiController extends Controller
         $informasiGeologi = nilai_struktur_geologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
        
 
-                        $R = 6371; // deg2radius of earth in km | Haversine Distance
+                        $R = 6371; //deg2radius of earth in km | Haversine Distance
                         $lat_gempa =   $dataGempa->latitude;
                         $lng_gempa =   $dataGempa->longitude;
                        
@@ -46,8 +46,8 @@ class StrukturGeologiController extends Controller
                             $mlng = $dataTitik[$i]->longitude;
 
                         
-                            $dLat  = deg2rad($mlat - $lat_gempa);  // Rdaerah asal dikurang tujuan
-                            $dLong = deg2rad($mlng - $lng_gempa); // Rdaerah asal dikurang tujuan
+                            $dLat  = deg2rad($mlat - $lat_gempa);  //Rdaerah asal dikurang tujuan
+                            $dLong = deg2rad($mlng - $lng_gempa); //Rdaerah asal dikurang tujuan
 
                             $a = sin($dLat/2) * sin($dLat/2) +
                                     cos(deg2rad($lat_gempa)) * cos(deg2rad($mlat)) * sin($dLong/2) * sin($dLong/2);
@@ -76,6 +76,7 @@ class StrukturGeologiController extends Controller
                                 'jarak' => $hasil,
                                 'nilai_kemampuan' =>   $a       
                             ]);
+                            
 
                         //    $distances[] = array (
                         //         'id_gempa' => $request->option_gempa,
@@ -84,8 +85,10 @@ class StrukturGeologiController extends Controller
                         //         'jarak' => $hasil,
                         //         'nilai_kemampuan' =>   $a       
                         //     );
+                     
 
                         }
+
                         //  return $json =  json_encode($distances);
                         
 
