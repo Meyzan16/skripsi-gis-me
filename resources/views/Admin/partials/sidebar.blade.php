@@ -71,34 +71,20 @@
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
-                        <span>Kalkulasi Metode</span>
+                        <span>Pengujian Data </span>
                     </a>
                     <ul class="submenu ">
                         <li class="submenu-item ">
-                            <a href="{{ route('data-titik.index') }}"> Nilai Kegempaan (PGA) </a>
+                            <a href="{{ route('data-titik.index') }}"> Data Uji Gempa Realtime </a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="{{ route('admin.nilai-struktur-geologi.index') }}"> Nilai Struktur Geologi </a>
+                            <a href="{{ route('admin.dataujilama.index') }}"> Data Uji Gempa Lama </a>
                         </li>
                         </li>
                     </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-collection-fill"></i>
-                        <span>Pengujian Data</span>
-                    </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="{{ route('data-titik.index') }}"> Data Uji Gempa Lama </a>
-                        </li>
-                        <li class="submenu-item ">
-                            <a href="{{ route('data-titik.index') }}"> Data Uji Gempa Realtime </a>
-                        </li>
-                        </li>
-                    </ul>
-                </li>
+               
 
                 
 

@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('calculasi_metodes', function (Blueprint $table) {
+        Schema::create('hasil_tipologis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_titik')->nullable();
-            $table->foreignId('id_geologi_fisik')->nullable();
-            $table->foreignId('id_kemiringan_lereng')->nullable();
-            $table->foreignId('id_kegempaan')->nullable();
-            $table->foreignId('id_struktur_geologi')->nullable();
+            $table->string('nilai_geologi_fisik',5)->nullable();
+            $table->string('nilai_kemiringan_lereng',5)->nullable();
+            $table->string('nilai_kegempaan',5)->nullable();
+            $table->string('nilai_kemampuan_struktur_geologi',5)->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calculasi_metodes');
+        Schema::dropIfExists('hasil_tipologis');
     }
 };

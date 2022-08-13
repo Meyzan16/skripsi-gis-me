@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DataTitikController;
 use App\Http\Controllers\Admin\KegempaanController;
 use App\Http\Controllers\Admin\GeologiFisikController;
 use App\Http\Controllers\Admin\StrukturGeologiController;
+use App\Http\Controllers\Admin\DataUjiGempaLamaController;
 use App\Http\Controllers\Admin\KemiringanLerengController;
 
 /*
@@ -41,10 +42,13 @@ Route::group([
             Route::get('/', [KegempaanController::class, 'index'])->name('admin.kegempaan.index');
         });
 
-        Route::group(['prefix' => 'struktur-geologi' ], function(){
-            route::get('/', [StrukturGeologiController::class, 'index'])->name('admin.struktur-geologi.index');
-            route::get('/page-nilai-str-geologi', [StrukturGeologiController::class, 'view_geologi'])->name('admin.nilai-struktur-geologi.index');
-            route::POST('/proses-metode', [StrukturGeologiController::class, 'proses_metode'])->name('admin.nilai-struktur-geologi.proses_metode');
+        Route::group(['prefix' => 'struktur-geologi/'], function(){
+            Route::get('/', [StrukturGeologiController::class, 'index'])->name('admin.struktur-geologi.index');
+        });
+
+        Route::group(['prefix' => 'data-uji' ], function(){
+            Route::get('/', [DataUjiGempaLamaController::class, 'index'])->name('admin.dataujilama.index');
+            route::POST('/proses-metode', [DataUjiGempaLamaController::class, 'proses_metode'])->name('admin.dataujigempa-lama.proses_metode');
         });
 
 

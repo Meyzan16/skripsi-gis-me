@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('calculasi_metodes', function (Blueprint $table) {
-            $table->foreignId('id_tipologi')->after('id_struktur_geologi')->nullable();
+        Schema::table('hasil_tipologis', function (Blueprint $table) {
+            $table->foreignId('id_gempa')->after('nilai_kemampuan_struktur_geologi')->nullable();
+            $table->foreignId('id_tipologi')->after('id_gempa')->nullable();
         });
     }
 
@@ -25,7 +26,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('calculasi_metodes', function (Blueprint $table) {
+        Schema::table('hasil_tipologis', function (Blueprint $table) {
             $table->dropColumn('id_tipologi');
         });
     }

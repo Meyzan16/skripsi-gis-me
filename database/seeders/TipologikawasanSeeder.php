@@ -5,6 +5,11 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\tipologi_kawasan;
+use App\Models\data_bobot;
+use App\Models\kegempaan;
+use App\Models\kemiringan_lereng;
+use App\Models\geologi_fisik;
+
 
 class TipologikawasanSeeder extends Seeder
 {
@@ -822,6 +827,90 @@ class TipologikawasanSeeder extends Seeder
             'skor' => 60,
             'tipologi' => 'F'
         ]);
+
+        geologi_fisik::create([
+            'kelas_informasi' => 'andesit, granit, diorit, metamorf, breksi volkanik, aglomerat, breksi sedimen dan konglomerat',
+            'nilai_kemampuan' => 1,
+        ]);
+        geologi_fisik::create([
+            'kelas_informasi' => 'batupasir, tuf kasar, batulanau,arkose, greywacke dan batugamping',
+            'nilai_kemampuan' => 2,
+        ]);
+        geologi_fisik::create([
+            'kelas_informasi' => 'pasir, lanau, batulumpur, napal, tuf halus dan serpih
+            ',
+            'nilai_kemampuan' => 3,
+        ]);
+        geologi_fisik::create([
+            'kelas_informasi' => 'lempung, lumpur, lempung organik dan gambut',
+            'nilai_kemampuan' => 4,
+        ]);
+
+
+
+        kemiringan_lereng::create([
+            'kelas_informasi' => 'Datar – landai (0-7 %)',
+            'nilai_kemampuan' => 1,
+        ]);
+        kemiringan_lereng::create([
+            'kelas_informasi' => 'Miring – Agak Curam (7-30 %)',
+            'nilai_kemampuan' => 2,
+        ]);
+        kemiringan_lereng::create([
+            'kelas_informasi' => 'Curam – sangat curam (30 – 140 %)',
+            'nilai_kemampuan' => 3,
+        ]);
+        kemiringan_lereng::create([
+            'kelas_informasi' => 'Terjal(>140%)',
+            'nilai_kemampuan' => 4,
+        ]);
+
+
+        kegempaan::create([
+            'MMI' => 'i,ii,iii,iv,v',
+            'PGA' => '< 0,05',
+            'richter' => '< 5',
+            'nilai_kemampuan' => 1,
+        ]);
+        kegempaan::create([
+            'MMI' => 'vi,vii',
+            'PGA' => '0,05 – 0,15',
+            'richter' => '5 - 6',
+            'nilai_kemampuan' => 2,
+        ]);
+        kegempaan::create([
+            'MMI' => 'viii',
+            'PGA' => '0,15 – 0,30 ',
+            'richter' => '6 – 6,5',
+            'nilai_kemampuan' => 3,
+        ]);
+        kegempaan::create([
+            'MMI' => 'ix,x,xi,xii',
+            'PGA' => '> 0,30 ',
+            'richter' => '> 6,5',
+            'nilai_kemampuan' => 4,
+        ]);
+
+        data_bobot::create([
+            'nama_parameter' => 'Geologi Fisik',
+            'bobot' => 3
+        ]);
+        data_bobot::create([
+            'nama_parameter' => 'Kemiriang Lereng',
+            'bobot' => 3
+        ]);
+        data_bobot::create([
+            'nama_parameter' => 'Kegempaan',
+            'bobot' => 5    
+        ]);
+        data_bobot::create([
+            'nama_parameter' => 'Struktur Geologi',
+            'bobot' => 4
+        ]);
+
+
+
+
         
         
 

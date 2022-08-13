@@ -38,14 +38,14 @@
                                                     <label>Geologi Fisik</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" readonly >
+                                                    <input type="text" class="form-control"  value="{{ $data->geologi_fisik->kelas_informasi }}" readonly >
                                                 </div>
                                                 
                                                 <div class="col-md-4">
                                                     <label>Kemiringan Lereng</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" readonly >
+                                                    <input type="text" class="form-control"  value="{{ $data->kemiringan_lereng->kelas_informasi }}" readonly >
                                                 </div>
                                             
                                                  
