@@ -95,7 +95,7 @@
 
                     <div class="modal-body">
                         <h6 class="modal-title" id="exampleModalCenterTitle"> Kelas Informasi  </h6>
-                        <textarea class="form-control" name="kelas_informasi">{{ $item1->kelas_informasi }} </textarea>
+                        <textarea class="form-control" name="kelas_informasi" onkeypress='return harusHuruf(event)'>{{ $item1->kelas_informasi }} </textarea>
                     </div>
 
                    
@@ -123,13 +123,12 @@
 
 @push('addon-script')
 <script>
-    function hanyaAngka(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-       if (charCode > 31 && (charCode < 48 || charCode > 57))
-
-        return false;
-      return true;
-    }
+    function harusHuruf(evt){
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if ((charCode < 65 || charCode > 90)&&(charCode < 97 || charCode > 122)&&charCode>32)
+            return false;
+        return true;
+}
 </script>
 
 @endpush

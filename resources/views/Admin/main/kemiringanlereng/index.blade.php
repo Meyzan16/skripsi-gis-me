@@ -95,7 +95,7 @@
 
                     <div class="modal-body">
                         <h6 class="modal-title" id="exampleModalCenterTitle"> Kelas Informasi  </h6>
-                        <textarea class="form-control" name="kelas_informasi">{{ $item1->kelas_informasi }} </textarea>
+                        <textarea class="form-control" name="kelas_informasi" >{{ $item1->kelas_informasi }} </textarea>
                     </div>
 
                  
@@ -121,16 +121,4 @@
 
 @endsection
 
-@push('addon-script')
-<script>
-    function hanyaAngka(evt) {
-      var charCode = (evt.which) ? evt.which : event.keyCode
-       if (charCode > 31 && (charCode < 48 || charCode > 57))
-
-        return false;
-      return true;
-    }
-</script>
-
-@endpush
 
