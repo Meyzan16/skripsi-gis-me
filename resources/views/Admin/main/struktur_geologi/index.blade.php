@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>3</td>
                                     <td>Pada zona sesar (< 100 M )</td>
-                                    <td>3
+                                    <td>4
                                     </td>   
                                 </tr>
                                 

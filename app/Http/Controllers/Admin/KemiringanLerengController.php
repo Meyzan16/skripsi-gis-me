@@ -25,7 +25,6 @@ class KemiringanLerengController extends Controller
     {
         kemiringan_lereng::findorfail($id)->update([
             'kelas_informasi' => $request->kelas_informasi,
-            'nilai' => $request->nilai
         ]);
 
         return redirect()->route('kemiringan-lereng.index')->with(['success' =>  'Data Berhasil diperbarui']);

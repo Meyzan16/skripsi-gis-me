@@ -98,10 +98,7 @@
                         <textarea class="form-control" name="kelas_informasi">{{ $item1->kelas_informasi }} </textarea>
                     </div>
 
-                    <div class="modal-body">
-                        <h6 class="modal-title" id="exampleModalCenterTitle"> Nilai Kemampuan  </h6>
-                        <input type="text" value="{{  old('nilai', $item1->nilai_kemampuan)  }}" class="form-control" name="nilai" maxlength="2" onkeypress="return hanyaAngka(event)">
-                    </div>
+                 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary"
                             data-bs-dismiss="modal">

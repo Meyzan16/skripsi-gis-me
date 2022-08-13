@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\data_titik;
 use App\Models\data_gempa;
 use App\Models\nilai_struktur_geologi;
+use App\Models\hasil_tipologi;
 
 class DataUjiGempaLamaController extends Controller
 {
@@ -29,11 +30,12 @@ class DataUjiGempaLamaController extends Controller
 
         $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
  
-        $informasiGeologi = nilai_struktur_geologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
-                        $R = 6371; //deg2radius of earth in km | Haversine Distance
-                        $lat_gempa =   $dataGempa->latitude;
-                        $lng_gempa =   $dataGempa->longitude;                                       
+                            $R = 6371; //deg2radius of earth in km | Haversine Distance
+                            $lat_gempa =   $dataGempa->latitude;
+                            $lng_gempa =   $dataGempa->longitude;  
+
                         for( $i=0; $i<count($dataTitik); $i++ ) {
+
                             $mlat = $dataTitik[$i]->latitude;
                             $mlng = $dataTitik[$i]->longitude;  
                             $dLat  = deg2rad($mlat - $lat_gempa);  //Rdaerah asal dikurang tujuan
@@ -44,7 +46,8 @@ class DataUjiGempaLamaController extends Controller
                             $c = 2 * atan2(sqrt($a), sqrt(1-$a));
                             $d = $R * $c;
                             $hasil = $d = round($d, 2);
-                            $konversi_meter = $hasil * 1000;                   
+                            $konversi_meter = $hasil * 1000;  
+                                             
                             if($konversi_meter > 1000){
                                 $a = 1 ;
                             }elseif (( $konversi_meter >= 100 ) || ($konversi_meter <= 1000)) {
@@ -74,6 +77,7 @@ class DataUjiGempaLamaController extends Controller
                         }
 
                         //  return $json =  json_encode($distances);
+        $informasiGeologi = nilai_struktur_geologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
                         
 
         return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'informasiGeologi'));

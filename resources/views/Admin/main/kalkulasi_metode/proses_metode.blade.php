@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
 <div class="page-heading">
-    <h3>Metode Haversine Distance 1</h3>
+    <h3>Gempa Terpilih Tanggal {{ $dataGempa->tanggal }}</h3>
 </div>
 
 <div class="page-content">
@@ -76,9 +76,9 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="page-heading">
-                                            <h5>Informasi Data Titik </h5>
+                                            <h5 class="text-center">Informasi Data Titik </h5>
 
-                                            <h6>wilayah : {{ $dataGempa->wilayah }} </h6>
+                                            <h6>wilayah Gempa : {{ $dataGempa->wilayah }} </h6>
                                             <h6>Tahun : {{ $dataGempa->tanggal }}</h6>
 
                                             @foreach ($informasiGeologi as $dataa)

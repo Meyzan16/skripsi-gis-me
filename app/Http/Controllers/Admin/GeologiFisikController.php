@@ -22,7 +22,6 @@ class GeologiFisikController extends Controller
 
         geologi_fisik::findorfail($id)->update([
             'kelas_informasi' => $request->kelas_informasi,
-            'nilai' => $request->nilai
         ]);
 
         return redirect()->route('geologi-fisik.index')->with(['success' =>  'Data Berhasil diperbarui']);
