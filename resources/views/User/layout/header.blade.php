@@ -13,10 +13,10 @@
     <nav id="navbar" class="navbar">
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        {{-- <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog.html">Blog</a></li> --}}
         {{-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
             <li><a href="#">Dropdown 1</a></li>
@@ -50,7 +50,7 @@
         <div class="col-lg-6 text-center">
           <h2 data-aos="fade-down"> Selamat Datang  <br><span> e-kerawanan </span></h2>
           <p data-aos="fade-up">website ini merupakan penelitian mahasiswa teknik informatika universitas bengkulu yang mana sistem ini menghasilkan referensi tingkat kerawanan disuatu titik berdasakan parameter-parameter dari bidang sipil dan object nya adalah gempa </p>
-          <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Get Started</a>
+          <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Pengujian Data</a>
         </div>
       </div>
     </div>

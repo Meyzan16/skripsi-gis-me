@@ -22,15 +22,6 @@ class BobotController extends Controller
     }
 
 
-    public function update(Request $request, $id)
-    {
-        data_bobot::findorfail($id)->update([
-            'bobot' => $request->bobot
-        ]);
-
-        return redirect()->route('data-bobot.index')->with(['success' =>  'Data Berhasil diperbarui']);
-    }
-
  
 
 }

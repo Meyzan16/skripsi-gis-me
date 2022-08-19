@@ -59,7 +59,7 @@ class DataTitikController extends Controller
             'alamat' => $request->location,
         ]);
 
-        //ambil data terakhir yag diinputkan
+        //ambil data terakhir yang diinputkan
         $datas = DB::table('data_titiks')->orderBy('id', 'desc')->limit(1)->get();
         foreach ($datas as $data) {
             $b = '';
@@ -89,15 +89,11 @@ class DataTitikController extends Controller
             hasil_tipologi::create([
                     'id_titik' =>   $data->id,     
                     'nilai_geologi_fisik' =>   $b,     
+                    'nilai_kegempaan' =>   '3a',     
                     'nilai_kemiringan_lereng' =>   $c,     
             ]);
 
         }
-        
-
-
-
-
         return redirect()->route('data-titik.index')->with('success' , 'Data Berhasil DiTambahkan');
     }
 

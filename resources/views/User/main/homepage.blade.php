@@ -135,7 +135,7 @@
     </div>
   </section><!-- End Constructions Section --> --}}
 
-  <!-- ======= Services Section ======= -->
+  {{-- <!-- ======= Services Section ======= -->
   <section id="services" class="services section-bg">
     <div class="container" data-aos="fade-up">
 
@@ -215,7 +215,7 @@
       </div>
 
     </div>
-  </section><!-- End Services Section -->
+  </section><!-- End Services Section --> --}}
 
   {{-- <!-- ======= Alt Services Section ======= -->
   <section id="alt-services" class="alt-services">
@@ -269,6 +269,11 @@
   <!-- ======= Features Section ======= -->
   <section id="features" class="features">
     <div class="container" data-aos="fade-up">
+
+      <div class="section-header">
+        <h2>Parameter</h2>
+        <p>Sistem ini menggunakan 4 parameter pendukung dalam menghasilkan informasi tingkat kerawanan suatu daerah</p>
+      </div>
 
       <ul class="nav nav-tabs row  g-2 d-flex">
 

@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
 <div class="page-heading">
-    <h3>Metode Haversine Distance</h3>
+    <h3>Data Uji Gempa Lama</h3>
 </div>
 
 <div class="page-content">

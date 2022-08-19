@@ -14,4 +14,6 @@ class hasil_tipologi extends Model
          'nilai_kegempaan', 'nilai_kemampuan_struktur_geologi', 'id_gempa' , 
          'id_tipologi'
     ];
+
+    
 }
