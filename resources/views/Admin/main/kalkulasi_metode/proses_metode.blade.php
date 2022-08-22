@@ -116,8 +116,17 @@
 
             <div class="modal-body">
                 <h6>Kecamatan : {{ $item1->data_titik->kecamatan }}</h6>
-                <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->jarak }}</h6>
-                <h6>Nilai Kemampuan  : {{ $item1->nilai_Kemampuan }}</h6>
+                <h6>Geologi Fisik : {{ $item1->geologi_fisik->kelas_informasi }}</h6>
+                <h6>Kemiringan Lereng : {{ $item1->kemiringan_lereng->kelas_informasi }}</h6>
+                <h6>Hasil PGA : {{ $item1->hasil_pga }}</h6>
+                <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
+
+                @if(empty($item1->tipologi_kawasan->tipologi))
+                    <h6>Tipologi Kawasan : </h6>  
+                @else
+                    <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->tipologi }}</h6>       
+                @endif
+               
               </div>
 
             <form>         

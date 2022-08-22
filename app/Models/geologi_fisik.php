@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\data_titik;
 use App\Models\kecamatan;
+use App\Models\calculasi_tipologi;
 
 class geologi_fisik extends Model
 {
@@ -19,6 +20,11 @@ class geologi_fisik extends Model
     public function data_titik()
     {
         return $this->hasMany(data_titik::class);
+    }
+
+    public function calculasi_tipologi()
+    {
+        return $this->hasMany(calculasi_tipologi::class , 'id');
     }
 
    

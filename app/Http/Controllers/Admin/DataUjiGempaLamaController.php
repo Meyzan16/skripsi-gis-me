@@ -114,8 +114,10 @@ class DataUjiGempaLamaController extends Controller
                                                     calculasi_tipologi::create([
                                                         'id_gempa' => $request->option_gempa,
                                                         'id_titik' =>  $dataTitik[$i]->id,
+                                                        'id_geologi_fisik' =>  $dataTitik[$i]->id_geologi_fisik,
                                                         'hasil_kali_bobot_geologi_fisik' => $hasil_kali_bobot_geologi_fisik,                                                        
                                                         'ket_geologi_fisik' => $ket_geologi_fisik,
+                                                        'id_lereng' =>  $dataTitik[$i]->id_kemiringan_lereng,
                                                         'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lereng,
                                                         'ket_lereng' => $ket_lereng,
                                                         'hasil_pga' => null,
