@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\data_titik;
 use App\Models\data_gempa;
-use App\Models\nilai_struktur_geologi;
+use App\Models\calculasi_tipologi;
 use App\Models\hasil_tipologi;
 use App\Models\tipologi_kawasan;
 use Illuminate\Support\Facades\DB;
@@ -28,16 +28,14 @@ class DataUjiGempaLamaController extends Controller
     {
         $dataTitik = data_titik::all(); 
 
-        $row_hasil_tipologi = hasil_tipologi::all();
+     
 
         $dataGempa_option = data_gempa::all();
 
         $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
 
-        $cek_gempa_nilai_struktur_geologi = nilai_struktur_geologi::where('id_gempa', $request->option_gempa)->get();
+        $cek_gempa = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
 
-        $cek_gempa_hasil_tipologi = hasil_tipologi::where('id_gempa', $request->option_gempaa)->get();
-        // return $cek_gempa_hasil_tipologi;
         
                 $R = 6371; //deg2radius of earth in km | Haversine Distance
                 $lat_gempa =   $dataGempa->latitude;
@@ -59,111 +57,104 @@ class DataUjiGempaLamaController extends Controller
                 
                             //perkondisian untuk nilai kemampuan tabel nilai_struktur_geologis
                             $a = '';
+                            $ket_struktur_geologi = '';
                             if($konversi_meter > 1000){
                                 $a = 1 ;
+                                $ket_struktur_geologi = '4a';
                             }elseif (( $konversi_meter >= 100 ) || ($konversi_meter <= 1000)) {
                                 $a = 2;
+                                $ket_struktur_geologi = '4b';
                             }
                             elseif($konversi_meter < 100){
                                 $a = 4 ;
+                                $ket_struktur_geologi = '4c';
                             }               
                                     //jika tabel cek_gempa_nilai_struktur_geologi ada isi nya maka jalankan script berikut
-                                    if(count($cek_gempa_nilai_struktur_geologi) > 0  ) 
+                                    if(count($cek_gempa) > 0  ) 
                                     {  
-                                        // if (!empty($cek_gempa_nilai_struktur_geologi))
-                                        // {              
-                                            $informasiGeologi = nilai_struktur_geologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
+                                                     
+                                            $informasiGeologi = calculasi_tipologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
                                             return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'informasiGeologi'));                                                                            
-                                        //}                                    
+                                                                         
                                                                                  
-                                    } else {
-                                        if(count($cek_gempa_hasil_tipologi) > 0 )
-                                        {
-                                                    $b= '';
-                                                    if($konversi_meter > 1000){
-                                                        $b = '4a' ;
-                                                    }elseif (( $konversi_meter >= 100 ) || ($konversi_meter <= 1000)) {
-                                                        $b = '4b' ;
+                                    } else 
+                                    {  
+                                                    $ket_geologi_fisik = '';
+                                                    if($dataTitik[$i]->id_geologi_fisik == 1)
+                                                    {
+                                                        $ket_geologi_fisik = '1a';
+                                                    }elseif($dataTitik[$i]->id_geologi_fisik == 2){
+                                                        $ket_geologi_fisik = '1b';
+                                                    }elseif($dataTitik[$i]->id_geologi_fisik == 3){
+                                                        $ket_geologi_fisik = '1c';
+                                                    }elseif($dataTitik[$i]->id_geologi_fisik == 4){
+                                                        $ket_geologi_fisik = '1d';
                                                     }
-                                                    elseif($konversi_meter < 100){
-                                                        $b = '4c' ;
-                                                    }           
-                                                    hasil_tipologi::where('id_titik', $dataTitik[$i]->id)->update([
-                                                        'nilai_kemampuan_struktur_geologi' => $b,
-                                                        'id_gempa' => $request->option_gempa,
-                                                    ]);  
-                                                    
 
-                                                    //insert tabel nilai_struktur_geologi
-                                                    nilai_struktur_geologi::create([
+                                                    $ket_lereng = '';
+                                                    if($dataTitik[$i]->id_kemiringan_lereng == 1)
+                                                    {
+                                                        $ket_lereng = '2a';
+                                                    }elseif($dataTitik[$i]->id_kemiringan_lereng == 2){
+                                                        $ket_lereng = '2b';
+                                                    }elseif($dataTitik[$i]->id_kemiringan_lereng == 3){
+                                                        $ket_lereng = '2c';
+                                                    }elseif($dataTitik[$i]->id_kemiringan_lereng == 4){
+                                                        $ket_lereng = '2d';
+                                                    }
+
+                                                    $hasil_kali_bobot_geologi_fisik = $dataTitik[$i]->id_geologi_fisik * 3;
+                                                    $hasil_kali_bobot_lereng = $dataTitik[$i]->id_kemiringan_lereng * 3;
+                                                    $hasil_kali_bobot_struktur_geologi = $a * 4;
+                                                    
+                                                    $skor_akhir = $hasil_kali_bobot_geologi_fisik + $hasil_kali_bobot_lereng + 15 + $hasil_kali_bobot_struktur_geologi ;
+                                                                                                    
+
+                                                    //insert tabel calculasi_tipologi
+                                                    calculasi_tipologi::create([
                                                         'id_gempa' => $request->option_gempa,
                                                         'id_titik' =>  $dataTitik[$i]->id,
-                                                        'jarak' =>$hasil,
-                                                        'nilai_kemampuan' => $a       
-                                                    ]);                                           
-                                        }else{
-                                                                  
-                                            nilai_struktur_geologi::create([
-                                                'id_gempa' => $request->option_gempa,
-                                                'id_titik' =>  $dataTitik[$i]->id,
-                                                'jarak' =>$hasil,
-                                                'nilai_kemampuan' => $a       
-                                            ]); 
-
-                                            $c= '';
-                                            if($konversi_meter > 1000){
-                                                $c = '4a' ;
-                                            }elseif (( $konversi_meter >= 100 ) || ($konversi_meter <= 1000)) {
-                                                $c = '4b' ;
-                                            }
-                                            elseif($konversi_meter < 100){
-                                                $c = '4c' ;
-                                            }           
-
-                                            foreach ($row_hasil_tipologi as $valuee) 
-                                            {
-                                                hasil_tipologi::create([
-                                                    'id_titik' => $valuee->id_titik,
-                                                    'nilai_geologi_fisik' =>  $valuee->nilai_geologi_fisik,
-                                                    'nilai_kemiringan_lereng' => $valuee->nilai_kemiringan_lereng,
-                                                    'nilai_kegempaan' => $valuee->nilai_kegempaan, 
-                                                    'nilai_kemampuan_struktur_geologi' => $c, 
-                                                    'id_gempa' => $request->option_gempa, 
-                                                ]); 
-                                            }
-
-                                            
-                                        }                                       
+                                                        'hasil_kali_bobot_geologi_fisik' => $hasil_kali_bobot_geologi_fisik,                                                        
+                                                        'ket_geologi_fisik' => $ket_geologi_fisik,
+                                                        'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lereng,
+                                                        'ket_lereng' => $ket_lereng,
+                                                        'hasil_pga' => null,
+                                                        'nilai_kemampuan_pga' => 3,
+                                                        'ket_pga' => '3d',
+                                                        'hasil_kali_bobot_pga' => 3 * 5 ,
+                                                        'hasil_jarak_struktur_geologi' =>$hasil,
+                                                        'nilai_kemampuan_struktur_geologi' => $a ,
+                                                        'ket_struktur_geologi' => $ket_struktur_geologi,
+                                                        'hasil_kali_bobot_struktur_geologi'  => $hasil_kali_bobot_struktur_geologi,   
+                                                        'skor_akhir' => $skor_akhir,
+                                                    ]); 
+                                                   
                                     }                                       
                               
                     }
 
-                     //update id_tipologi nya 
-                     for($m =0; $m<count($row_hasil_tipologi); $m++)
-                     {       
-                         $tipologiKawasan = tipologi_kawasan::all();
-                     
-                         foreach ($tipologiKawasan as $value) 
-                         {
-                             if(($value->geologi_batuan == $row_hasil_tipologi[$m]->nilai_geologi_fisik) && 
-                                 ($value->lereng == $row_hasil_tipologi[$m]->nilai_kemiringan_lereng) &&
-                                 ($value->kegempaan == $row_hasil_tipologi[$m]->nilai_kegempaan) && 
-                                 ($value->struktur_geologi == $row_hasil_tipologi[$m]->nilai_kemampuan_struktur_geologi))
-                             {
-                                 hasil_tipologi::where('id', $row_hasil_tipologi[$m]->id)->update([
-                                     'id_tipologi' => $value->id
-                                 ]);   
-                             }                        
-                         } 
-                     }
-                
-
-
+                    $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
+                    for($m =0; $m<count($cek_calculasi_tipologi); $m++)
+                        {      
+                            
+                            $tipologiKawasan = tipologi_kawasan::all();
+                        
+                            foreach ($tipologiKawasan as $value) 
+                            {
+                                if(($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                    ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                    ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                    ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                {
+                                    calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                        'id_tipologi' => $value->id
+                                    ]);   
+                                }                        
+                            } 
+                        }
+               
                     
-
-                
-                    
-                    $informasiGeologi = nilai_struktur_geologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
+                    $informasiGeologi = calculasi_tipologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
                     return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'informasiGeologi'));
                
         

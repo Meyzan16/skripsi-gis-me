@@ -59,41 +59,7 @@ class DataTitikController extends Controller
             'alamat' => $request->location,
         ]);
 
-        //ambil data terakhir yang diinputkan
-        $datas = DB::table('data_titiks')->orderBy('id', 'desc')->limit(1)->get();
-        foreach ($datas as $data) {
-            $b = '';
-            $c = '';
-
-            if($data->id_geologi_fisik == 1 ){
-                $b = '1a';
-            }elseif($data->id_geologi_fisik == 2){
-                $b = '1b';
-            }elseif($data->id_geologi_fisik == 3){
-                $b = '1c';
-            }elseif($data->id_geologi_fisik == 4){
-                $b = '1d';
-            }
-
-            if($data->id_kemiringan_lereng == 1){
-                $c = '2a';
-            }elseif($data->id_kemiringan_lereng == 2){
-                $c = '2b';
-            }elseif($data->id_kemiringan_lereng == 3){
-                $c = '2c';
-            }elseif($data->id_kemiringan_lereng == 4){
-                $c = '2d';
-            }
-
-
-            hasil_tipologi::create([
-                    'id_titik' =>   $data->id,     
-                    'nilai_geologi_fisik' =>   $b,     
-                    'nilai_kegempaan' =>   '3a',     
-                    'nilai_kemiringan_lereng' =>   $c,     
-            ]);
-
-        }
+    
         return redirect()->route('data-titik.index')->with('success' , 'Data Berhasil DiTambahkan');
     }
 
