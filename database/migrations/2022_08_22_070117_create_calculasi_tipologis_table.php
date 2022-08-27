@@ -36,6 +36,7 @@ return new class extends Migration
             $table->integer('hasil_kali_bobot_struktur_geologi')->nullable();
 
             $table->integer('skor_akhir')->nullable();
+            $table->enum('kategoru', ['rendah','sedang','tinggi'])->nullable();
             $table->foreignId('id_tipologi')->nullable();
             $table->timestamps();
         });

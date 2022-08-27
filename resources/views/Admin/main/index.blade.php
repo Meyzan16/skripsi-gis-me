@@ -8,11 +8,11 @@
 </div>
 
                             @if(session()->has('success'))
-                                <div class="autohide">
+                                
                                     <div class="alert alert-success autohide" role="alert">
                                     {{ session('success') }}
                                     </div>    
-                                </div>
+                              
                             @endif
 
 <div class="page-content">
@@ -284,3 +284,14 @@
 </div>
     
 @endsection
+
+    @push('addon-script')
+    <script>
+        window.setTimeout(function() {
+            $(".autohide").fadeTo(500, 0).slideUp(500, function() {
+                $(this).remove();
+            });
+        }, 4000);
+    </script>	
+    @endpush
+

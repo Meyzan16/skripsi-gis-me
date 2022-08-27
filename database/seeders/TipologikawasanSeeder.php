@@ -9,6 +9,7 @@ use App\Models\data_bobot;
 use App\Models\kegempaan;
 use App\Models\kemiringan_lereng;
 use App\Models\geologi_fisik;
+use App\Models\user;
 
 
 class TipologikawasanSeeder extends Seeder
@@ -906,6 +907,14 @@ class TipologikawasanSeeder extends Seeder
         data_bobot::create([
             'nama_parameter' => 'Struktur Geologi',
             'bobot' => 4
+        ]);
+
+
+        User::create([
+            'name' => 'Meyzan',
+            'email' => 'meyzan1605@gmail.com',
+            'username' => 'adzanmagrib',
+            'password' => bcrypt('monmon16')
         ]);
 
 

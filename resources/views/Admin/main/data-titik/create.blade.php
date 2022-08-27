@@ -145,6 +145,10 @@
 </div> 
 @endsection
 
+{{-- @php
+    $ambilll = json_encode($string);
+@endphp --}}
+
 @push('addon-script')
 <script>
 
@@ -176,6 +180,13 @@ function initMap() {
             }
             //tampilkan maps
             var map = new google.maps.Map(document.getElementById( 'map' ), propertiPeta);
+
+            
+            var teachers = <?= json_encode($string) ?>;
+            console.log(teachers);
+
+            // map.data.loadGeoJson(json_decode(file_get_contents("/bbbb.geojson"), true));
+            // console.log(a);
             
             
             //buat marker

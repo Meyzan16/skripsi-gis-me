@@ -81,7 +81,7 @@
                                             <h6>wilayah Gempa : {{ $dataGempa->wilayah }} </h6>
                                             <h6>Tahun : {{ $dataGempa->tanggal }}</h6>
 
-                                            @foreach ($informasiGeologi as $dataa)
+                                            @foreach ($calculasi_tipologi as $dataa)
                                                 <br>{{ $dataa->data_titik->alamat }} <br>
                                                 <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a>
                                             @endforeach 
@@ -99,7 +99,7 @@
     </section>
 </div> 
 
-@foreach ($informasiGeologi as $item1)
+@foreach ($calculasi_tipologi as $item1)
 <div class="modal fade" id="edit_data{{ $item1->id_titik  }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
@@ -118,12 +118,14 @@
                 <h6>Kecamatan : {{ $item1->data_titik->kecamatan }}</h6>
                 <h6>Geologi Fisik : {{ $item1->geologi_fisik->kelas_informasi }}</h6>
                 <h6>Kemiringan Lereng : {{ $item1->kemiringan_lereng->kelas_informasi }}</h6>
-                <h6>Hasil PGA : {{ $item1->hasil_pga }}</h6>
+                <h6>Hasil PGA : {{ round($item1->hasil_pga,2) }} g</h6>
                 <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
+                <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
 
-                @if(empty($item1->tipologi_kawasan->tipologi))
+                @if(empty($item1->tipologi_kawasan->tipologi ))
                     <h6>Tipologi Kawasan : </h6>  
                 @else
+                    
                     <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->tipologi }}</h6>       
                 @endif
                
@@ -226,6 +228,7 @@ function showAll(map, app_dataTitik){
 </script>
 
 @endpush
+
 
 
 

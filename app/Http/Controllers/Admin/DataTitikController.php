@@ -23,9 +23,13 @@ class DataTitikController extends Controller
  
     public function create()
     {
+        $string = json_decode(file_get_contents("/bbbb.geojson"), true);
+        // return $string;
+
+
         $geologiFisik = geologi_fisik::all();
         $kemiringanLereng = kemiringan_lereng::all();
-        return view('admin.main.data-titik.create' , compact('geologiFisik', 'kemiringanLereng' ));
+        return view('admin.main.data-titik.create' , compact('geologiFisik', 'kemiringanLereng' , 'string' ));
     }
 
   
@@ -35,7 +39,7 @@ class DataTitikController extends Controller
         //geologi fisik
         $a = '';
         $a_lereng = '';
-        if($request->kecamatan == 'Kec. Ratu Samban')
+        if($request->kecamatan == 'Ulu Musi')
         {
             $a = 1;
             $a_lereng = 1;

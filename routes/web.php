@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BobotController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DataGempaController;
 use App\Http\Controllers\Admin\DataTitikController;
 use App\Http\Controllers\Admin\KegempaanController;
+use App\Http\Controllers\Admin\TestDonovanController;
 use App\Http\Controllers\Admin\GeologiFisikController;
 use App\Http\Controllers\Admin\StrukturGeologiController;
 use App\Http\Controllers\Admin\DataUjiGempaLamaController;
@@ -28,9 +30,12 @@ Route::get('/', function () {
 
 
 Route::group([
+    'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
 
         Route::get('/', [DashboardController::class, 'index'] )->name('dashboard');
+
+        Route::get('/test-danovan', [TestDonovanController::class, 'index'] )->name('test-danovan');
 
         Route::resource('data-bobot', BobotController::class);
         Route::resource('geologi-fisik', GeologiFisikController::class);
@@ -50,6 +55,8 @@ Route::group([
             Route::get('/', [DataUjiGempaLamaController::class, 'index'])->name('admin.dataujilama.index');
             route::POST('/proses-metode', [DataUjiGempaLamaController::class, 'proses_metode'])->name('admin.dataujigempa-lama.proses_metode');
         });
-
-
     });
+
+    Route::get('/connexion', [LoginController::Class, 'index'] )->name('connexion');
+    Route::post('/connexion', [LoginController::Class, 'authenticate'] )->name('proses_connexion');
+    Route::post('/logout-connexion', [LoginController::Class, 'logout'])->name('logout-connexion');
