@@ -39,7 +39,7 @@ class DataTitikController extends Controller
         //geologi fisik
         $a = '';
         $a_lereng = '';
-        if($request->kecamatan == 'Ulu Musi')
+        if($request->kecamatan == 'Kec. Ratu Samban')
         {
             $a = 1;
             $a_lereng = 1;
@@ -47,7 +47,7 @@ class DataTitikController extends Controller
         {
             $a = 2;
             $a_lereng = 2;
-        }elseif($request->kecamatan == 'Selebar')
+        }elseif($request->kecamatan == 'Kec. Selebar')
         {
             $a = 3;
             $a_lereng = 3;

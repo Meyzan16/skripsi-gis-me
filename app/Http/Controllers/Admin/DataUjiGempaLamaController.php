@@ -54,13 +54,12 @@ class DataUjiGempaLamaController extends Controller
                             $c = 2 * atan2(sqrt($a), sqrt(1-$a));
                             $d = $R * $c;
                             $hasil = $d = round($d, 2);
-                            $konversi_meter = $hasil * 1000; 
+                            $konversi_meter = $hasil * 1000; //berfungsi untuk menentukan nilai kemampuan nya
                             //akhir haversine distance
                             
+
                             //formula donovan untuk menentuka pga atau FGA (alfa)
                             //belum mengaitkan dengan kedalaman nyaa
-
-                            
                             $x = pow($dataTitik[$i]->latitude + $lat_gempa,2) * 111; //lat
                             $y = pow($dataTitik[$i]->longitude - $lng_gempa,2) * 111; //lng
                             $r1 = round($x,2);
@@ -114,7 +113,7 @@ class DataUjiGempaLamaController extends Controller
                             }       
                             
                             
-                                    //jika tabel cek_gempa_nilai_struktur_geologi ada isi nya maka jalankan script berikut
+                                    //jika tabel cek_gempa sudah ada isi nya maka jalankan script berikut
                                     if(count($cek_gempa) > 0  ) 
                                     {  
                                                      
@@ -187,7 +186,7 @@ class DataUjiGempaLamaController extends Controller
                                                         'ket_struktur_geologi' => $ket_struktur_geologi,
                                                         'hasil_kali_bobot_struktur_geologi'  => $hasil_kali_bobot_struktur_geologi,   
                                                         'skor_akhir' => $skor_akhir,
-                                                        'kategori' => $kategori,
+                                                        'kategori' => $kategori
                                                     ]); 
                                                    
                                     }                                       

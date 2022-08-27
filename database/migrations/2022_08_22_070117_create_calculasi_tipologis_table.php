@@ -18,9 +18,11 @@ return new class extends Migration
             $table->foreignId('id_gempa')->nullable();
             $table->foreignId('id_titik')->nullable();
 
+            $table->foreignId('id_geologi_fisik')->nullable();
             $table->integer('hasil_kali_bobot_geologi_fisik')->nullable();
             $table->string('ket_geologi_fisik', 5)->nullable();
 
+            $table->foreignId('id_lereng')->nullable();
             $table->integer('hasil_kali_bobot_lereng')->nullable();
             $table->string('ket_lereng', 5)->nullable();
 
@@ -36,7 +38,7 @@ return new class extends Migration
             $table->integer('hasil_kali_bobot_struktur_geologi')->nullable();
 
             $table->integer('skor_akhir')->nullable();
-            $table->enum('kategoru', ['rendah','sedang','tinggi'])->nullable();
+            $table->enum('kategori', ['rendah','sedang','tinggi'])->nullable();
             $table->foreignId('id_tipologi')->nullable();
             $table->timestamps();
         });
