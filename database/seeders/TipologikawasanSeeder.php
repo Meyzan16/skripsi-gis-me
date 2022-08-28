@@ -10,6 +10,7 @@ use App\Models\kegempaan;
 use App\Models\kemiringan_lereng;
 use App\Models\geologi_fisik;
 use App\Models\user;
+use App\Models\informasi_tipologi;
 
 
 class TipologikawasanSeeder extends Seeder
@@ -915,6 +916,31 @@ class TipologikawasanSeeder extends Seeder
             'email' => 'meyzan1605@gmail.com',
             'username' => 'adzanmagrib',
             'password' => bcrypt('monmon16')
+        ]);
+
+        informasi_tipologi::create([
+            'tipologi' => 'A',
+            'informasi_tipologi' => 'informasi tentang tipoligi A'
+        ]);
+        informasi_tipologi::create([
+            'tipologi' => 'B',
+            'informasi_tipologi' => 'informasi tentang tipoligi B'
+        ]);
+        informasi_tipologi::create([
+            'tipologi' => 'C',
+            'informasi_tipologi' => 'informasi tentang tipoligi C'
+        ]);
+        informasi_tipologi::create([
+            'tipologi' => 'D',
+            'informasi_tipologi' => 'informasi tentang tipoligi D'
+        ]);
+        informasi_tipologi::create([
+            'tipologi' => 'E',
+            'informasi_tipologi' => 'informasi tentang tipoligi E'
+        ]);
+        informasi_tipologi::create([
+            'tipologi' => 'F',
+            'informasi_tipologi' => 'informasi tentang tipoligi F'
         ]);
 
 

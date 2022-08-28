@@ -42,10 +42,10 @@ class calculasi_tipologi extends Model
     }
 
 
-    public function tipologi_kawasan()
-    {
+     public function tipologi_kawasan()
+     {
         return $this->belongsTo(tipologi_kawasan::class, 'id_tipologi');
-    }
+     }
 
      
 

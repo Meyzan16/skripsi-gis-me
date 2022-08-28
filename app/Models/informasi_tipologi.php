@@ -10,5 +10,10 @@ class informasi_tipologi extends Model
 {
     use HasFactory;
 
+    public function tipologi_kawasan()
+    {
+        return $this->hasMany(tipologi_kawasan::class, 'tipologi');
+    }
+
    
 }

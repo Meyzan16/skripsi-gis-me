@@ -9,7 +9,6 @@ use App\Models\data_gempa;
 use App\Models\calculasi_tipologi;
 use App\Models\hasil_tipologi;
 use App\Models\tipologi_kawasan;
-use App\Models\informasi_tipologi;
 use Illuminate\Support\Facades\DB;
 
 class DataUjiGempaLamaController extends Controller
@@ -116,8 +115,18 @@ class DataUjiGempaLamaController extends Controller
                                     //jika tabel cek_gempa sudah ada isi nya maka jalankan script berikut
                                     if(count($cek_gempa) > 0  ) 
                                     {  
-                                                     
-                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
+                                            
+                                            // $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
+                                            // $calculasi_tipologi = DB::table('calculasi_tipologis')
+                                            // ->join('tipologi_kawasans', 'tipologi_kawasans.id', '=', 'calculasi_tipologis.id_tipologi') // satu ke banyak
+                                            // ->join('informasi_geologis', 'informasi_geologis.id', '=', 'tipologi_kawasans.tipologi')
+                                            // ->where('calculasi_tipologis.id_gempa', '=', $request->option_gempa)
+                                            // ->get();
+
+                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik' , 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();
+                                            // return $calculasi_tipologi;
+
+
                                             return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));                                                                            
                                                                          
                                                                                  

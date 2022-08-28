@@ -106,7 +106,7 @@
         role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle"> Detail Data {{ $item1->data_titik->alamat }}
+                {{-- <h5 class="modal-title" id="exampleModalCenterTitle"> Detail Data {{ $item1->data_titik->alamat }} --}}
                 </h5>
                 <button type="button" class="close" data-bs-dismiss="modal"
                     aria-label="Close">
@@ -122,11 +122,11 @@
                 <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
                 <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
 
-                @if(empty($item1->tipologi_kawasan->tipologi ))
+                @if(empty($item1->id_tipologi ))
                     <h6>Tipologi Kawasan : </h6>  
                 @else
                     
-                    <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->tipologi }}</h6>       
+                    <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi }}</h6>       
                 @endif
                
               </div>

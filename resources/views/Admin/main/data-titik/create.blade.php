@@ -162,40 +162,40 @@ function eraseText() {
 	}
 
 function initMap() {
-            //ambil id form input
-            var input = document.getElementById('searchInput');
-            var pathCoordinates = [];
+                //library informasi disimpan dalam variabel
 
-            //simpan lat lng bengkulu di varibel
-            var propertiPeta = {
-                zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                center: new google.maps.LatLng( -3.788892, 102.266579),
-                disableDefaultUI: false, // Disables the controls like zoom control on the map if set to true
-                scrollWheel: true, // If set to false disables the scrolling on the map.
-                draggable: true // If set to false , you cannot move the map around.
-        
-            }
-            //tampilkan maps
-            var map = new google.maps.Map(document.getElementById( 'map' ), propertiPeta);
+                var infowindow = new google.maps.InfoWindow();
+                //ambil id form input
+                var input = document.getElementById('searchInput');
+                var pathCoordinates = [];
+
+                //simpan lat lng bengkulu di varibel
+                var propertiPeta = {
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    center: new google.maps.LatLng( -3.788892, 102.266579),
+                    disableDefaultUI: false, // Disables the controls like zoom control on the map if set to true
+                    scrollWheel: true, // If set to false disables the scrolling on the map.
+                    draggable: true // If set to false , you cannot move the map around.
             
-            //buat marker
-            marker = new google.maps.Marker({
-                map: map,
-                position: propertiPeta.center,
-                anchorPoint: new google.maps.Point(0, -29),
-                draggable: true
-            });
+                }
+                //tampilkan maps
+                var map = new google.maps.Map(document.getElementById( 'map' ), propertiPeta);
+            
+                //buat marker
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: propertiPeta.center,
+                    anchorPoint: new google.maps.Point(0, -29),
+                    draggable: true
+                });
  
     
-    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); //berfungsi agar form pencarian ada dialam maps
+                // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input); //berfungsi agar form pencarian ada dialam maps
                 //library dari maps di simpan dalama variabel
                 var autocomplete = new google.maps.places.Autocomplete(input);
                 //tampilkan option tempat yang di cari
                 autocomplete.bindTo('bounds', map);
-                //library informasi disimpan dalam variabel
-                var infowindow = new google.maps.InfoWindow();
-
                 //jalanakan fucntion pencarian 
                 autocomplete.addListener('place_changed', function()
                 {
@@ -230,7 +230,6 @@ function initMap() {
                     marker.setPosition(place.geometry.location);
                     //dan marker nya ditampilkan
                     marker.setVisible(true);
-
                     //mengambil semua alamat dan disimpan dalam array
                     var address = '';
                     if (place.address_components) {
@@ -243,7 +242,6 @@ function initMap() {
                         (place.address_components[5] && place.address_components[5].short_name || '')
                         ].join(' ');
                     }
-
                     //setelah itu tampilkan informasi dan ambil alamat yang sudah disimpan dalam variabel
                     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
                 
@@ -260,138 +258,122 @@ function initMap() {
                 });
 
 
-                
+
+                        //drag marker
+                        google.maps.event.addListener(marker, 'dragend', function ( event ) 
+                        {
+                            var lat, long, address1, resultArray, citi;
+                            // console.log( 'i am dragged' );
+                            lat = marker.getPosition().lat();
+                            long = marker.getPosition().lng();
+                            var geocoder = new google.maps.Geocoder();
+                            
+                                    
+                            geocoder.geocode( { latLng: marker.getPosition() }, function ( results, status ) {
+                                if ( status == google.maps.GeocoderStatus.OK ) {  // This line can also be written like if ( status == google.maps.GeocoderStatus.OK ) {
+                                    // console.log( results[0]);
+                                    resultArray =  results[0].address_components;
+
+                                    // Get the city and set the city input value to the one selected
+                                    for( var i = 0; i < resultArray.length; i++ ) {
+                                        if ( resultArray[ i ].types[0] && 'administrative_area_level_3' === resultArray[ i ].types[0] ) {
+                                            kecamatan = resultArray[ i ].short_name;
+                                            document.getElementById('kecamatan').value = kecamatan;
+                                        }
+                                    }
+
+                                    //menyimpan nilai bebatuan polygon ketika marker di drag
+                                    let asasasa = {!! json_encode($string)  !!};
+                                    console.log(asasasa);
+
+                                    for (let s = 0; s < asasasa['features'].length; s++) {
+                                    var pathCoordinates = [];            
+                                    for (let i = 0; i < asasasa['features'][s]['geometry']['coordinates'].length; i++) {
+                                        for (let y = 0; y < asasasa['features'][s]['geometry']['coordinates'][i].length; y++) {
+                                            for (let z = 0; z < asasasa['features'][s]['geometry']['coordinates'][i][y].length; z++) {
+                                                pathCoordinates.push({
+                                                    lat: asasasa['features'][s]['geometry']['coordinates'][i][y][z][1],
+                                                    lng: asasasa['features'][s]['geometry']['coordinates'][i][y][z][0]
+                                                    });
+                                                }
+                                            }
+                                        }                                   
+                                    }
 
 
-                google.maps.event.addListener(marker, 'dragend', function ( event ) {
-                    var lat, long, address1, resultArray, citi;
-                    
-		            // console.log( 'i am dragged' );
-                    lat = marker.getPosition().lat();
-		            long = marker.getPosition().lng();
-                    
+                                    
+                                    //akhir simpan nilai polygon
 
-                    var geocoder = new google.maps.Geocoder();
-                    geocoder.geocode( { latLng: marker.getPosition() }, function ( results, status ) {
-                        if ( status == google.maps.GeocoderStatus.OK ) {  // This line can also be written like if ( status == google.maps.GeocoderStatus.OK ) {
-                            // console.log( results[0]);
-                            resultArray =  results[0].address_components;
-
-                            // Get the city and set the city input value to the one selected
-                            for( var i = 0; i < resultArray.length; i++ ) {
-                                if ( resultArray[ i ].types[0] && 'administrative_area_level_3' === resultArray[ i ].types[0] ) {
-                                    kecamatan = resultArray[ i ].short_name;
-                                    document.getElementById('kecamatan').value = kecamatan;
+                                    document.getElementById('location').value = results[0].formatted_address;
+                                    document.getElementById('searchInput').value = results[0].formatted_address;
+                                    document.getElementById('lat').value = lat;
+                                    document.getElementById('lng').value = long;
+                                } else {
+                                    console.log( 'Geocode was not successful for the following reason: ' + status );
                                 }
-                            }
-
-                            document.getElementById('location').value = results[0].formatted_address;
-                            document.getElementById('searchInput').value = results[0].formatted_address;
-                            document.getElementById('lat').value = lat;
-                            document.getElementById('lng').value = long;
-                        
-
-                        } else {
-                            console.log( 'Geocode was not successful for the following reason: ' + status );
-                        }
-
-                        // Closes the previous info window if it already exists
-                        if ( infoWindow ) {
-                            infoWindow.close();
-                        }
-
-                        /**
-                        * Creates the info Window at the top of the marker
-                        */
-                        infoWindow = new google.maps.InfoWindow({
-                            content: address1
+                                // Closes the previous info window if it already exists
+                                if ( infoWindow ) {
+                                    infoWindow.close();
+                                }
+                                infoWindow = new google.maps.InfoWindow({
+                                    content: address1
+                                });
+                                infoWindow.open( map, marker );
+                            } );
                         });
 
-                        infoWindow.open( map, marker );
-                    } );
 
-                });
+                   
 
                 jsonPolygon(map);
-
 };
 
 
-//fungsi untuk membuat polygon
+
+
+///fungsi untuk membuat polygon
 function jsonPolygon(map){
+                    var infowindow = new google.maps.InfoWindow();
 
-                var infowindow = new google.maps.InfoWindow();
-                var a = "";
+                    let data = {!! json_encode($string)  !!};
+                    // console.log(data);
 
-                let data = {!! json_encode($string)  !!};
-                console.log(data);
+                    for (let s = 0; s < data['features'].length; s++) {
 
-                for (let s = 0; s < data['features'].length; s++) {
-
-                var pathCoordinates = [];
-                // var polygon = "asasas" + s;
+                    var pathCoordinates = [];            
 
                     for (let i = 0; i < data['features'][s]['geometry']['coordinates'].length; i++) {
-
                         for (let y = 0; y < data['features'][s]['geometry']['coordinates'][i].length; y++) {
-
                             for (let z = 0; z < data['features'][s]['geometry']['coordinates'][i][y].length; z++) {
-
                                 pathCoordinates.push({
                                     lat: data['features'][s]['geometry']['coordinates'][i][y][z][1],
                                     lng: data['features'][s]['geometry']['coordinates'][i][y][z][0]
                                 });
-
-                                
-
                             }
                         }
                     }
-
-                    var id = data['features'][s]['properties']['warna'];
-                                console.log(id);
-
-                                var a = data['features'][s]['properties']['batuan'];
-                                console.log(a);
                                 
 
                     var polygon = new google.maps.Polygon({
                         paths: pathCoordinates,
-                        strokeColor: "#810FCB",
+                        strokeColor: data['features'][s]['properties']['warna'],
                         strokeOpacity: 1.0,
                         strokeWeight: 3.0,
-                        fillColor: "#810FCB",
-                        fillOpacity: 0.5,
+                        fillColor: data['features'][s]['properties']['warna'],
+                        fillOpacity: 0.3,
+                        map: map,
+                        name: data['features'][s]['properties']['batuan'],
+                        value: data['features'][s]['properties']['nilai'],
                     });
-                    
-                    
                     polygon.setMap(map);
+                 
+                    google.maps.event.addListener(polygon, 'click', function ( event ) {
+                            var contentString = "jenis batuan : " + this.name + "<br> nilai kemampuan : "+this.value+"" ;
 
-                    
-
-                    google.maps.event.addListener(polygon, 'click', function (event) {
-                        //show an infowindow on click   
-
-                        // alert (a);
-                        
-                        // var infoWindow = new google.maps.InfoWindow({
-                        //     content: ""
-                        // });
-                        // var myHTML = event.feature.getProperty("batuan");
-
-                        infowindow.setContent('sdsfdsf');
-                        // position the infowindow on the marker
-                        // infoWindow.setPosition(event.feature.getGeometry().get());
-                        // // anchor the infowindow on the marker
-                        // infoWindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
-                        infowindow.open(map, polygon);
+                            infowindow.setContent(contentString);
+                            infowindow.setPosition(event.latLng);
+                            infowindow.open(map);         
                     });
-
-                    
-                   
-                    
-
-
                 }
 
             
