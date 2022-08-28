@@ -145,9 +145,6 @@
 </div> 
 @endsection
 
-{{-- @php
-    $ambilll = json_encode($string);
-@endphp --}}
 
 @push('addon-script')
 <script>
@@ -167,6 +164,7 @@ function eraseText() {
 function initMap() {
             //ambil id form input
             var input = document.getElementById('searchInput');
+            var pathCoordinates = [];
 
             //simpan lat lng bengkulu di varibel
             var propertiPeta = {
@@ -180,14 +178,6 @@ function initMap() {
             }
             //tampilkan maps
             var map = new google.maps.Map(document.getElementById( 'map' ), propertiPeta);
-
-            
-            var teachers = <?= json_encode($string) ?>;
-            console.log(teachers);
-
-            // map.data.loadGeoJson(json_decode(file_get_contents("/bbbb.geojson"), true));
-            // console.log(a);
-            
             
             //buat marker
             marker = new google.maps.Marker({
@@ -322,8 +312,93 @@ function initMap() {
 
                 });
 
+                jsonPolygon(map);
 
 };
+
+
+//fungsi untuk membuat polygon
+function jsonPolygon(map){
+
+                var infowindow = new google.maps.InfoWindow();
+                var a = "";
+
+                let data = {!! json_encode($string)  !!};
+                console.log(data);
+
+                for (let s = 0; s < data['features'].length; s++) {
+
+                var pathCoordinates = [];
+                // var polygon = "asasas" + s;
+
+                    for (let i = 0; i < data['features'][s]['geometry']['coordinates'].length; i++) {
+
+                        for (let y = 0; y < data['features'][s]['geometry']['coordinates'][i].length; y++) {
+
+                            for (let z = 0; z < data['features'][s]['geometry']['coordinates'][i][y].length; z++) {
+
+                                pathCoordinates.push({
+                                    lat: data['features'][s]['geometry']['coordinates'][i][y][z][1],
+                                    lng: data['features'][s]['geometry']['coordinates'][i][y][z][0]
+                                });
+
+                                
+
+                            }
+                        }
+                    }
+
+                    var id = data['features'][s]['properties']['warna'];
+                                console.log(id);
+
+                                var a = data['features'][s]['properties']['batuan'];
+                                console.log(a);
+                                
+
+                    var polygon = new google.maps.Polygon({
+                        paths: pathCoordinates,
+                        strokeColor: "#810FCB",
+                        strokeOpacity: 1.0,
+                        strokeWeight: 3.0,
+                        fillColor: "#810FCB",
+                        fillOpacity: 0.5,
+                    });
+                    
+                    
+                    polygon.setMap(map);
+
+                    
+
+                    google.maps.event.addListener(polygon, 'click', function (event) {
+                        //show an infowindow on click   
+
+                        // alert (a);
+                        
+                        // var infoWindow = new google.maps.InfoWindow({
+                        //     content: ""
+                        // });
+                        // var myHTML = event.feature.getProperty("batuan");
+
+                        infowindow.setContent('sdsfdsf');
+                        // position the infowindow on the marker
+                        // infoWindow.setPosition(event.feature.getGeometry().get());
+                        // // anchor the infowindow on the marker
+                        // infoWindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+                        infowindow.open(map, polygon);
+                    });
+
+                    
+                   
+                    
+
+
+                }
+
+            
+
+}
+
+
 
 
 
