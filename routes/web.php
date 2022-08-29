@@ -13,6 +13,9 @@ use App\Http\Controllers\Admin\StrukturGeologiController;
 use App\Http\Controllers\Admin\DataUjiGempaLamaController;
 use App\Http\Controllers\Admin\KemiringanLerengController;
 
+
+use App\Http\Controllers\User\UserdataujilamaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +35,6 @@ Route::get('/', function () {
 Route::group([
     'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
-
         Route::get('/', [DashboardController::class, 'index'] )->name('dashboard');
 
         Route::get('/test-danovan', [TestDonovanController::class, 'index'] )->name('test-danovan');
@@ -51,12 +53,20 @@ Route::group([
             Route::get('/', [StrukturGeologiController::class, 'index'])->name('admin.struktur-geologi.index');
         });
 
-        Route::group(['prefix' => 'data-uji' ], function(){
+        Route::group(['prefix' => 'data-uji-gempa-lama' ], function(){
             Route::get('/', [DataUjiGempaLamaController::class, 'index'])->name('admin.dataujilama.index');
             route::POST('/proses-metode', [DataUjiGempaLamaController::class, 'proses_metode'])->name('admin.dataujigempa-lama.proses_metode');
         });
     });
 
+//user    
+Route::group(['prefix' => 'data-uji-gempa-lama'], function(){
+        Route::get('/', [UserdataujilamaController::Class, 'index'] )->name('user.data-uji-gempa-lama');
+        route::POST('/proses-kalkulasi', [UserdataujilamaController::class, 'proses_kalkulasi'])->name('user.data-uji-gempa-lama.proses-kalkulasi');
+    
+});
+    
+    
     Route::get('/connexion', [LoginController::Class, 'index'] )->name('connexion');
     Route::post('/connexion', [LoginController::Class, 'authenticate'] )->name('proses_connexion');
     Route::post('/logout-connexion', [LoginController::Class, 'logout'])->name('logout-connexion');

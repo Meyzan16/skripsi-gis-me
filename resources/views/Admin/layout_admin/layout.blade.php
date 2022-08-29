@@ -73,7 +73,7 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBNUmHx3Et1_3SI2gQOe23vG0olB5cAmkk&callback=initMap"></script>
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNUmHx3Et1_3SI2gQOe23vG0olB5cAmkk --}}
-    &callback=initMap"></script>
+   
 
 
     {{-- <script>

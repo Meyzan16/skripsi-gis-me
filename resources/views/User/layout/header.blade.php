@@ -44,17 +44,32 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero">
 
+  @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi')
+    <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/template-user/assets/img/breadcrumbs-bg.jpg');">
+      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+  
+        <h2>Pengujian Data</h2>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li>Data Gempa Lama</li>
+        </ol>
+  
+      </div>
+    </div><!-- End Breadcrumbs -->
+  @else
+
   <div class="info d-flex align-items-center">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
           <h2 data-aos="fade-down"> Selamat Datang  <br><span> e-kerawanan </span></h2>
           <p data-aos="fade-up">website ini merupakan penelitian mahasiswa teknik informatika universitas bengkulu yang mana sistem ini menghasilkan referensi tingkat kerawanan disuatu titik berdasakan parameter-parameter dari bidang sipil dan object nya adalah gempa </p>
-          <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Pengujian Data</a>
+          <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-gempa-lama') }}" class="btn-get-started">Pengujian Data</a>
         </div>
       </div>
     </div>
   </div>
+
 
   <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
 
@@ -71,7 +86,11 @@
     <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
       <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
     </a>
-
   </div>
 
+  @endif
+
+
+  
 </section><!-- End Hero Section -->
+
