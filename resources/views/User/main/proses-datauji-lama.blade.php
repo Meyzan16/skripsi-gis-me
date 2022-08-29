@@ -46,17 +46,13 @@
             </div> 
             
 
-            <h4>{{ $dataGempa->wilayah }}</h4>
+            <h5>{{ $dataGempa->wilayah }}</h5>
 
-            <div class="meta-top">
-              <ul>
-                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
-              </ul>
-            </div><!-- End meta top -->
+            
 
             <div class="content">
+
+               <h6>wilayah yang dirasakan</h6>
                 <p>
                   Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
                   Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
@@ -99,23 +95,26 @@
 
               @foreach ($calculasi_tipologi as $dataa)  
                 <div class="post-item mt-3">
-                  
                   <div>
-                    <h4><a href="blog-details.html">{{ $dataa->data_titik->alamat }}</a></h4>
-                    <time >kategori rawan : {{ $dataa->kategori }} </time>
+                    
+                    
+                    <h4>{{ $dataa->data_titik->alamat }}</h4>
+                    <time >kategori rawan : {{ $dataa->kategori }} | tipologi kawasan : @if(empty($dataa->id_tipologi ))
+                           tidak ada |
+                      @else
+                          
+                          {{ $dataa->tipologi_kawasan->informasi_tipologi->tipologi }} |
+                      @endif
+
+
+                      <a href=""> tipe saran bangunan, klik disini </a></time>
+                    <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a>
+                 
                   </div>
                 </div><!-- End recent post item-->
                 @endforeach
-
-
-              
-              
-
               </div>
-
             </div><!-- End sidebar recent posts-->
-
-            
 
           </div><!-- End Blog Sidebar -->
 
@@ -124,6 +123,53 @@
 
     </div>
   </section><!-- End Blog Details Section -->
+
+
+  @foreach ($calculasi_tipologi as $item1)
+  <div class="modal fade" id="edit_data{{ $item1->id_titik  }}" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+          role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h6  id="exampleModalCenterTitle"> Alamat {{ $item1->data_titik->alamat }}
+                  </h6>
+
+              </div>
+  
+              <div class="modal-body">
+                  <h6>Kecamatan : {{ $item1->data_titik->kecamatan }}</h6>
+                  <h6>Geologi Fisik : {{ $item1->geologi_fisik->kelas_informasi }}</h6>
+                  <h6>Kemiringan Lereng : {{ $item1->kemiringan_lereng->kelas_informasi }}</h6>
+                  <h6>Hasil PGA : {{ round($item1->hasil_pga,2) }} g</h6>
+                  <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
+                  {{-- <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
+  
+                  @if(empty($item1->id_tipologi ))
+                      <h6>Tipologi Kawasan : </h6>  
+                  @else
+                      
+                      <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi }}</h6>       
+                  @endif --}}
+                 
+                </div>
+  
+              <form>         
+                  <div class="modal-footer">
+              
+                      <button type="button" class="btn btn-light-secondary"
+                              data-bs-dismiss="modal">
+                              <i class="bx bx-x d-block d-sm-none"></i>
+                              <span class="d-none d-sm-block">Kembali</span>
+                          </button>
+                      
+                  </div>
+              </form>
+  
+          </div>
+      </div>
+  </div>
+  @endforeach
 
 @endsection
 
