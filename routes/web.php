@@ -9,12 +9,13 @@ use App\Http\Controllers\Admin\DataTitikController;
 use App\Http\Controllers\Admin\KegempaanController;
 use App\Http\Controllers\Admin\TestDonovanController;
 use App\Http\Controllers\Admin\GeologiFisikController;
+use App\Http\Controllers\User\UserdataujilamaController;
 use App\Http\Controllers\Admin\StrukturGeologiController;
 use App\Http\Controllers\Admin\DataUjiGempaLamaController;
+
+
 use App\Http\Controllers\Admin\KemiringanLerengController;
-
-
-use App\Http\Controllers\User\UserdataujilamaController;
+use App\Http\Controllers\Admin\InformasiTipologiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ use App\Http\Controllers\User\UserdataujilamaController;
 
 Route::get('/', function () {
     return view('User.main.homepage');
-});
+})->name('homepage');
 
 
 Route::group([
@@ -45,6 +46,13 @@ Route::group([
         Route::resource('data-titik', DataTitikController::class);
         Route::resource('data-gempa', DataGempaController::class);
         
+        Route::group(['prefix' => 'informasi-tipologi' ], function(){
+            Route::get('/', [InformasiTipologiController::class, 'index'])->name('admin.informasitipologi.index');
+            Route::get('{id}/edit', [InformasiTipologiController::Class, 'edit'])->name('admin.informasitipologi.edit');
+            Route::patch('{id}/update', [InformasiTipologiController::class, 'update'])->name('admin.informasitipologi.update');
+        });
+
+
         Route::group(['prefix' => 'kegempaan/'], function(){
             Route::get('/', [KegempaanController::class, 'index'])->name('admin.kegempaan.index');
         });

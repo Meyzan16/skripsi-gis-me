@@ -98,7 +98,7 @@
 
                     <div class="modal-body">
                         <h6 class="modal-title" id="exampleModalCenterTitle"> Kelas Informasi  </h6>
-                        <textarea class="form-control" name="kelas_informasi" onkeypress='return harusHuruf(event)'>{{ $item1->kelas_informasi }} </textarea>
+                        <textarea id="editor" class="form-control" name="kelas_informasi" onkeypress='return harusHuruf(event)'>{{ $item1->kelas_informasi }} </textarea>
                     </div>
 
                    
@@ -132,6 +132,7 @@
             return false;
         return true;
 }
+
 </script>
 
 @endpush

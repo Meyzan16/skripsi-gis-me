@@ -12,7 +12,7 @@
     <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="{{ route('homepage'); }}" class="active">Home</a></li>
         {{-- <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="projects.html">Projects</a></li>
@@ -50,7 +50,7 @@
   
         <h2>Pengujian Data</h2>
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="">Home</a></li>
           <li>Data Gempa Lama</li>
         </ol>
   

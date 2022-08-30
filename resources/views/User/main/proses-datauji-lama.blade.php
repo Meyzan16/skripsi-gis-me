@@ -107,8 +107,8 @@
                       @endif
 
 
-                      <a href=""> tipe saran bangunan, klik disini </a></time>
-                    <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a>
+                      <a href="" data-bs-toggle="modal" data-bs-target="#saran_bangunan{{ $dataa->id_titik }}"> tipe saran bangunan, klik disini </a></time>
+                      <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a>
                  
                   </div>
                 </div><!-- End recent post item-->
@@ -171,6 +171,46 @@
   </div>
   @endforeach
 
+
+  {{-- saran bangunan --}}
+  @foreach ($calculasi_tipologi as $item1)
+  <div class="modal fade bd-example-modal-lg" id="saran_bangunan{{ $item1->id_titik  }}" tabindex="-1" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+          role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h6  id="myLargeModalLabel"> Alamat {{ $item1->data_titik->alamat }}
+                  </h6>
+
+              </div>
+  
+              <div class="modal-body">
+                  @if(empty($item1->id_tipologi ))
+                      <center>
+                        <h6>Informasi tipe bangunan : tidak ada </h6>  
+                        </center>
+                  @else
+                      <h6>{!! $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi !!}</h6>       
+                  @endif   
+              </div>
+  
+                  
+                  <div class="modal-footer">
+              
+                      <button type="button" class="btn btn-light-secondary"
+                              data-bs-dismiss="modal">
+                              <i class="bx bx-x d-block d-sm-none"></i>
+                              <span class="d-none d-sm-block">Kembali</span>
+                          </button>
+                      
+                  </div>
+          
+  
+          </div>
+      </div>
+  </div>
+  @endforeach
 @endsection
 
 

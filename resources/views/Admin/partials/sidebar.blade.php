@@ -28,6 +28,13 @@
                     </a>
                 </li>
 
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.informasitipologi.index') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Informasi Tipologi</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
