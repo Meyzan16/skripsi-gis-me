@@ -11,7 +11,6 @@ class InformasiTipologiController extends Controller
     public function index()
     {
         $data = informasi_tipologi::all();
-
         return view('admin.main.informasi_tipologi.index', compact('data'));
     }
 

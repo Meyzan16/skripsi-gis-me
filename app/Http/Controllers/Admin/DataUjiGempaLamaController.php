@@ -58,20 +58,28 @@ class DataUjiGempaLamaController extends Controller
                             
 
                             //formula donovan untuk menentuka pga atau FGA (alfa)
-                            //belum mengaitkan dengan kedalaman nyaa
-                            $x = pow($dataTitik[$i]->latitude + $lat_gempa,2) * 111; //lat
-                            $y = pow($dataTitik[$i]->longitude - $lng_gempa,2) * 111; //lng
-                            $r1 = round($x,2);
-                            $r2 = round($y,2);
-                            $r1r2 = round(sqrt($r1+$r2),3); //nilai hiposenter
+                            //menentukan nilai R sebelum masuk ke rumus donovan
+                            $kedalaman = pow($dataGempa->kedalaman,2);
+                            $episenter = pow($hasil,2);
+
+                            $hiposenter = $kedalaman + $episenter ;
+                            $phytagoras = sqrt($hiposenter);
+
+                            $nilai_R =  round($phytagoras,2);   //nilai R
+
+                            //menentukan nilai richter
                             $Magnitude = ($dataGempa->magnitude - 2.9)/0.56; //nilai magnitude
 
-                            $alfa = (1080 * EXP(0.5 * $Magnitude)) / pow($r1r2+25,1.32);    //formula donovan  
+                            //rumus donovan
+                            $alfa = (1080 * EXP(0.5 * $Magnitude)) / pow($nilai_R+25,1.32);    //formula donovan  
                             //karena nilai alfa pada observasi memiliki satuan g(m/s2), maka nilai alfa yang dihasilkan
                             //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980
                             //dikarenakan besaran umum gravitasi adalah 9.8 m/s2.
                             $z = round($alfa,2)/980;
                             $hasil_pga = round($z,5);
+                            //akhir nilai PGA
+
+                            //menentukan nilai kemampuan PGA
                             $cek_alfa = round($z,2);
 
                                 if($cek_alfa < 0.05){
@@ -90,7 +98,7 @@ class DataUjiGempaLamaController extends Controller
                                     $nilai_kemampuan_pga = 4;
                                     $ket_pga = '3d';
                                 }
-                            //akhir donovan
+                            //akhir menentukan nilai kemampuan pga
 
 
 
@@ -116,12 +124,7 @@ class DataUjiGempaLamaController extends Controller
                                     if(count($cek_gempa) > 0  ) 
                                     {  
                                             
-                                            // $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
-                                            // $calculasi_tipologi = DB::table('calculasi_tipologis')
-                                            // ->join('tipologi_kawasans', 'tipologi_kawasans.id', '=', 'calculasi_tipologis.id_tipologi') // satu ke banyak
-                                            // ->join('informasi_geologis', 'informasi_geologis.id', '=', 'tipologi_kawasans.tipologi')
-                                            // ->where('calculasi_tipologis.id_gempa', '=', $request->option_gempa)
-                                            // ->get();
+                                        
 
                                             $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik' , 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();
                                             // return $calculasi_tipologi;
@@ -223,7 +226,7 @@ class DataUjiGempaLamaController extends Controller
                         }
                
                     
-                    $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik'])->where('id_gempa', $request->option_gempa)->get();
+                        $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik' , 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();
                     return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
                
         
