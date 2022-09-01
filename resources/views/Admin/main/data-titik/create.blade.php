@@ -279,25 +279,7 @@ function initMap() {
                                         }
                                     }
 
-                                    //menyimpan nilai bebatuan polygon ketika marker di drag
-                                    // let asasasa = {!! json_encode($string)  !!};
-                                    // console.log(asasasa);
-
-                                    // for (let s = 0; s < asasasa['features'].length; s++) {
-                                    // var pathCoordinates = [];            
-                                    // for (let i = 0; i < asasasa['features'][s]['geometry']['coordinates'].length; i++) {
-                                    //     for (let y = 0; y < asasasa['features'][s]['geometry']['coordinates'][i].length; y++) {
-                                    //         for (let z = 0; z < asasasa['features'][s]['geometry']['coordinates'][i][y].length; z++) {
-                                    //             pathCoordinates.push({
-                                    //                 lat: asasasa['features'][s]['geometry']['coordinates'][i][y][z][1],
-                                    //                 lng: asasasa['features'][s]['geometry']['coordinates'][i][y][z][0]
-                                    //                 });
-                                    //             }
-                                    //         }
-                                    //     }                                   
-                                    // }
                                     
-                                    //akhir simpan nilai polygon
 
                                     document.getElementById('location').value = results[0].formatted_address;
                                     document.getElementById('searchInput').value = results[0].formatted_address;

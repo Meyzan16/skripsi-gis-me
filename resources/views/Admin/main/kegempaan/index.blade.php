@@ -21,9 +21,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>MMI</th>
                                     <th>PGA</th>
-                                    <th>RICHTER</th>
                                     <th>NILAI</th>
                                 </tr>
                             </thead>
@@ -31,12 +29,9 @@
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->MMI }}</td>
 
-                                    <td>{{ $item->PGA }} g
-                                    </td>
+                                    <td>{{ $item->PGA }} g </td>
 
-                                    <td>{{ $item->richter }}</td>   
                                     <td>{{ $item->nilai_kemampuan }}</td>   
                                     
                                 </tr>

@@ -279,24 +279,24 @@
 
         <li class="nav-item col-3">
           <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-            <h4>Modisit</h4>
+            <h4>Geologi Fisik</h4>
           </a>
         </li><!-- End tab nav item -->
 
         <li class="nav-item col-3">
           <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-            <h4>Praesenti</h4>
+            <h4>Kemiringan lereng</h4>
           </a><!-- End tab nav item -->
 
         <li class="nav-item col-3">
           <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-            <h4>Explica</h4>
+            <h4>Kegempaan</h4>
           </a>
         </li><!-- End tab nav item -->
 
         <li class="nav-item col-3">
           <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-            <h4>Nostrum</h4>
+            <h4>Struktur Geologi</h4>
           </a>
         </li><!-- End tab nav item -->
 
@@ -307,15 +307,21 @@
         <div class="tab-pane active show" id="tab-1">
           <div class="row">
             <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-              <h3>Voluptatem dignissimos provident</h3>
+              <h3>Sifat fisik batuan</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                  Merupakan pencerminan dari kondisi kekuatan batuan didalam menerima beban dan tekanan.
+                  Semakin kuat suatu batuan di dalam menerima beban dan tekanan,
+                  maka akan semakin stabil terhadap kemungkinan longsor dan amblasan, 
+                  terutama pada saat terjadi goncangan kawasan rawan gempa bumi.
+
+                  Urutan pertama menunjukkan kelompok batuan yang relatif kompak, lebih resisten terhadap gempa dan lebih stabil terhadap kemungkinan longsoran dan amblasan. Urutan selanjutnya nilai kemampuannya semakin mengecil. Kelompok batuan tersebut yaitu:
+
               </p>
               <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                <li><i class="bi bi-check2-all"></i> a.	andesit, granit, diorit, metamorf, breksi volkanik, aglomerat, breksi sedimen dan konglomerat</li>
+                <li><i class="bi bi-check2-all"></i> b.	batupasir, tuf kasar, batulanau, arkose, greywacke dan batugamping</li>
+                <li><i class="bi bi-check2-all"></i> c.	pasir, lanau, batulumpur, napal, tuf halus dan serpih</li>
+                <li><i class="bi bi-check2-all"></i> d.	lempung, lumpur, lempung organik dan gambut.</li>
               </ul>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center" data-aos="fade-up" data-aos-delay="200">
@@ -324,19 +330,20 @@
           </div>
         </div><!-- End tab content item -->
 
+
+
         <div class="tab-pane" id="tab-2">
           <div class="row">
             <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-              <h3>Neque exercitationem debitis</h3>
+              <h3>Sifat kemiringan lereng</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Kemiringan lereng dapat memberikan gambaran tingkat stabilitas terhadap kemungkinan terjadinya longsoran atau runtuhan tanah dan batuan, terutama pada saat terjadi kawasan rawan gempa bumi. Semakin terjal lereng maka potensi untuk terjadinya gerakan tanah dan batuan akan semakin besar, walaupun jenis batuan yang menempatinya cukup berpengaruh untuk tidak terjadinya longsoran
               </p>
               <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                <li><i class="bi bi-check2-all"></i> Datar – Landai (0 - 7 %)</li>
+                <li><i class="bi bi-check2-all"></i> Miring – Agak Curam (7 – 30 %)</li>
+                <li><i class="bi bi-check2-all"></i> Curam – Sangat Curam (30 – 140 %)</li>
+                <li><i class="bi bi-check2-all"></i> Terjal (> 140 %) </li>
               </ul>
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -348,16 +355,19 @@
         <div class="tab-pane" id="tab-3">
           <div class="row">
             <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-              <h3>Voluptatibus commodi accusamu</h3>
-              <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-              </ul>
+              <h3>Faktor kegempaan</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Faktor Kegempaan merupakan informasi yang menunjukkan tingkat intensitas gempa, baik berdasarkan skala Mercalli, anomali gaya berat, maupun skala Richter
+                pada penelitian kali ini peneliti menggunakan faktor perhitungan percepatan dari getaran pada tanah maksimum (PGA)
+                menggunakan rumus donovan dengan kategori sebagai berikut
               </p>
+              <ul>
+                <li><i class="bi bi-check2-all"></i> < 0,05 g  </li>
+                <li><i class="bi bi-check2-all"></i> 0,05 – 0,15 g </li>
+                <li><i class="bi bi-check2-all"></i> 0,15 – 0,30 g </li>
+                <li><i class="bi bi-check2-all"></i> > 0,30 g </li>
+              </ul>
+             
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
               <img src="assets/img/features-3.jpg" alt="" class="img-fluid">
@@ -368,16 +378,20 @@
         <div class="tab-pane" id="tab-4">
           <div class="row">
             <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-              <h3>Omnis fugiat ea explicabo sunt</h3>
+              <h3>Perhitungan jarak titik dari pusat gempa</h3>
               <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
+                Struktur geologi merupakan pencerminan seberapa besar suatu wilayah mengalami “deraan” tektonik. Semakin rumit struktur geologi yang berkembang di suatu wilayah, maka menunjukkan bahwa wilayah tersebut cenderung sebagai wilayah yang tidak stabil.
               </p>
-              <ul>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-              </ul>
+              <p class="fst-italic">
+                Beberapa struktur geologi yang dikenal adalah berupa kekar, lipatan dan patahan/ sesar. Pada dasarnya patahan akan terbentuk dalam suatu zona, jadi bukan sebagai satu tarikan garis saja. Zona sesar ini bisa jadi hingga mencapai jarak 100 m atau bahkan lebih, sangat tergantung kepada kekuatan gaya dan jenis batuan yang ada.
+              </p>
+              <p class="fst-italic">
+                Untuk pengkajian zona kerawan bencana ini, maka digunakan jarak terhadap zona sesar sebagai acuan kestabilan wilayah. Semakin jauh suatu wilayah dari zona sesar maka wilayah tersebut akan semakin stabil.
+              </p>
+              <p class="fst-italic">
+                Jarak kurang dari 100m dianggap sebagai zona tidak stabil, sementara antara 100m – 1000m dianggap sebagai zona kurang stabil dan lebih dari 1000m diklasifikasikan sebagai zona stabil. Penilaian kestabilan wilayah merupakan proses penentuan penilaian variabel yang telah ditetapkan
+              </p>
+             
             </div>
             <div class="col-lg-6 order-1 order-lg-2 text-center">
               <img src="assets/img/features-4.jpg" alt="" class="img-fluid">
