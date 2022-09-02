@@ -126,7 +126,7 @@ class DataUjiGempaLamaController extends Controller
                                             
                                         
 
-                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik' , 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();
+                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                                             // return $calculasi_tipologi;
 
 
@@ -165,7 +165,7 @@ class DataUjiGempaLamaController extends Controller
 
                                                     $hasil_kali_bobot_geologi_fisik = $dataTitik[$i]->id_geologi_fisik * 3;
                                                     $hasil_kali_bobot_lereng = $dataTitik[$i]->id_kemiringan_lereng * 3;
-                                                    $hasil_kali_pga = $nilai_kemampuan_pga* 5;
+                                                    $hasil_kali_pga = $nilai_kemampuan_pga * 5;
                                                     $hasil_kali_bobot_struktur_geologi = $a * 4;
                                                     
                                                     $skor_akhir = $hasil_kali_bobot_geologi_fisik + $hasil_kali_bobot_lereng + $hasil_kali_pga + $hasil_kali_bobot_struktur_geologi ;
@@ -183,16 +183,14 @@ class DataUjiGempaLamaController extends Controller
                                                     calculasi_tipologi::create([
                                                         'id_gempa' => $request->option_gempa,
                                                         'id_titik' =>  $dataTitik[$i]->id,
-                                                        'id_geologi_fisik' =>  $dataTitik[$i]->id_geologi_fisik,
                                                         'hasil_kali_bobot_geologi_fisik' => $hasil_kali_bobot_geologi_fisik,                                                        
                                                         'ket_geologi_fisik' => $ket_geologi_fisik,
-                                                        'id_lereng' =>  $dataTitik[$i]->id_kemiringan_lereng,
                                                         'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lereng,
                                                         'ket_lereng' => $ket_lereng,
                                                         'hasil_pga' => $hasil_pga,
                                                         'nilai_kemampuan_pga' => $nilai_kemampuan_pga,
                                                         'ket_pga' => $ket_pga,
-                                                        'hasil_kali_bobot_pga' => $nilai_kemampuan_pga * 5 ,
+                                                        'hasil_kali_bobot_pga' => $hasil_kali_pga ,
                                                         'hasil_jarak_struktur_geologi' =>$hasil,
                                                         'nilai_kemampuan_struktur_geologi' => $a ,
                                                         'ket_struktur_geologi' => $ket_struktur_geologi,
@@ -226,7 +224,7 @@ class DataUjiGempaLamaController extends Controller
                         }
                
                     
-                        $calculasi_tipologi = calculasi_tipologi::with(['data_gempa', 'data_titik' , 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();
+                        $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                     return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
                
         

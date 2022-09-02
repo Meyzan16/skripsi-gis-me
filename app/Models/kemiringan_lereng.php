@@ -21,8 +21,5 @@ class kemiringan_lereng extends Model
         return $this->hasMany(data_titik::class);
     }
 
-    public function calculasi_tipologi()
-    {
-        return $this->hasMany(calculasi_tipologi::class , 'id');
-    }
+    
 }

@@ -139,8 +139,8 @@
   
               <div class="modal-body">
                   <h6>Kecamatan : {{ $item1->data_titik->kecamatan }}</h6>
-                  <h6>Geologi Fisik : {{ $item1->geologi_fisik->kelas_informasi }}</h6>
-                  <h6>Kemiringan Lereng : {{ $item1->kemiringan_lereng->kelas_informasi }}</h6>
+                  <h6>Geologi Fisik : {{ $item1->data_titik->geologi_fisik->kelas_informasi }}</h6>
+                  <h6>Kemiringan Lereng : {{ $item1->data_titik->kemiringan_lereng->kelas_informasi }}</h6>
                   <h6>Hasil PGA : {{ round($item1->hasil_pga,2) }} g</h6>
                   <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
                   {{-- <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
