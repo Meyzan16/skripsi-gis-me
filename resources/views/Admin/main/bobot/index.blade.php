@@ -54,12 +54,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->nama_parameter }}</td>
-                                    <td>{{ $item->bobot }}</td>
-                                    
-                                    
-
-                                
-                                    
+                                    <td>{{ $item->bobot }}</td>   
                                 </tr>
                                 @endforeach
                             </tbody>

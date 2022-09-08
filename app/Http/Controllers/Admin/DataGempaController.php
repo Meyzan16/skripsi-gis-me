@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\data_gempa;
+use App\Models\calculasi_tipologi;
 
 
 class DataGempaController extends Controller
@@ -81,6 +82,7 @@ class DataGempaController extends Controller
     public function destroy($id)
     {
         data_gempa::findorfail($id)->delete();
+        calculasi_tipologi::where('id_gempa',$id)->delete();
         return redirect()->route('data-gempa.index')->with(['success' =>  'Data Berhasil dihapus']);
     }
 }

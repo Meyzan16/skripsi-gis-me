@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('data_gempas', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal')->nullable();
-            $table->time('jam')->nullable();
+            // $table->time('jam')->nullable();
             // $table->decimal('latitude', 10, 8)->nullable();
             // $table->decimal('longitude', 11, 8)->nullable();
             // $table->double('magnitude', 5)->nullable();
-            $table->string('latitude', 20)->nullable();
+            $table->decimal('latitude', 10, 8)->nullable();
             $table->enum('label_koor_lintang', ['LS','LU'])->nullable();
-            $table->string('longitude', 20)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
             $table->enum('label_koor_bujur', ['BT','BB'])->nullable();
             $table->string('magnitude', 10)->nullable();
 

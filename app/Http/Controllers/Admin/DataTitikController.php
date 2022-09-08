@@ -9,6 +9,7 @@ use App\Models\data_titik;
 use App\Models\geologi_fisik;
 use App\Models\kemiringan_lereng;
 use App\Models\hasil_tipologi;
+use App\Models\calculasi_tipologi;
 
 class DataTitikController extends Controller
 {
@@ -80,6 +81,7 @@ class DataTitikController extends Controller
     public function destroy($id)
     {
         data_titik::findorfail($id)->delete();
+        calculasi_tipologi::where('id_titik',$id)->delete();
         return redirect()->route('data-titik.index')->with(['success' =>  'Data Berhasil dihapus']);
     }
 

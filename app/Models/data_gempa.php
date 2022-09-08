@@ -11,7 +11,7 @@ class data_gempa extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tanggal','jam','latitude', 'label_koor_lintang', 'longitude', 'label_koor_bujur' , 'magnitude','kedalaman','wilayah','dirasakan'
+        'tanggal','latitude', 'label_koor_lintang', 'longitude', 'label_koor_bujur' , 'magnitude','kedalaman','wilayah','dirasakan'
     ];
 
     public function nilai_struktur_geologi()

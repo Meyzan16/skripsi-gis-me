@@ -47,12 +47,12 @@
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Tanggal</th>
-                                    <th class="text-center">Jam</th>
+                                    {{-- <th class="text-center">Jam</th> --}}
                                     {{-- <th>Latitude</th>
                                     <th>Longitude</th>
                                     <th>Magnitude</th>
                                     <th>Kedalaman</th> --}}
-                                    <th class="text-center">rincian data</th>
+                                    <th class="text-center">Detail data</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -61,11 +61,11 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td class="text-center" >{{ $item->tanggal }}</td>
-                                    <td class="text-center"> @if($item->jam == null) {{ '-' }} @else {{ $item->jam }} @endif </td>                                    
+                                    {{-- <td class="text-center"> @if($item->jam == null) {{ '-' }} @else {{ $item->jam }} @endif </td>                                     --}}
 
                                     <td class="text-center">
                                         <a href="{{ route('data-gempa.show', $item->id) }}" class="mr-3 btn btn-outline-primary block d-flex justify-content-center ">
-                                        &nbsp; lihat Data
+                                        &nbsp; detail Data
                                         </a>
                                     </td>                                 
                                     

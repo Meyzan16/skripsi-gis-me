@@ -76,14 +76,14 @@
                                                     <label>Magnitude</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <input type="text" autocomplete="off" class="form-control" required name="magnitude" id="magnitude" value="" >
+                                                    <input type="text" autocomplete="off" class="form-control" required name="magnitude" onkeypress="return hanyaAngka(event)" id="magnitude" value="" >
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label>Kedalaman</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <input type="text" class="form-control" required name="kedalaman" id="kedalaman" value="" >
+                                                    <input type="text" class="form-control" required name="kedalaman" id="kedalaman" onkeypress="return hanyaAngka(event)" value="" >
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -122,6 +122,23 @@
         </section>
 </div> 
 @endsection
+
+
+
+@push('addon-script')
+<script>
+  
+  function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+		    return false;
+		  return true;
+		}
+
+</script>
+
+@endpush
 
 
 
