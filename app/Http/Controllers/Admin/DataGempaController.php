@@ -10,11 +10,7 @@ use App\Models\calculasi_tipologi;
 
 class DataGempaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $data =  data_gempa::all();
