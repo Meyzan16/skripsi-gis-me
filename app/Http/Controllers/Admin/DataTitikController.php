@@ -38,27 +38,54 @@ class DataTitikController extends Controller
     {      
 
         //geologi fisik
-        $a = '';
-        $a_lereng = '';
-        if($request->kecamatan == 'Kec. Ratu Samban')
+        $R = 6371;
+        //titik tujuan
+        $mlat = $request->latitude;
+        $mlng = $request->longitude;  
+  
+        //titik awal di pantai 
+        $lat_gempa =   -3.8085034;
+        $lng_gempa =   102.262839;  
+  
+        $dLat  = deg2rad($mlat - $lat_gempa);  //Rdaerah asal dikurang tujuan
+        $dLong = deg2rad($mlng - $lng_gempa); 
+    
+        $a = sin($dLat/2) * sin($dLat/2) +
+                cos(deg2rad($lat_gempa)) * cos(deg2rad($mlat)) * sin($dLong/2) * sin($dLong/2);
+        $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+        $d = $R * $c;
+        $hasil = $d = round($d, 2);
+        $konversi_meter = $hasil * 1000; 
+
+
+  
+        $hasil_kemiringan = ($request->ketinggian/$konversi_meter) * 100;
+
+        $nilai_akhir_kemiringan = round($hasil_kemiringan,3);
+  
+        if($nilai_akhir_kemiringan > 0 && $nilai_akhir_kemiringan < 0.07)
         {
-            $a = 1;
-            $a_lereng = 1;
-        }elseif($request->kecamatan == 'Kec. Muara Bangka Hulu')
+           $value = 1;
+        }else if($nilai_akhir_kemiringan >= 0.07 && $nilai_akhir_kemiringan < 0.3)
         {
-            $a = 2;
-            $a_lereng = 2;
-        }elseif($request->kecamatan == 'Kec. Selebar')
+            $value = 2;
+        }else if($nilai_akhir_kemiringan >= 0.3 && $nilai_akhir_kemiringan < 1.4)
         {
-            $a = 3;
-            $a_lereng = 3;
+            $value = 3;
+        }else if($nilai_akhir_kemiringan >= 1.4) 
+        {
+            $value = 4;
         }
+  
 
 
         data_titik::create([
-            'kecamatan' => $request->kecamatan,
-            'id_geologi_fisik' => $a,
-            'id_kemiringan_lereng' => $a_lereng,
+            'kecamatan' => null,
+            'id_geologi_fisik' => null,
+            'id_kemiringan_lereng' => $value,
+            'ketinggian' => $request->ketinggian,
+            'jarak' => $konversi_meter ,
+            'derajat_kemiringan' => $nilai_akhir_kemiringan,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
             'alamat' => $request->location,

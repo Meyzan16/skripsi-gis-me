@@ -48,9 +48,10 @@ class DataGempaController extends Controller
             $b = '';
         }
 
+      
+
         data_gempa::create([
             'tanggal' => $request->tanggal,
-            'jam' => null,
             'latitude' => $a.$latitude_dpn_koma.'.'.$latitude_blk_koma,
             'label_koor_lintang' => $request->value_koor_lat,
             'longitude' => $b.$longitude_dpn_koma.'.'.$longitude_blk_koma,
@@ -58,7 +59,7 @@ class DataGempaController extends Controller
             'magnitude' => $request->magnitude,
             'kedalaman' => $request->kedalaman,
             'wilayah' => $request->wilayah,
-            'dirasakan' => null
+            'dirasakan' => isset($request->dirasakan) ? $request->dirasakan : null,
         ]);
 
         return redirect()->route('data-gempa.index')->with('success' , 'Data Berhasil DiTambahkan');

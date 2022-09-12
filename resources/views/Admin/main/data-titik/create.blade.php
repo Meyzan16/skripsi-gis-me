@@ -32,11 +32,18 @@
                                         <div class="row">
                                             
 
-                                                <div class="col-md-4">
+                                                {{-- <div class="col-md-4">
                                                     <label>Kecamatan</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" class="form-control" name="kecamatan" id="kecamatan" value="" readonly>
+                                                </div> --}}
+
+                                                <div class="col-md-4">
+                                                    <label>Ketinggian</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control" onkeypress="return hanyaAngka(event)" maxlength="2" name="ketinggian" id="ketinggian" value="" required>
                                                 </div>
 
                                                 {{-- <div class="col-md-4">
@@ -146,6 +153,14 @@
 @push('addon-script')
 <script>
 
+function hanyaAngka(evt) {
+		  var charCode = (evt.which) ? evt.which : event.keyCode
+		   if (charCode > 31 && (charCode < 48 || charCode > 57))
+ 
+		    return false;
+		  return true;
+		}
+
 google.maps.event.addDomListener(window, 'load', initMap);
 
 var marker;
@@ -154,7 +169,8 @@ function eraseText() {
      document.getElementById("location").value = "";
      document.getElementById("lat").value = "";
      document.getElementById("lng").value = "";
-     document.getElementById("kecamatan").value = "";
+    //  document.getElementById("kecamatan").value = "";
+     document.getElementById("ketinggian").value = "";
      document.getElementById("searchInput").value = "";
 	}
 
@@ -243,9 +259,9 @@ function initMap() {
                     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
                 
                         //ambil  parameter yang di butuhkan dan simpan dalam form input 
-                        if(place.address_components){
-                                    document.getElementById('kecamatan').value = place.address_components[3].short_name;
-                        }
+                        // if(place.address_components){
+                        //             document.getElementById('kecamatan').value = place.address_components[3].short_name;
+                        // }
                             document.getElementById('location').value = place.formatted_address;
                             document.getElementById('lat').value = place.geometry.location.lat();
                             document.getElementById('lng').value = place.geometry.location.lng();
@@ -272,12 +288,12 @@ function initMap() {
                                     resultArray =  results[0].address_components;
 
                                     // Get the city and set the city input value to the one selected
-                                    for( var i = 0; i < resultArray.length; i++ ) {
-                                        if ( resultArray[ i ].types[0] && 'administrative_area_level_3' === resultArray[ i ].types[0] ) {
-                                            kecamatan = resultArray[ i ].short_name;
-                                            document.getElementById('kecamatan').value = kecamatan;
-                                        }
-                                    }
+                                    // for( var i = 0; i < resultArray.length; i++ ) {
+                                    //     if ( resultArray[ i ].types[0] && 'administrative_area_level_3' === resultArray[ i ].types[0] ) {
+                                    //         kecamatan = resultArray[ i ].short_name;
+                                    //         document.getElementById('kecamatan').value = kecamatan;
+                                    //     }
+                                    // }
 
                                     
 
@@ -313,7 +329,7 @@ function jsonPolygon(map){
                     var infowindow = new google.maps.InfoWindow();
 
                     let data = {!! json_encode($string)  !!};
-                    // console.log(data);
+                    console.log(data);
 
                     for (let s = 0; s < data['features'].length; s++) {
 

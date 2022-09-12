@@ -27,12 +27,16 @@ class UserdataujilamaController extends Controller
     {
         $dataTitik = data_titik::all(); 
 
+        // $dataTitik_terakhir = data_titik::orderBy('id', 'desc')->limit(1)->get();
+        // return $dataTitik_terakhir;
+
+
+
         $dataGempa_option = data_gempa::all();
 
         $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
 
         $cek_gempa = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
-
         
                 $R = 6371; //deg2radius of earth in km | Haversine Distance
                 $lat_gempa =   $dataGempa->latitude;
@@ -90,10 +94,6 @@ class UserdataujilamaController extends Controller
                                     $ket_pga = '3d';
                                 }
                             //akhir donovan
-
-
-
-
                 
                             //perkondisian untuk nilai kemampuan tabel nilai_struktur_geologis
                             $a = '';
@@ -113,11 +113,22 @@ class UserdataujilamaController extends Controller
                             
                                     //jika tabel cek_gempa sudah ada isi nya maka jalankan script berikut
                                     if(count($cek_gempa) > 0  ) 
-                                    {                                                                                     
-                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                            
-                                            return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));                                                                                                           
-                                    } else 
+                                    {      
+                                         if(count($cek_gempa) != count($dataTitik))
+                                         {
+                                            //hapus data terlebih dahulu 
+                                            //calculasi_tipologi::where('id_gempa',$request->option_gempa)->delete();                                            
+                                            //insert ulang
+                                         }  
+                                           
+                                         
+                                         else{
+                                             $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                             return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));                                                                                                           
+                                         }                               
+                                    } 
+                                    
+                                    else 
                                     {  
                                                     $ket_geologi_fisik = '';
                                                     if($dataTitik[$i]->id_geologi_fisik == 1)
@@ -142,9 +153,6 @@ class UserdataujilamaController extends Controller
                                                     }elseif($dataTitik[$i]->id_kemiringan_lereng == 4){
                                                         $ket_lereng = '2d';
                                                     }
-
-
-
 
 
                                                     $hasil_kali_bobot_geologi_fisik = $dataTitik[$i]->id_geologi_fisik * 3;

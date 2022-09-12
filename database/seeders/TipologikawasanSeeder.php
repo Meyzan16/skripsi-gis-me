@@ -958,6 +958,8 @@ class TipologikawasanSeeder extends Seeder
             'kelas_informasi' => 'Pada zona sesar (< 100 M )',
             'nilai_kemampuan' => 3,
         ]);
+
+        
         
         
 

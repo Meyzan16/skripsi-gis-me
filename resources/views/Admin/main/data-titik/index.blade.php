@@ -46,7 +46,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kecamatan</th>
+                                    <th>Alamat</th>
                                     {{-- <th>Geologi Fisik</th> --}}
                                     <th>Latitude</th>
                                     <th>Longitude</th>
@@ -58,7 +58,7 @@
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->kecamatan }}</td>
+                                    <td>{{ $item->alamat }}</td>
                                     {{-- <td>{{ $item->geologi_fisik->kelas_informasi }}</td> --}}
                                     <td>{{ $item->latitude }}</td>
                                     <td>{{ $item->longitude }}</td>

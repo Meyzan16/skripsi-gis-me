@@ -26,12 +26,8 @@
                         <div class="card-body">
                                 <div class="form-body">
                                         <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Kecamatan</label>
-                                                </div>
-                                                    <div class="col-md-8 form-group">
-                                                        <input type="text" class="form-control"   value="{{ $data->kecamatan }}" readonly >
-                                                    </div>
+                                                
+                                                
 
 
                                                 <div class="col-md-4">
@@ -40,12 +36,17 @@
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" class="form-control"  value="{{ $data->geologi_fisik->kelas_informasi }}" readonly >
                                                 </div>
+                                                    
                                                 
                                                 <div class="col-md-4">
                                                     <label>Kemiringan Lereng</label>
                                                 </div>
-                                                <div class="col-md-8 form-group">
+                                                <div class="col-md-6 form-group">
                                                     <input type="text" class="form-control"  value="{{ $data->kemiringan_lereng->kelas_informasi }}" readonly >
+                                                </div>
+
+                                                <div class="col-md-2 form-group mt-2">
+                                                    <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $data->id }}">  <i class="fa fa-eye"> </i>  </a>
                                                 </div>
                                             
                                                  
@@ -97,6 +98,44 @@
         </div>
         </section>
 </div> 
+
+<div class="modal fade" id="edit_data{{ $data->id  }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Informasi Kemiringan Lereng
+                </h5>
+                <button type="button" class="close" data-bs-dismiss="modal"
+                    aria-label="Close">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+
+
+                <div class="modal-body">
+                    <h6 class="modal-title" id="exampleModalCenterTitle"> Jarak Vertikal : {{ $data->jarak }} M </h6>
+
+                    <h6 class="modal-title" id="exampleModalCenterTitle"> Ketinggian Horizontal : {{ $data->ketinggian }} M </h6>
+                    
+                    <h6 class="modal-title" id="exampleModalCenterTitle"> Derajat Kemiringan : {{ $data->derajat_kemiringan * 100 }}  </h6>
+                </div>
+
+             
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary"
+                        data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Kembali</span>
+                    </button>                 
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
 
 @push('addon-script')

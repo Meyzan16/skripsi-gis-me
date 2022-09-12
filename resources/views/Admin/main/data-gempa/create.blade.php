@@ -76,7 +76,7 @@
                                                     <label>Magnitude</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <input type="text" autocomplete="off" class="form-control" required name="magnitude" onkeypress="return hanyaAngka(event)" id="magnitude" value="" >
+                                                    <input type="text" autocomplete="off" class="form-control" required name="magnitude"  id="magnitude" value="" >
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -91,6 +91,13 @@
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" class="form-control" required name="wilayah" id="wilayah" value="" >
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Area Dirasakan</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" class="form-control"  name="dirasakan" id="dirasakan"  >
                                                 </div>
                 
                                                 

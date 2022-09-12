@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('kecamatan', 100)->nullable();
             $table->foreignId('id_geologi_fisik')->nullable();
             $table->foreignId('id_kemiringan_lereng')->nullable();
+            $table->integer('ketinggian')->nullable();
+            $table->double('jarak')->nullable();
+            $table->double('derajat_kemiringan')->nullable();
             $table->decimal('latitude', 10, 8)->nullable();
             $table->decimal('longitude', 11, 8)->nullable();
             $table->text('alamat')->nullable();
