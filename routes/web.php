@@ -37,6 +37,7 @@ Route::group([
     'middleware' => 'auth',
     'prefix' => 'admin/'], function(){
         Route::get('/', [DashboardController::class, 'index'] )->name('dashboard');
+        Route::POST('/chartDashboard', [DashboardController::class, 'chartDashboard'] )->name('chartDashboard');
 
         Route::get('/test-danovan', [TestDonovanController::class, 'index'] )->name('test-danovan');
 

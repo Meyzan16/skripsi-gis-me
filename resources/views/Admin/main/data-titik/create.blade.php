@@ -294,8 +294,7 @@ function initMap() {
                                     //         document.getElementById('kecamatan').value = kecamatan;
                                     //     }
                                     // }
-
-                                    
+           
 
                                     document.getElementById('location').value = results[0].formatted_address;
                                     document.getElementById('searchInput').value = results[0].formatted_address;

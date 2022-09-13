@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+    
+
     <title>Dashboard - Mazer Admin Dashboard</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -21,7 +25,7 @@
     <link rel="stylesheet" href="/template-admin/demo/assets/css/app.css">
     <link rel="shortcut icon" href="/template-admin/demo/assets/images/favicon.svg" type="image/x-icon">
 
-   
+    
 
 </head>
 
@@ -77,15 +81,9 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBNUmHx3Et1_3SI2gQOe23vG0olB5cAmkk&callback=initMap"></script>
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNUmHx3Et1_3SI2gQOe23vG0olB5cAmkk --}}
    
+    
+ 
 
-
-    {{-- <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script> --}}
 
 
     @stack('prepend-script')

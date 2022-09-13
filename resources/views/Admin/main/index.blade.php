@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Data titik</h6>
-                                    <h6 class="font-extrabold mb-0">112.000</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $jml_titik }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <h6 class="text-muted font-semibold">Data Gempa</h6>
-                                    <h6 class="font-extrabold mb-0">183.000</h6>
+                                    <h6 class="font-extrabold mb-0">{{ count($data_gempa) }}</h6>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,43 @@
                             <h4>Kategori</h4>
                         </div>
                         <div class="card-body">
-                            <div id="chart-profile-visit"></div>
+                            <form class="form form-horizontal mdi-responsive" action="{{ route('chartDashboard') }}" method="POST" >
+                                @csrf 
+                                <div class="form-body">
+                                        <div class="row">
+
+                                                <div class="col-md-4">
+                                                    <label>Pilih Data Gempa</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                   <select name="option_gempa" id="option_gempa" class="form-control">
+ 
+                                                        <option value="">-- Pilih data --</option>   
+                                                        @foreach ($data_gempa as $item)
+                                                             <option value="{{ $item->id }}">{{ $item->tanggal }}</option>   
+                                                        @endforeach
+
+                                                   </select>
+                                                </div>    
+
+                                                
+                      
+                                                
+                                                <div class="col-sm-12 d-flex justify-content-end">
+                                                    <button type="submit"  class="btn btn-primary me-1 mb-1">
+                                                    &nbsp;Cari
+                                                    </button>
+                                                </div>
+                            </form>
+
+                        <div>
+                            @if (Route::current()->getName() == 'chartDashboard')
+                                {!! $chartTerpilih->container() !!}   
+                            @else
+                                {!! $usersChart->container() !!}   
+                            @endif
+                        </div>
+
                         </div>
                     </div>
                 </div>
@@ -78,7 +114,10 @@
     
 @endsection
 
+
     @push('addon-script')
+   
+
     <script>
         window.setTimeout(function() {
             $(".autohide").fadeTo(500, 0).slideUp(500, function() {
@@ -86,5 +125,14 @@
             });
         }, 4000);
     </script>	
+
+    @if (Route::current()->getName() == 'chartDashboard')
+    {!! $chartTerpilih->script() !!}   
+    @else
+    {!! $usersChart->script() !!}
+    @endif
+
+  
+  
     @endpush
 

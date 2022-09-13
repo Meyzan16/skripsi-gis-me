@@ -56,8 +56,6 @@ class DataTitikController extends Controller
         $d = $R * $c;
         $hasil = $d = round($d, 2);
         $konversi_meter = $hasil * 1000; 
-
-
   
         $hasil_kemiringan = ($request->ketinggian/$konversi_meter) * 100;
 

@@ -195,6 +195,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //charts
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
+
     ],
 
     /*
@@ -210,6 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        // 'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
     ])->toArray(),
 
 ];
