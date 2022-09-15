@@ -31,7 +31,7 @@ class DashboardController extends Controller
         ];
 
         $usersChart = new UserChart;
-        $usersChart->title('Users by Months', 30, "rgb(255, 99, 132)", true);
+        $usersChart->title('Gempa Belum Terpilih', 30, "rgb(255, 99, 132)", true);
         $usersChart->displaylegend(false);
         $usersChart->labels(['Rendah', 'Sedang', 'Tinggi']);
         $usersChart->dataset('Users by trimester', 'bar', [0, 0, 0])

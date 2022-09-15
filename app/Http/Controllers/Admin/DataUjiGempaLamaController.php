@@ -26,13 +26,12 @@ class DataUjiGempaLamaController extends Controller
 
     public function proses_metode(Request $request)
     {
-        $dataTitik = data_titik::all(); 
+                $dataTitik = data_titik::all(); 
+                $dataGempa_option = data_gempa::all();
+                $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
 
-        $dataGempa_option = data_gempa::all();
-
-        $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
-
-        $cek_gempa = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
+                //sebelum ada nilai di tabel kalkulasi_tipologi
+                $cek_gempa = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
 
         
                 $R = 6371; //deg2radius of earth in km | Haversine Distance
@@ -41,7 +40,6 @@ class DataUjiGempaLamaController extends Controller
 
                 for( $i=0; $i<count($dataTitik); $i++ ) 
                     {
-                        
                             //metode haversine distance
                             $mlat = $dataTitik[$i]->latitude;
                             $mlng = $dataTitik[$i]->longitude;  
@@ -52,57 +50,52 @@ class DataUjiGempaLamaController extends Controller
                                     cos(deg2rad($lat_gempa)) * cos(deg2rad($mlat)) * sin($dLong/2) * sin($dLong/2);
                             $c = 2 * atan2(sqrt($a), sqrt(1-$a));
                             $d = $R * $c;
-                            $hasil = $d = round($d, 2);
+                            $hasil = $d = round($d, 2); //jarak yang didapatkan
                             $konversi_meter = $hasil * 1000; //berfungsi untuk menentukan nilai kemampuan nya
                             //akhir haversine distance
+                    
                             
 
                             //formula donovan untuk menentuka pga atau FGA (alfa)
                             //menentukan nilai R sebelum masuk ke rumus donovan
                             $kedalaman = pow($dataGempa->kedalaman,2);
                             $episenter = pow($hasil,2);
-
                             $hiposenter = $kedalaman + $episenter ;
                             $phytagoras = sqrt($hiposenter);
-
                             $nilai_R =  round($phytagoras,2);   //nilai R
-
                             //menentukan nilai richter
                             $Magnitude = ($dataGempa->magnitude - 2.9)/0.56; //nilai magnitude
-
                             //rumus donovan
-                            $alfa = (1080 * EXP(0.5 * $Magnitude)) / pow($nilai_R+25,1.32);    //formula donovan  
-                            //karena nilai alfa pada observasi memiliki satuan g(m/s2), maka nilai alfa yang dihasilkan
+                            $alfa = (1080 * EXP(0.5 * $Magnitude)) / pow($nilai_R+25,1.32);    
+                            //akhir formula donovan  
+
+                            //karena nilai pga dalam bentuki satuan g(m/s2), maka nilai pga yang dihasilkan
                             //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980
                             //dikarenakan besaran umum gravitasi adalah 9.8 m/s2.
                             $z = round($alfa,2)/980;
-                            $hasil_pga = round($z,5);
+                            $hasil_pga = round($z,5); 
                             //akhir nilai PGA
 
                             //menentukan nilai kemampuan PGA
-                            $cek_alfa = round($z,2);
+                                $cek_pga = round($z,2);
 
-                                if($cek_alfa < 0.05){
+                                if($cek_pga < 0.05){
                                     $nilai_kemampuan_pga = 1;
                                     $ket_pga = '3a';
-                                }elseif($cek_alfa >= 0.05 && $cek_alfa<0.15)
+                                }elseif($cek_pga >= 0.05 && $cek_pga<0.15)
                                 {
                                      $nilai_kemampuan_pga = 2;
                                      $ket_pga = '3b';
-                                }elseif($cek_alfa >= 0.15 && $cek_alfa<=0.30)
+                                }elseif($cek_pga >= 0.15 && $cek_pga<=0.30)
                                 {
                                     $nilai_kemampuan_pga = 3;
                                     $ket_pga = '3c';
-                                }elseif($cek_alfa > 0.30)
+                                }elseif($cek_pga > 0.30)
                                 {
                                     $nilai_kemampuan_pga = 4;
                                     $ket_pga = '3d';
                                 }
                             //akhir menentukan nilai kemampuan pga
-
-
-
-
                 
                             //perkondisian untuk nilai kemampuan tabel nilai_struktur_geologis
                             $a = '';
@@ -123,17 +116,14 @@ class DataUjiGempaLamaController extends Controller
                                     //jika tabel cek_gempa sudah ada isi nya maka jalankan script berikut
                                     if(count($cek_gempa) > 0  ) 
                                     {  
-                                            
-                                        
-
                                             $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                                             // return $calculasi_tipologi;
-
-
                                             return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));                                                                            
                                                                          
                                                                                  
-                                    } else 
+                                    } 
+                                    //jika  gempa yang terpilih belum di kalkulasi
+                                    else 
                                     {  
                                                     $ket_geologi_fisik = '';
                                                     if($dataTitik[$i]->id_geologi_fisik == 1)
@@ -158,17 +148,14 @@ class DataUjiGempaLamaController extends Controller
                                                     }elseif($dataTitik[$i]->id_kemiringan_lereng == 4){
                                                         $ket_lereng = '2d';
                                                     }
-
-
-
-
-
+                                                    
                                                     $hasil_kali_bobot_geologi_fisik = $dataTitik[$i]->id_geologi_fisik * 3;
                                                     $hasil_kali_bobot_lereng = $dataTitik[$i]->id_kemiringan_lereng * 3;
                                                     $hasil_kali_pga = $nilai_kemampuan_pga * 5;
                                                     $hasil_kali_bobot_struktur_geologi = $a * 4;
                                                     
-                                                    $skor_akhir = $hasil_kali_bobot_geologi_fisik + $hasil_kali_bobot_lereng + $hasil_kali_pga + $hasil_kali_bobot_struktur_geologi ;
+                                                    $skor_akhir = $hasil_kali_bobot_geologi_fisik + $hasil_kali_bobot_lereng + 
+                                                                  $hasil_kali_pga + $hasil_kali_bobot_struktur_geologi ;
                                                     
                                                     if($skor_akhir >= 15 && $skor_akhir<=30)
                                                     {
@@ -197,35 +184,32 @@ class DataUjiGempaLamaController extends Controller
                                                         'hasil_kali_bobot_struktur_geologi'  => $hasil_kali_bobot_struktur_geologi,   
                                                         'skor_akhir' => $skor_akhir,
                                                         'kategori' => $kategori
-                                                    ]); 
-                                                   
+                                                    ]);     
                                     }                                       
-                              
                     }
 
-                    $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
-                    for($m =0; $m<count($cek_calculasi_tipologi); $m++)
-                        {      
-                            
-                            $tipologiKawasan = tipologi_kawasan::all();
-                        
-                            foreach ($tipologiKawasan as $value) 
-                            {
-                                if(($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
-                                    ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
-                                    ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
-                                    ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
-                                {
-                                    calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
-                                        'id_tipologi' => $value->id
-                                    ]);   
-                                }                        
-                            } 
-                        }
-               
-                    
-                        $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                    return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
+                                            //setelah semua nilai didapatkan maka proses penentuan tipologi
+                                            $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
+                                            for($m =0; $m<count($cek_calculasi_tipologi); $m++)
+                                                {      
+                                                    $tipologiKawasan = tipologi_kawasan::all();
+                                                    foreach ($tipologiKawasan as $value) 
+                                                    {
+                                                        if(($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                                            ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                                            ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                                            ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                                        {
+                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                                'id_tipologi' => $value->id
+                                                            ]);   
+                                                        }                        
+                                                    } 
+                                                }
+                                    
+                                            
+                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                            return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
                
         
     }
