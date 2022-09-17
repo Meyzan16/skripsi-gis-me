@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BobotController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\TestKemiringanController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DataGempaController;
 use App\Http\Controllers\Admin\DataTitikController;
@@ -11,9 +12,9 @@ use App\Http\Controllers\Admin\TestDonovanController;
 use App\Http\Controllers\Admin\GeologiFisikController;
 use App\Http\Controllers\User\UserdataujilamaController;
 use App\Http\Controllers\Admin\StrukturGeologiController;
+
+
 use App\Http\Controllers\Admin\DataUjiGempaLamaController;
-
-
 use App\Http\Controllers\Admin\KemiringanLerengController;
 use App\Http\Controllers\Admin\InformasiTipologiController;
 
@@ -79,3 +80,7 @@ Route::group(['prefix' => 'data-uji-gempa-lama'], function(){
     Route::get('/connexion', [LoginController::Class, 'index'] )->name('connexion');
     Route::post('/connexion', [LoginController::Class, 'authenticate'] )->name('proses_connexion');
     Route::post('/logout-connexion', [LoginController::Class, 'logout'])->name('logout-connexion');
+    
+    
+    Route::get('/lereng', [TestKemiringanController::Class, 'index'] )->name('testLerengg');
+    Route::post('/test-kemiringannn-lereng', [TestKemiringanController::Class, 'cek'] )->name('test-lereng');

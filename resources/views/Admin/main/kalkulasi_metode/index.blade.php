@@ -43,8 +43,7 @@
                                                     </button>
                                                   
 
-                                                    <a  href="{{ route('data-titik.index') }}"
-                                                        class="btn btn-light-secondary me-1 mb-1">Kembali</a>
+                                                   
                                                 </div>
                                               
                                      

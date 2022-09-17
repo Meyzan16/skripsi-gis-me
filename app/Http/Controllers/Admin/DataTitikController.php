@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Http\Request;
 use App\Models\data_titik;
+use Illuminate\Http\Request;
+
 use App\Models\geologi_fisik;
-use App\Models\kemiringan_lereng;
 use App\Models\hasil_tipologi;
+use App\Models\kemiringan_lereng;
 use App\Models\calculasi_tipologi;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\TestKemiringanController;
 
 class DataTitikController extends Controller
 {
@@ -35,7 +36,9 @@ class DataTitikController extends Controller
 
   
     public function store(Request $request)
-    {      
+    {   
+        
+        
 
         //geologi fisik
         $R = 6371;
@@ -43,15 +46,18 @@ class DataTitikController extends Controller
         $mlat = $request->latitude;
         $mlng = $request->longitude;  
   
+     
         //titik awal di pantai 
-        $lat_gempa =   -3.8085034;
-        $lng_gempa =   102.262839;  
+        $lat_gempa =   -3.80849266;
+        $lng_gempa =   102.2628386;  
   
         $dLat  = deg2rad($mlat - $lat_gempa);  //Rdaerah asal dikurang tujuan
         $dLong = deg2rad($mlng - $lng_gempa); 
     
-        $a = sin($dLat/2) * sin($dLat/2) +
-                cos(deg2rad($lat_gempa)) * cos(deg2rad($mlat)) * sin($dLong/2) * sin($dLong/2);
+        $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($lat_gempa)) * cos(deg2rad($mlat)) * sin($dLong/2) * sin($dLong/2);
+        
+        // return $a;
+
         $c = 2 * atan2(sqrt($a), sqrt(1-$a));
         $d = $R * $c;
         $hasil = $d = round($d, 2);

@@ -51,7 +51,7 @@ class DataUjiGempaLamaController extends Controller
                             $c = 2 * atan2(sqrt($a), sqrt(1-$a));
                             $d = $R * $c;
                             $hasil = $d = round($d, 2); //jarak yang didapatkan
-                            $konversi_meter = $hasil * 1000; //berfungsi untuk menentukan nilai kemampuan nya
+                            $konversi_meter = $hasil * 1000; //berfungsi untuk menentukan nilai kemampuan nya konverisi ke meter
                             //akhir haversine distance
                     
                             
@@ -148,7 +148,7 @@ class DataUjiGempaLamaController extends Controller
                                                     }elseif($dataTitik[$i]->id_kemiringan_lereng == 4){
                                                         $ket_lereng = '2d';
                                                     }
-                                                    
+
                                                     $hasil_kali_bobot_geologi_fisik = $dataTitik[$i]->id_geologi_fisik * 3;
                                                     $hasil_kali_bobot_lereng = $dataTitik[$i]->id_kemiringan_lereng * 3;
                                                     $hasil_kali_pga = $nilai_kemampuan_pga * 5;
@@ -178,6 +178,8 @@ class DataUjiGempaLamaController extends Controller
                                                         'nilai_kemampuan_pga' => $nilai_kemampuan_pga,
                                                         'ket_pga' => $ket_pga,
                                                         'hasil_kali_bobot_pga' => $hasil_kali_pga ,
+                                                        'a' => $a,
+                                                        'c' => $c,
                                                         'hasil_jarak_struktur_geologi' =>$hasil,
                                                         'nilai_kemampuan_struktur_geologi' => $a ,
                                                         'ket_struktur_geologi' => $ket_struktur_geologi,
