@@ -119,7 +119,7 @@
 
                     <h6 class="modal-title" id="exampleModalCenterTitle"> Ketinggian Horizontal : {{ $data->ketinggian }} M </h6>
                     
-                    <h6 class="modal-title" id="exampleModalCenterTitle"> Derajat Kemiringan : {{ $data->derajat_kemiringan * 100 }}  </h6>
+                    <h6 class="modal-title" id="exampleModalCenterTitle"> Kemiringan : {{ $data->derajat_kemiringan * 100 }}  </h6>
                 </div>
 
              

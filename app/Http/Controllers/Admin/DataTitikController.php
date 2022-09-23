@@ -38,8 +38,6 @@ class DataTitikController extends Controller
     public function store(Request $request)
     {   
         
-        
-
         //geologi fisik
         $R = 6371;
         //titik tujuan
@@ -84,7 +82,6 @@ class DataTitikController extends Controller
 
 
         data_titik::create([
-            'kecamatan' => null,
             'id_geologi_fisik' => null,
             'id_kemiringan_lereng' => $value,
             'ketinggian' => $request->ketinggian,

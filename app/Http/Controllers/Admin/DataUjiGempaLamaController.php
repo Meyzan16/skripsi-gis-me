@@ -116,8 +116,162 @@ class DataUjiGempaLamaController extends Controller
                                     //jika tabel cek_gempa sudah ada isi nya maka jalankan script berikut
                                     if(count($cek_gempa) > 0  ) 
                                     {  
+                                        //cek jika ada data baru yang ditambahkan
+                                        if(count($cek_gempa) != count($dataTitik))
+                                        {
+                                            $data = data_titik::orderBy('id', 'desc')->limit(1)->first();
+                                                  
+                                            //metode haversine distance
+                                            $mlat = $data->latitude;
+                                            $mlng = $data->longitude;  
+                                            $dLat  = deg2rad($mlat - $lat_gempa);  //Rdaerah asal dikurang tujuan
+                                            $dLong = deg2rad($mlng - $lng_gempa); //Rdaerah asal dikurang tujuan
+                                        
+                                            $a = sin($dLat/2) * sin($dLat/2) +
+                                                    cos(deg2rad($lat_gempa)) * cos(deg2rad($mlat)) * sin($dLong/2) * sin($dLong/2);
+                                            $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+                                            $d = $R * $c;
+                                            $hasil = $d = round($d, 2);
+                                            $konversi_meter = $hasil * 1000;
+                                            //akhir metode
+
+                                             //formula donovan untuk menentuka pga atau FGA (alfa)
+                                            //belum mengaitkan dengan kedalaman nyaa
+                                            $x = pow($data->latitude + $lat_gempa,2) * 111; //lat
+                                            $y = pow($data->longitude - $lng_gempa,2) * 111; //lng
+                                            $r1 = round($x,2);
+                                            $r2 = round($y,2);
+                                            $r1r2 = round(sqrt($r1+$r2),3); //nilai hiposenter
+                                            $Magnitude = ($dataGempa->magnitude - 2.9)/0.56; //nilai magnitude
+
+                                            $alfa = (1080 * EXP(0.5 * $Magnitude)) / pow($r1r2+25,1.32);    //formula donovan  
+                                            //karena nilai alfa pada observasi memiliki satuan g(m/s2), maka nilai alfa yang dihasilkan
+                                            //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980
+                                            //dikarenakan besaran umum gravitasi adalah 9.8 m/s2.
+                                            $z = round($alfa,2)/980;
+                                            $hasil_pga = round($z,5);
+                                            $cek_alfa = round($z,2);
+
+                                                if($cek_alfa < 0.05){
+                                                    $nilai_kemampuan_pga = 1;
+                                                    $ket_pga = '3a';
+                                                }elseif($cek_alfa >= 0.05 && $cek_alfa<0.15)
+                                                {
+                                                    $nilai_kemampuan_pga = 2;
+                                                    $ket_pga = '3b';
+                                                }elseif($cek_alfa >= 0.15 && $cek_alfa<=0.30)
+                                                {
+                                                    $nilai_kemampuan_pga = 3;
+                                                    $ket_pga = '3c';
+                                                }elseif($cek_alfa > 0.30)
+                                                {
+                                                    $nilai_kemampuan_pga = 4;
+                                                    $ket_pga = '3d';
+                                                }
+                                                //akhir donovan
+                                    
+                                                //perkondisian untuk nilai kemampuan tabel nilai_struktur_geologis
+                                                $a = '';
+                                                $ket_struktur_geologi = '';
+                                                if($konversi_meter > 1000){
+                                                    $a = 1 ;
+                                                    $ket_struktur_geologi = '4a';
+                                                }elseif (( $konversi_meter >= 100 ) || ($konversi_meter <= 1000)) {
+                                                    $a = 2;
+                                                    $ket_struktur_geologi = '4b';
+                                                }
+                                                elseif($konversi_meter < 100){
+                                                    $a = 4 ;
+                                                    $ket_struktur_geologi = '4c';
+                                                }     
+                                                
+                                            
+                                                    $ket_geologi_fisik = '';
+                                                    if($data->id_geologi_fisik == 1)
+                                                    {
+                                                        $ket_geologi_fisik = '1a';
+                                                    }elseif($data->id_geologi_fisik == 2){
+                                                        $ket_geologi_fisik = '1b';
+                                                    }elseif($data->id_geologi_fisik == 3){
+                                                        $ket_geologi_fisik = '1c';
+                                                    }elseif($data->id_geologi_fisik == 4){
+                                                        $ket_geologi_fisik = '1d';
+                                                    }
+
+                                                    $ket_lereng = '';
+                                                    if($data->id_kemiringan_lereng == 1)
+                                                    {
+                                                        $ket_lereng = '2a';
+                                                    }elseif($data->id_kemiringan_lereng == 2){
+                                                        $ket_lereng = '2b';
+                                                    }elseif($data->id_kemiringan_lereng == 3){
+                                                        $ket_lereng = '2c';
+                                                    }elseif($data->id_kemiringan_lereng == 4){
+                                                        $ket_lereng = '2d';
+                                                    }
+
+
+                                                    $hasil_kali_bobot_geologi_fisik = $data->id_geologi_fisik * 3;
+                                                    $hasil_kali_bobot_lereng = $data->id_kemiringan_lereng * 3;
+                                                    $hasil_kali_pga = $nilai_kemampuan_pga* 5;
+                                                    $hasil_kali_bobot_struktur_geologi = $a * 4;
+                                                    
+                                                    $skor_akhir = $hasil_kali_bobot_geologi_fisik + $hasil_kali_bobot_lereng + $hasil_kali_pga + $hasil_kali_bobot_struktur_geologi ;
+                                                    
+                                                    if($skor_akhir >= 15 && $skor_akhir<=30)
+                                                    {
+                                                        $kategori = 'rendah';
+                                                    }elseif($skor_akhir >= 31 && $skor_akhir<=45){
+                                                        $kategori = 'sedang';
+                                                    }elseif($skor_akhir >= 46 && $skor_akhir<=60){
+                                                        $kategori = 'tinggi';
+                                                    }
+
+                                                    //insert tabel calculasi_tipologi
+                                                    calculasi_tipologi::create([
+                                                        'id_gempa' => $request->option_gempa,
+                                                        'id_titik' =>  $data->id,
+                                                        'id_geologi_fisik' =>  $data->id_geologi_fisik,
+                                                        'hasil_kali_bobot_geologi_fisik' => $hasil_kali_bobot_geologi_fisik,                                                        
+                                                        'ket_geologi_fisik' => $ket_geologi_fisik,
+                                                        'id_lereng' =>  $data->id_kemiringan_lereng,
+                                                        'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lereng,
+                                                        'ket_lereng' => $ket_lereng,
+                                                        'hasil_pga' => $hasil_pga,
+                                                        'nilai_kemampuan_pga' => $nilai_kemampuan_pga,
+                                                        'ket_pga' => $ket_pga,
+                                                        'hasil_kali_bobot_pga' => $nilai_kemampuan_pga * 5 ,
+                                                        'hasil_jarak_struktur_geologi' =>$hasil,
+                                                        'nilai_kemampuan_struktur_geologi' => $a ,
+                                                        'ket_struktur_geologi' => $ket_struktur_geologi,
+                                                        'hasil_kali_bobot_struktur_geologi'  => $hasil_kali_bobot_struktur_geologi,   
+                                                        'skor_akhir' => $skor_akhir,
+                                                        'kategori' => $kategori
+                                                    ]); 
+
+                                                            $calculai_terakhir = calculasi_tipologi::orderBy('id', 'desc')->limit(1)->first();
+    
+                                                            $tipologiKawasan = tipologi_kawasan::all();
+                                                        
+                                                            foreach ($tipologiKawasan as $value) 
+                                                            {
+                                                                if(($value->geologi_batuan == $calculai_terakhir->ket_geologi_fisik) && 
+                                                                    ($value->lereng == $calculai_terakhir->ket_lereng) &&
+                                                                    ($value->kegempaan == $calculai_terakhir->ket_pga) && 
+                                                                    ($value->struktur_geologi == $calculai_terakhir->ket_struktur_geologi))
+                                                                {
+                                                                    calculasi_tipologi::where('id', $calculai_terakhir->id)->update([
+                                                                        'id_tipologi' => $value->id
+                                                                    ]);   
+                                                                }                        
+                                                            } 
+                                                                                              
+                                                    $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                                    return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
+
+                                        } 
+
                                             $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                            // return $calculasi_tipologi;
                                             return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));                                                                            
                                                                          
                                                                                  
@@ -178,6 +332,8 @@ class DataUjiGempaLamaController extends Controller
                                                         'nilai_kemampuan_pga' => $nilai_kemampuan_pga,
                                                         'ket_pga' => $ket_pga,
                                                         'hasil_kali_bobot_pga' => $hasil_kali_pga ,
+                                                        'delta_lat' => $dLat,
+                                                        'delta_lng' => $dLong,
                                                         'a' => $a,
                                                         'c' => $c,
                                                         'hasil_jarak_struktur_geologi' =>$hasil,
