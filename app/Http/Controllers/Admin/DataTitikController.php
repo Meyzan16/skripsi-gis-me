@@ -78,8 +78,6 @@ class DataTitikController extends Controller
         {
             $value = 4;
         }
-  
-
 
         data_titik::create([
             'id_geologi_fisik' => null,

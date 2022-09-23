@@ -82,5 +82,5 @@ Route::group(['prefix' => 'data-uji-gempa-lama'], function(){
     Route::post('/logout-connexion', [LoginController::Class, 'logout'])->name('logout-connexion');
     
     
-    Route::get('/lereng', [TestKemiringanController::Class, 'index'] )->name('testLerengg');
-    Route::post('/test-kemiringannn-lereng', [TestKemiringanController::Class, 'cek'] )->name('test-lereng');
+    // Route::get('/lereng', [TestKemiringanController::Class, 'index'] )->name('testLerengg');
+    // Route::post('/test-kemiringannn-lereng', [TestKemiringanController::Class, 'cek'] )->name('test-lereng');
