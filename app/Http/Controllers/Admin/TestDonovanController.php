@@ -50,29 +50,42 @@ class TestDonovanController extends Controller
     
 
 
+        //jarak episenter
+        // $x = pow((119.860-121.649),2) * 111;
+        // $y = pow((-0.220)-(-0.911),2) *111;
+        // $episenter = sqrt($x + $y);
+        // $episenter_round = round($episenter,3);
+        
+        // //jarak hiposenter
+        // $hiposenter = sqrt(pow(213.834,2) + pow(10,2));
+        // $hiposenter_round = round($hiposenter,3);
+        // return $hiposenter_round;
+        //rumus donovan
 
 
-
-      // $d = pow(33,2);
-      // $e = pow(231,2);
-      // $h = $d + $e ;
-      // $hasil = sqrt($h);
-      // $R =  round($hasil,2);
+    //     $d = pow(33,2);
+    //     $e = pow(231,2);
+    //     $h = $d + $e ;
+    //     $hasil = sqrt($h);
+    //     $R =  round($hasil,2);
        
-      //  $x = pow(3.75+5.22, 2) * 111;
-      //  $y = pow(102.27-102.95,2) * 111;
+    //    $x = pow(3.75+5.22, 2) * 111;
+    //    $y = pow(102.27-102.95,2) * 111;
 
-      //  $r1 = round($x,2);
-      //  $r2 = round($y,2);
+    //    $r1 = round($x,2);
+    //    $r2 = round($y,2);
 
-      //  $r1r2 = round(sqrt($r1+$r2),3);
+    //    $r1r2 = round(sqrt($r1+$r2),3);
 
 
       //  $Magnitude = (8 - 2.9)/0.56;
 
       //  $alfa = (1080 * EXP(0.5 * 8)) / pow($R+25,1.32);
 
-      //  $alfa = (1080 * EXP(0.5 * 8)) / pow(179+25,1.32); //test punya bapakk lindung
+        $Ms = 0.5 * 8;
+       $alfa = (1080 * pow(2.718,$Ms)) / pow(233+25,1.32); //test punya bapakk lindung
+
+       return round($alfa,2);
 
        //karena nilai alfa pada observasi memiliki satuan g(m/s2), maka nilai alfa yang dihasilkan
        //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980
@@ -83,5 +96,8 @@ class TestDonovanController extends Controller
    //     return round($z,2);
 
     //    return round($Magnitude,3);
+
+    
+
     }
 }
