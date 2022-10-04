@@ -25,7 +25,7 @@ class DataTitikController extends Controller
  
     public function create()
     {
-        $string = json_decode(file_get_contents("bbbb.geojson"), true);
+        $string = json_decode(file_get_contents("geologiFisikJsonnn.geojson"), true);
         // return $string;
 
 
