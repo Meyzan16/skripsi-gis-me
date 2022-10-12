@@ -367,8 +367,48 @@ class DataUjiGempaLamaController extends Controller
                                                             calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
                                                                 'id_tipologi' => $value->id
                                                             ]);   
-                                                        }                        
-                                                    } 
+                                                        } 
+                                                        
+                                                        else if(
+                                                            ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                                            ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                                            ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                                        {
+                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                                'id_tipologi' => $value->id
+                                                            ]); 
+
+                                                        } 
+                                                        else if(
+                                                            ($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) &&
+                                                            ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                                            ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi)
+                                                        ){
+                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                                'id_tipologi' => $value->id
+                                                            ]); 
+
+                                                        } 
+                                                        else if (($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                                                ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                                                ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                                        {
+                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                                'id_tipologi' => $value->id
+                                                            ]);  
+                                                        } 
+
+                                                        else if (($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                                        ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                                        ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) 
+                                                        )
+                                                        {
+                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                                'id_tipologi' => $value->id
+                                                            ]);  
+                                                        } 
+                                                        
+                                                    }
                                                 }
                                     
                                             

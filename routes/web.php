@@ -10,10 +10,11 @@ use App\Http\Controllers\Admin\DataTitikController;
 use App\Http\Controllers\Admin\KegempaanController;
 use App\Http\Controllers\Admin\TestDonovanController;
 use App\Http\Controllers\Admin\GeologiFisikController;
+use App\Http\Controllers\User\UjiDataRealtimeController;
 use App\Http\Controllers\User\UserdataujilamaController;
+
+
 use App\Http\Controllers\Admin\StrukturGeologiController;
-
-
 use App\Http\Controllers\Admin\DataUjiGempaLamaController;
 use App\Http\Controllers\Admin\KemiringanLerengController;
 use App\Http\Controllers\Admin\InformasiTipologiController;
@@ -73,7 +74,7 @@ Route::group([
 Route::group(['prefix' => 'data-uji-gempa-lama'], function(){
         Route::get('/', [UserdataujilamaController::Class, 'index'] )->name('user.data-uji-gempa-lama');
         route::POST('/proses-kalkulasi', [UserdataujilamaController::class, 'proses_kalkulasi'])->name('user.data-uji-gempa-lama.proses-kalkulasi');
-    
+        Route::get('/realtime', [UjiDataRealtimeController::Class, 'index'] )->name('user.data-uji-realtime');
 });
     
     

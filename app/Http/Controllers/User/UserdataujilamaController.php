@@ -25,7 +25,7 @@ class UserdataujilamaController extends Controller
 
     public function proses_kalkulasi(Request $request)
     {
-        $dataTitik = data_titik::all(); 
+                $dataTitik = data_titik::all(); 
                 $dataGempa_option = data_gempa::all();
                 $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
 
@@ -279,8 +279,43 @@ class UserdataujilamaController extends Controller
 
                                         } else 
                                         {
+                                            $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa )->get();  
+                                            $properties = [];
+
+                                            $tipologiKawasan = tipologi_kawasan::all();
+                                            for( $i=0; $i<count($cek_calculasi_tipologi); $i++ ) 
+                                            {      
+                                                foreach ($tipologiKawasan as $item ) 
+                                                {
+                                                            if(
+                                                                $cek_calculasi_tipologi[$i]->ket_geologi_fisik == $item['geologi_batuan'] &&
+                                                                $cek_calculasi_tipologi[$i]->ket_lereng == $item['lereng'] &&
+                                                                $cek_calculasi_tipologi[$i]->ket_pga == $item['kegempaan'] &&
+                                                                $cek_calculasi_tipologi[$i]->ket_struktur_geologi == $item['struktur_geologi']  
+                                                                )
+                                                            {
+                                                                $properties[] = array
+                                                                (
+                                                                    'id' => $cek_calculasi_tipologi[$i]->id_titik,
+                                                                    'id_cal' => $item->id,
+                                                                    'a' => "validdd", 
+                                                                );
+
+                                                            }
+                                                            // else {
+                                                            //     $properties[] = array
+                                                            //     (
+                                                                    
+
+                                                            //         'id' => $cek_calculasi_tipologi[$i]->id_titik,
+                                                            //         'id_cal' => $item->id,
+                                                            //         'a' => "nonvalid", 
+                                                            //     );
+                                                            // }
+                                                }
+                                            }
                                             $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                            return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));  
+                                            return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan' , 'properties'));  
                                         }                               
                                                                                  
                                     } 
@@ -351,28 +386,71 @@ class UserdataujilamaController extends Controller
                                     }                                       
                     }
 
-                                            //setelah semua nilai didapatkan maka proses penentuan tipologi
-                                            $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
-                                            for($m =0; $m<count($cek_calculasi_tipologi); $m++)
-                                                {      
-                                                    $tipologiKawasan = tipologi_kawasan::all();
-                                                    foreach ($tipologiKawasan as $value) 
-                                                    {
-                                                        if(($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
-                                                            ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
-                                                            ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
-                                                            ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
-                                                        {
-                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
-                                                                'id_tipologi' => $value->id
-                                                            ]);   
-                                                        }                        
-                                                    } 
-                                                }
-                                    
-                                            
-                                                $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                                return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));  
+                            //setelah semua nilai didapatkan maka proses penentuan tipologi
+                            $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
+                            
+                            for($m =0; $m<count($cek_calculasi_tipologi); $m++)
+                                {      
+                                    $tipologiKawasan = tipologi_kawasan::all();
+                                    foreach ($tipologiKawasan as $value) 
+                                    {
+                                        if(
+                                            ($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                            ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                            ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                            ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                        {
+                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                'id_tipologi' => $value->id
+                                            ]);   
+                                        } 
+                                        
+                                        // else if(
+                                        //     ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                        //     ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                        //     ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                        // {
+                                        //     calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                        //         'id_tipologi' => $value->id
+                                        //     ]); 
+
+                                        // } 
+                                        // else if(
+                                        //     ($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) &&
+                                        //     ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                        //     ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi)
+                                        // ){
+                                        //     calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                        //         'id_tipologi' => $value->id
+                                        //     ]); 
+
+                                        // } 
+                                        // else if (($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                        //         ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                        //         ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                        // {
+                                        //     calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                        //         'id_tipologi' => $value->id
+                                        //     ]);  
+                                        // } 
+
+                                        // else if (($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                        // ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                        // ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) 
+                                        // )
+                                        // {
+                                        //     calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                        //         'id_tipologi' => $value->id
+                                        //     ]);  
+                                        // } 
+                                        
+                                    }
+                                }
+                    
+                            
+                                $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan'));  
+                                              
         
     }
 

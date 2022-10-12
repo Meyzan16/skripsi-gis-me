@@ -80,7 +80,7 @@ class DataTitikController extends Controller
         }
 
         data_titik::create([
-            'id_geologi_fisik' => null,
+            'id_geologi_fisik' => $request->batuan,
             'id_kemiringan_lereng' => $value,
             'ketinggian' => $request->ketinggian,
             'jarak' => $konversi_meter ,

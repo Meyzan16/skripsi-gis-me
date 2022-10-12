@@ -50,12 +50,26 @@
   
         <h2>Pengujian Data</h2>
         <ol>
-          <li><a href="">Home</a></li>
+          <li><a href="{{ route('homepage'); }}">Home</a></li>
           <li>Data Gempa Lama</li>
         </ol>
   
       </div>
     </div><!-- End Breadcrumbs -->
+
+  @elseif(Route::current()->getName() == 'user.data-uji-realtime')
+  <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/template-user/assets/img/breadcrumbs-bg.jpg');">
+    <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+
+      <h2>Pengujian Data</h2>
+      <ol>
+        <li><a href="{{ route('homepage'); }}">Home</a></li>
+        <li>Data Realtime</li>
+      </ol>
+
+    </div>
+  </div><!-- End Breadcrumbs -->
+
   @else
 
   <div class="info d-flex align-items-center">
@@ -64,7 +78,9 @@
         <div class="col-lg-6 text-center">
           <h2 data-aos="fade-down"> Selamat Datang  <br><span> e-kerawanan </span></h2>
           <p data-aos="fade-up">website ini merupakan penelitian mahasiswa teknik informatika universitas bengkulu yang mana sistem ini menghasilkan referensi tingkat kerawanan disuatu titik berdasakan parameter-parameter dari bidang sipil dan object nya adalah gempa </p>
-          <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-gempa-lama') }}" class="btn-get-started">Pengujian Data</a>
+          <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-gempa-lama') }}" class="btn-get-started">Uji Data Lama</a>
+          
+          <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-realtime') }}" class="btn-get-started">Uji Data Realtime</a>
         </div>
       </div>
     </div>

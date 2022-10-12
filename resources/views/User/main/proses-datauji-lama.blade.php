@@ -54,13 +54,10 @@
 
                <h6>wilayah yang dirasakan</h6>
                 <p>
-                  Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
-                  Et eveniet enim. Qui velit est ea dolorem doloremque deleniti aperiam unde soluta. Est cum et quod quos aut ut et sit sunt. Voluptate porro consequatur assumenda perferendis dolore.
+                  {{ $dataGempa->dirasakan }}
                 </p>
 
-                <p>
-                  Sit repellat hic cupiditate hic ut nemo. Quis nihil sunt non reiciendis. Sequi in accusamus harum vel aspernatur. Excepturi numquam nihil cumque odio. Et voluptate cupiditate.
-                </p>          
+                         
 
             </div><!-- End post content -->
 
@@ -99,16 +96,19 @@
                     
                     
                     <h4>{{ $dataa->data_titik->alamat }}</h4>
-                    <time >kategori rawan : {{ $dataa->kategori }} | tipologi kawasan : @if(empty($dataa->id_tipologi ))
-                           tidak ada |
-                      @else
-                          
-                          {{ $dataa->tipologi_kawasan->informasi_tipologi->tipologi }} |
-                      @endif
+                    <time >kategori rawan : {{ $dataa->kategori }} |  tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} |
 
+                      <a href="" data-bs-toggle="modal" data-bs-target="#saran_bangunan{{ $dataa->id_titik }}"> tipe saran bangunan, klik disini </a> |
+                      
+                                              @if(empty($properties))
+                                                    
+                                              <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
+                                              
+                                                    
+                                              @endif
+                        
 
-                      <a href="" data-bs-toggle="modal" data-bs-target="#saran_bangunan{{ $dataa->id_titik }}"> tipe saran bangunan, klik disini </a></time>
-                      <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a>
+                      <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a> </time>
                  
                   </div>
                 </div><!-- End recent post item-->
@@ -138,19 +138,10 @@
               </div>
   
               <div class="modal-body">
-                  <h6>Kecamatan : {{ $item1->data_titik->kecamatan }}</h6>
                   <h6>Geologi Fisik : {{ $item1->data_titik->geologi_fisik->kelas_informasi }}</h6>
                   <h6>Kemiringan Lereng : {{ $item1->data_titik->kemiringan_lereng->kelas_informasi }}</h6>
-                  <h6>Hasil PGA : {{ round($item1->hasil_pga,2) }} g</h6>
-                  <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
-                  {{-- <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
-  
-                  @if(empty($item1->id_tipologi ))
-                      <h6>Tipologi Kawasan : </h6>  
-                  @else
-                      
-                      <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi }}</h6>       
-                  @endif --}}
+                  <h6>Percepatan Tanah Maksimum : {{ round($item1->hasil_pga,2) }} g</h6>
+                  <h6>Jarak dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }} KM</h6>
                  
                 </div>
   
@@ -211,6 +202,49 @@
       </div>
   </div>
   @endforeach
+
+  {{-- informasi penting --}}
+  @foreach ($calculasi_tipologi as $item2)
+  <div class="modal fade bd-example-modal-lg" id="informasi_penting{{ $item2->id_titik  }}" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h6  id="myLargeModalLabel"> 
+                  Informasi Penting
+                </h6>
+
+            </div>
+
+            <div class="modal-body">
+                
+                    <center>
+                      <h6> Hasil kalkulasi dari data gempa yang terpilih menginformasi bahwasanya
+                           data titik dengan<br> alamat {{ $item2->data_titik->alamat }} <br> 
+                           diperlukan nya justifikasi dilapangan secara lanjut untuk mendukung hipotesis ini  </h6>  
+                    </center>
+                   
+            </div>
+
+                
+                <div class="modal-footer">
+            
+                    <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+                    
+                </div>
+        
+
+          </div>
+      </div>
+  </div>
+  @endforeach
+
+
 @endsection
 
 
