@@ -125,13 +125,13 @@
             });
         }, 4000);
     </script>	
-
-    @if (Route::current()->getName() == 'chartDashboard')
-    {!! $chartTerpilih->script() !!}   
-    @else
-    {!! $usersChart->script() !!}
-    @endif
-
+        
+        @if (Route::current()->getName() == 'chartDashboard')
+        {!! $chartTerpilih->script() !!}   
+        @else
+        {!! $usersChart->script() !!}
+        @endif
+        
   
   
     @endpush

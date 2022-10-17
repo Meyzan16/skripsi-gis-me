@@ -5,120 +5,115 @@
   <section id="blog" class="blog">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="row g-5">
+      <div class="row">
 
-        <div class="col-lg-6">
+          <div class="col-lg-4">
 
-          <article class="blog-details">
-
-
-            {{-- <div class="post-img">
-              <img src="/template-user/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-            </div> --}}
-
-   
-            <form action="{{ route('user.data-uji-gempa-lama.proses-kalkulasi') }}" method="POST" >
-                @csrf 
-                <div class="row col-12">
-            
-                    <h5 class="sidebar-title">Pilih Data Gempa</h5>
-
-                    <div class="col-10 ">
-                        <select name="option_gempa" id="option_gempa" class="form-control">
-                            <option value="">-- Pilih data --</option>   
-                            @foreach ($dataGempa_option as $item)
-                                <option value="{{ $item->id }}">{{ $item->tanggal }}</option>   
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-2 ">
-                        <button type="submit"  class="btn btn-primary me-1 mb-1">
-                        &nbsp;Cari
-                        </button>
-                    </div>
-
-                </div>
-            </form>
-      
-
-            <div id="map" style="height:400px; width: 570px;" class="content my-3">
-            </div> 
-            
-
-            <h5>{{ $dataGempa->wilayah }}</h5>
-
-            
-
-            <div class="content">
-
-               <h6>wilayah yang dirasakan</h6>
-                <p>
-                  {{ $dataGempa->dirasakan }}
-                </p>
-
-                         
-
-            </div><!-- End post content -->
-
-         
-
-          </article><!-- End blog post -->
-
-          
-
-         
-
-        </div>
-
-        <div class="col-lg-6">
-
-          <div class="sidebar">
-
-            <div class="sidebar-item search-form">
-              @php
-                $tgl = $dataGempa->tanggal;
-                $konversi = date("m F , Y", strtotime($tgl));
-              @endphp
-              <h4 class="sidebar-title">Gempa yang terpilih : {{ $konversi }}</h4>       
-            </div><!-- End sidebar search formn-->
-
-            
-
-            <div class="sidebar-item recent-posts">
-              <h3 class="sidebar-title">Hasil kalkulasi data titik</h3>
-
-              <div class="mt-3">
-
-              @foreach ($calculasi_tipologi as $dataa)  
-                <div class="post-item mt-3">
-                  <div>
+            <article class="blog-details">
+    
+                    <form action="{{ route('user.data-uji-gempa-lama.proses-kalkulasi') }}" method="POST" >
+                        @csrf 
+                        <div class="row col-12">
                     
+                            <h5 class="sidebar-title">Pilih Data Gempa</h5>
+
+                            <div class="col-10 ">
+                                <select name="option_gempa" id="option_gempa" class="form-control">
+                                    <option value="">-- Pilih data --</option>   
+                                    @foreach ($dataGempa_option as $item)
+                                        <option value="{{ $item->id }}">{{ $item->tanggal }}|{{ $item->magnitude }} Mg</option>   
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-2 ">
+                                <button type="submit"  class="btn btn-primary me-1 mb-1">
+                                &nbsp;Cari
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div id="map" style="height:400px; width: 500;" class="content my-3">
+                    </div> 
                     
-                    <h4>{{ $dataa->data_titik->alamat }}</h4>
-                    <time >kategori rawan : {{ $dataa->kategori }} |  tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} |
 
-                      <a href="" data-bs-toggle="modal" data-bs-target="#saran_bangunan{{ $dataa->id_titik }}"> tipe saran bangunan, klik disini </a> |
-                      
-                                              @if(empty($properties))
-                                                    
-                                              <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
-                                              
-                                                    
-                                              @endif
-                        
+                    <h5>{{ $dataGempa->wilayah }}</h5>
 
-                      <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a> </time>
-                 
-                  </div>
-                </div><!-- End recent post item-->
-                @endforeach
-              </div>
-            </div><!-- End sidebar recent posts-->
+                    
 
-          </div><!-- End Blog Sidebar -->
+                    <div class="content">
 
-        </div>
+                      <h6>wilayah yang dirasakan</h6>
+                        <p>
+                          {{ $dataGempa->dirasakan }}
+                        </p>
+                    </div><!-- End post content -->
+              </article><!-- End blog post -->
+          </div>
+
+
+          <div class="col-lg-8">
+            <div class="sidebar" style="overflow: scroll; height:710px">
+                  <div class="sidebar-item search-form">
+                    @php
+                      $tgl = $dataGempa->tanggal;
+                      $konversi = date("m F , Y", strtotime($tgl));
+                    @endphp
+                    <h4 class="sidebar-title">Gempa yang terpilih : {{ $konversi }}</h4>       
+                  </div><!-- End sidebar search formn-->
+
+                  <div class="sidebar-item recent-posts">
+                    <h3 class="sidebar-title">Hasil kalkulasi data titik</h3>
+                    <div class="mt-3">
+                        @foreach ($calculasi_tipologi as $dataa)  
+                          <div class="post-item mt-3">
+                            <div>
+
+                                @php
+                                $a = '';   
+                              if($dataa['kategori'] == 'rendah')
+                                    $a = "text-success";
+                              elseif($dataa['kategori'] == 'sedang')
+                                    $a = "text-warning";
+                              else
+                                    $a = "text-danger";
+                              @endphp
+                                      <h4>{{ $dataa->data_titik->alamat }}</h4>
+                                      <time class="{{ $a }}">kategori rawan : {{ $dataa->kategori }} |  tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} |
+
+                                          <a href="" class="{{ $a; }}" data-bs-toggle="modal" data-bs-target="#saran_bangunan{{ $dataa->id_titik }}"> tipe saran bangunan, klik disini </a> |
+                                
+                                            {{-- jika array tidak ada data sama sekali --}}
+                                            @if (empty($properties)) 
+                                                <a href="" class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
+                                            
+                                            {{-- jika ada data tapi id titik kosong  --}}
+                                            @elseif(!empty($properties))
+
+                                              {{-- @foreach ($properties as $item) --}}
+                                                      
+                                                  {{-- @if ($item['id_titik'] == "") --}}
+                                                    {{-- <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> |  --}}
+                                                  
+                                                  {{-- @endif     --}}
+                                              {{-- @endforeach --}}
+                                                  
+                                                
+                                            @endif
+                                          <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a> </time>
+                          
+                            </div>
+                          </div><!-- End recent post item-->
+                          @endforeach
+                    </div>
+                  </div><!-- End sidebar recent posts-->
+
+            </div><!-- End Blog Sidebar -->
+
+          </div>
+
+
       </div>
 
     </div>

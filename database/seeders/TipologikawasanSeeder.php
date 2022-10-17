@@ -13,6 +13,7 @@ use App\Models\user;
 use App\Models\informasi_tipologi;
 use App\Models\struktur_geologi;
 use App\Models\data_titik;
+use App\Models\data_gempa;
 
 
 class TipologikawasanSeeder extends Seeder
@@ -965,6 +966,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 12,
             'jarak' => 2260,
             'derajat_kemiringan' => 0.531,
@@ -976,6 +978,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 13,
             'jarak' => 2370,
             'derajat_kemiringan' => 0.549,
@@ -987,6 +990,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 16,
             'jarak' => 2020,
             'derajat_kemiringan' => 0.792,
@@ -994,9 +998,11 @@ class TipologikawasanSeeder extends Seeder
             'longitude' => 102.255200,
             'alamat' => "Jl. Veteran 1, Ps. Jitra, Kec. Tlk. Segara, Kota Bengkulu, Bengkulu 38113",
         ]);
+
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 17,
             'jarak' => 2380,
             'derajat_kemiringan' => 0.714,
@@ -1004,9 +1010,11 @@ class TipologikawasanSeeder extends Seeder
             'longitude' => 102.264861,
             'alamat' => "6777+5WP, Jl. Bali, Kp. Bali, Kec. Tlk. Segara, Kota Bengkulu, Bengkulu 38119",
         ]);
+
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 17,
             'jarak' => 2390,
             'derajat_kemiringan' => 0.711,
@@ -1014,9 +1022,11 @@ class TipologikawasanSeeder extends Seeder
             'longitude' => 102.268241,
             'alamat' => "Jl. Padang - Bengkulu, Suka Merindu, Kec. Sungai Serut, Kota Bengkulu, Bengkulu, Indonesia",
         ]);
+
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 18,
             'jarak' => 1340,
             'derajat_kemiringan' => 1.343,
@@ -1024,9 +1034,12 @@ class TipologikawasanSeeder extends Seeder
             'longitude' => 102.266405,
             'alamat' => "Simpang prapto depasn rs bhayangkara, Ps. Jitra, Kec. Tlk. Segara, Kota Bengkulu, Bengkulu 38113",
         ]);
+
+
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 15,
             'jarak' => 1930,
             'derajat_kemiringan' => 0.777,
@@ -1038,6 +1051,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 15,
             'jarak' => 2500,
             'derajat_kemiringan' => 0.6,
@@ -1050,6 +1064,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 19,
             'jarak' => 3730,
             'derajat_kemiringan' => 0.509,
@@ -1062,6 +1077,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 4,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 22,
             'jarak' => 1370,
             'derajat_kemiringan' => 1.606,
@@ -1069,9 +1085,12 @@ class TipologikawasanSeeder extends Seeder
             'longitude' => 102.274793,
             'alamat' => "Jl. S. Parman No.21, Kebun Kenanga, Kec. Ratu Agung, Kota Bengkulu, Bengkulu 38222, Indonesia",
         ]);
+
+
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 19,
             'jarak' => 1560,
             'derajat_kemiringan' => 1.218,
@@ -1080,8 +1099,9 @@ class TipologikawasanSeeder extends Seeder
             'alamat' => "Jl. Rafflesia 10, Nusa Indah, Kec. Ratu Agung, Kota Bengkulu, Bengkulu 38223",
         ]);
         data_titik::create([
-            'id_geologi_fisik' => 3,
+            'id_geologi_fisik' => 2,
             'id_kemiringan_lereng' => 4,
+            'bebatuan' => 'Batugamping terumbu',
             'ketinggian' => 11,
             'jarak' => 500,
             'derajat_kemiringan' => 2.2,
@@ -1093,6 +1113,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 20,
             'jarak' => 2870,
             'derajat_kemiringan' => 0.697,
@@ -1104,6 +1125,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 15,
             'jarak' => 3270,
             'derajat_kemiringan' => 0.459,
@@ -1115,6 +1137,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 14,
             'jarak' => 4500,
             'derajat_kemiringan' => 0.311,
@@ -1126,6 +1149,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 16,
             'jarak' => 5300 ,
             'derajat_kemiringan' => 0.302,
@@ -1138,6 +1162,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 1,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 7,
             'jarak' => 10710 ,
             'derajat_kemiringan' => 0.065,
@@ -1149,6 +1174,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 1,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 5,
             'jarak' => 11650  ,
             'derajat_kemiringan' => 0.043,
@@ -1161,6 +1187,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 1,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 5,
             'jarak' => 11720  ,
             'derajat_kemiringan' => 0.043,
@@ -1173,6 +1200,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 8,
             'jarak' => 7620,
             'derajat_kemiringan' => 0.105,
@@ -1185,6 +1213,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 28,
             'jarak' => 10400,
             'derajat_kemiringan' => 0.269,
@@ -1197,6 +1226,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 23,
             'jarak' => 6280,
             'derajat_kemiringan' => 0.366,
@@ -1208,6 +1238,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Pasir, lanau, lempung dan kerikil',
             'ketinggian' => 26,
             'jarak' => 4680,
             'derajat_kemiringan' => 0.556,
@@ -1220,6 +1251,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Bongkah,kerikil,pasir,lanau,lumpur dan lempung',
             'ketinggian' => 29,
             'jarak' => 11630 ,
             'derajat_kemiringan' => 0.249,
@@ -1229,8 +1261,9 @@ class TipologikawasanSeeder extends Seeder
         ]);
 
         data_titik::create([
-            'id_geologi_fisik' => 3,
+            'id_geologi_fisik' => 1,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Andesit',
             'ketinggian' => 31,
             'jarak' => 7520,
             'derajat_kemiringan' => 0.412,
@@ -1240,8 +1273,9 @@ class TipologikawasanSeeder extends Seeder
         ]);
 
         data_titik::create([
-            'id_geologi_fisik' => 3,
+            'id_geologi_fisik' => 1,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Andesit',
             'ketinggian' => 43,
             'jarak' => 8610,
             'derajat_kemiringan' => 0.499,
@@ -1253,6 +1287,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Pasir, lanau, lempung dan sisa tumbuhan',
             'ketinggian' => 11,
             'jarak' => 14690,
             'derajat_kemiringan' => 0.075,
@@ -1262,8 +1297,9 @@ class TipologikawasanSeeder extends Seeder
         ]);
 
         data_titik::create([
-            'id_geologi_fisik' => 3,
+            'id_geologi_fisik' => 4,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Konglomerat aneka bahan,breksi,batugamping terumbu, batu lempung,tufan,berbatu apung,kayu,terkesikkan',
             'ketinggian' => 18,
             'jarak' => 7210,
             'derajat_kemiringan' => 0.25,
@@ -1275,6 +1311,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'bongkah,kerikil,pasir,lanau,lumpur dan lempung',
             'ketinggian' => 10,
             'jarak' => 12640 ,
             'derajat_kemiringan' => 0.079,
@@ -1284,8 +1321,9 @@ class TipologikawasanSeeder extends Seeder
         ]);
 
         data_titik::create([
-            'id_geologi_fisik' => 3,
+            'id_geologi_fisik' => 4,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Konglomerat aneka bahan,breksi,batugamping terumbu, batu lempung,tufan,berbatu apung,kayu,terkesikkan',
             'ketinggian' => 9,
             'jarak' => 5390 ,
             'derajat_kemiringan' => 0.167,
@@ -1295,8 +1333,9 @@ class TipologikawasanSeeder extends Seeder
         ]);
 
         data_titik::create([
-            'id_geologi_fisik' => 3,
+            'id_geologi_fisik' => 4,
             'id_kemiringan_lereng' => 3,
+            'bebatuan' => 'Konglomerat aneka bahan,breksi,batugamping terumbu, batu lempung,tufan,berbatu apung,kayu,terkesikkan',
             'ketinggian' => 27,
             'jarak' => 7000 ,
             'derajat_kemiringan' => 0.386,
@@ -1308,6 +1347,7 @@ class TipologikawasanSeeder extends Seeder
         data_titik::create([
             'id_geologi_fisik' => 3,
             'id_kemiringan_lereng' => 2,
+            'bebatuan' => 'Pasir,lanau,lempung dan kerikil',
             'ketinggian' => 16,
             'jarak' => 5400,
             'derajat_kemiringan' => 0.296,
@@ -1315,7 +1355,45 @@ class TipologikawasanSeeder extends Seeder
             'longitude' => 102.2724440,
             'alamat' => "Jl. WR. Supratman, Kandang Limun, Kec. Muara Bangka Hulu, Sumatera, Bengkulu 38371, Indonesia",
         ]);
+
+
+        data_gempa::create([
+            'tanggal' => '2007-09-12',
+            'latitude' => -4.51700000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 101.38200000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 8.4,
+            'kedalaman' => 30,
+            'wilayah' => "Tengah Laut",
+            'dirasakan' => "seluruh area bengkuluuu sampai sumsel, jambi dan lampung",
+        ]);
         
+
+        
+        data_gempa::create([
+            'tanggal' => '2022-10-01',
+            'latitude' => -3.77000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 101.84000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 4.6,
+            'kedalaman' => 54,
+            'wilayah' => "Pusat gempa berada di laut 54 km barat bengkulu utara",
+            'dirasakan' => "II - III kota bengkulu, II Kepahiang, III Bengkulu Utara",
+        ]);
+
+        data_gempa::create([
+            'tanggal' => '2022-08-23',
+            'latitude' => -5.22000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 102.95000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 6.5,
+            'kedalaman' => 12,
+            'wilayah' => "Pusat gempa berada di laut 64 km BaratDaya KAUR-BENGKULU",
+            'dirasakan' => "III Martapura, III Panimbang , III Kec. Ngaras, III Bandar Lampung, III Muara Dua, III Semaka, III Pematang Sawah, II-III Bayah, II-III Malingping, II - III Ujung Kulon, II - III Kec. Pesisir Tengah, II Kerinci, II Padang, V Kaur, IV-V Liwa, IV Kepahiang, IV Rejang Lebong, IV Lebong, IV Enggano, III-IV Kota Bengkulu, III-IV Muko-muko, III-IV Argamakmur, III-IV Manna, III-IV Putri Hijau, III-IV Musi Rawas, III-IV Oku Selatan, III-IV Lubuk Linggau, III-IV Lahat, III-IV Pagar Alam",
+        ]);
         
 
 

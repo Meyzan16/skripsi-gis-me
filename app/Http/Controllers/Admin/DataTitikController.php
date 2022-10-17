@@ -61,6 +61,7 @@ class DataTitikController extends Controller
         $hasil = $d = round($d, 2);
         $konversi_meter = $hasil * 1000; 
   
+        //dikali 100 untuk mengubah kedalam bentuk persen
         $hasil_kemiringan = ($request->ketinggian/$konversi_meter) * 100;
 
         $nilai_akhir_kemiringan = round($hasil_kemiringan,3);
@@ -80,7 +81,8 @@ class DataTitikController extends Controller
         }
 
         data_titik::create([
-            'id_geologi_fisik' => $request->batuan,
+            'id_geologi_fisik' => $request->id_kemampuan_bebatuan,
+            'bebatuan' => $request->batuan,
             'id_kemiringan_lereng' => $value,
             'ketinggian' => $request->ketinggian,
             'jarak' => $konversi_meter ,
@@ -97,9 +99,10 @@ class DataTitikController extends Controller
    
     public function show($id)
     {
+        $string = json_decode(file_get_contents("geologiFisikJsonnn.geojson"), true);
         $data = data_titik::findorfail($id);
 
-        return view('admin.main.data-titik.show', compact('data'));
+        return view('admin.main.data-titik.show', compact('data', 'string'));
     }
 
 

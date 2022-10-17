@@ -10,7 +10,7 @@
 <div class="page-content">
     <section id="basic-horizontal-layouts">
         <div class="row match-height">
-            <div class="col-md-8 col-12">
+            <div class="col-md-6 col-12">
                 <div class="card">
 
                     <div class="card-content">
@@ -66,7 +66,7 @@
             
 
 
-            <div class="col-md-4 col-12">
+            <div class="col-md-6 col-12">
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
@@ -79,9 +79,18 @@
                                             <h6>Tahun : {{ $dataGempa->tanggal }}</h6>
 
                                             @foreach ($calculasi_tipologi as $dataa)
-                                                <br>{{ $dataa->data_titik->alamat }} <br>
-                                                <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a>
-                                            @endforeach 
+                                                <br>{{ $dataa->data_titik->alamat }} <br> kategori rawan : {{ $dataa->kategori }} |  tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} | 
+                                                
+                                                {{-- jika array tidak ada data sama sekali --}}
+                                                    @if (empty($properties)) 
+                                                    <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
+                                                @elseif(!empty($properties))
+                                                    
+                                                @endif
+
+                                                <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a> <br>
+
+                                                @endforeach 
                                     
                                         </div>
                                     </div>
@@ -144,6 +153,49 @@
     </div>
 </div>
 @endforeach
+
+
+
+  {{-- informasi penting --}}
+  @foreach ($calculasi_tipologi as $item2)
+  <div class="modal fade bd-example-modal-lg" id="informasi_penting{{ $item2->id_titik  }}" tabindex="-1" role="dialog"
+    aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
+        role="document">
+        <div class="modal-content">
+            <div class="modal-header justify-content-center">
+                <h6  id="myLargeModalLabel"> 
+                  Informasi Penting
+                </h6>
+
+            </div>
+
+            <div class="modal-body">
+                
+                    <center>
+                      <h6> Hasil kalkulasi dari data gempa yang terpilih menginformasi bahwasanya
+                           data titik dengan<br> alamat {{ $item2->data_titik->alamat }} <br> 
+                           diperlukan nya justifikasi dilapangan secara lanjut untuk mendukung hipotesis ini  </h6>  
+                    </center>
+                   
+            </div>
+
+                
+                <div class="modal-footer">
+            
+                    <button type="button" class="btn btn-light-secondary"
+                            data-bs-dismiss="modal">
+                            <i class="bx bx-x d-block d-sm-none"></i>
+                            <span class="d-none d-sm-block">Kembali</span>
+                        </button>
+                    
+                </div>
+        
+
+          </div>
+      </div>
+  </div>
+  @endforeach
 
 
        

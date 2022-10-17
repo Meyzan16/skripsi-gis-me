@@ -14,7 +14,7 @@ class data_titik extends Model
     use HasFactory;
 
     protected $fillable = [
-        'kecamatan','id_geologi_fisik' , 'id_kemiringan_lereng' , 'ketinggian', 'jarak', 'derajat_kemiringan', 'latitude' , 'longitude' , 'alamat'
+        'kecamatan','id_geologi_fisik' , 'bebatuan', 'id_kemiringan_lereng' , 'ketinggian', 'jarak', 'derajat_kemiringan', 'latitude' , 'longitude' , 'alamat'
     ];
 
 

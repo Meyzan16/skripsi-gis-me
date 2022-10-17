@@ -30,7 +30,7 @@ class DataUjiGempaLamaController extends Controller
                 $dataGempa_option = data_gempa::all();
                 $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
 
-                //sebelum ada nilai di tabel kalkulasi_tipologi
+                //ambil jumlah data gempa yang sudah dikalkulasi 
                 $cek_gempa = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
 
         
@@ -74,7 +74,6 @@ class DataUjiGempaLamaController extends Controller
 
                                 //menentukan nilai kemampuan PGA
                                 $cek_pga = round($z,2);
-
                                 if($cek_pga < 0.05){
                                     $nilai_kemampuan_pga = 1;
                                     $ket_pga = '3a';
@@ -93,26 +92,29 @@ class DataUjiGempaLamaController extends Controller
                                 }
                                 //akhir menentukan nilai kemampuan pga
                     
+
                                 //perkondisian untuk nilai kemampuan tabel nilai_struktur_geologis
-                                $a = '';
+                                $nilai_kemampuan_struktur_geologi = '';
                                 $ket_struktur_geologi = '';
                                 if($konversi_meter > 1000){
-                                    $a = 1 ;
+                                    $nilai_kemampuan_struktur_geologi = 1 ;
                                     $ket_struktur_geologi = '4a';
                                 }elseif (( $konversi_meter >= 100 ) || ($konversi_meter <= 1000)) {
-                                    $a = 2;
+                                    $nilai_kemampuan_struktur_geologi = 2;
                                     $ket_struktur_geologi = '4b';
                                 }
                                 elseif($konversi_meter < 100){
-                                    $a = 4 ;
+                                    $nilai_kemampuan_struktur_geologi = 4 ;
                                     $ket_struktur_geologi = '4c';
-                                }       
+                                }        
                             
                             
-                                    //jika tabel cek_gempa sudah ada isi nya maka jalankan script berikut
+
+                                    
+                                    //jika gempa sudah dikalkulasi jalankan jalankan script berikut
                                     if(count($cek_gempa) > 0  ) 
                                     {  
-                                        //cek jika ada data baru yang ditambahkan
+                                        //cek  ada titik yang belum dikalkulasi atau sudah ?  jika belum kalkulasi dulu 
                                         if(count($cek_gempa) != count($dataTitik))
                                         {
                                             $data = data_titik::orderBy('id', 'desc')->limit(1)->first();
@@ -170,27 +172,7 @@ class DataUjiGempaLamaController extends Controller
                                                     $nilai_kemampuan_pgaa = 4;
                                                     $ket_pgaa = '3d';
                                                 }
-                                            //akhir menentukan nilai kemampuan pga
-
-                                            //akhir donovan
-
-                                             
-                                    
-                                                //perkondisian untuk nilai kemampuan tabel nilai_struktur_geologis
-                                                $nilai_kemampuan_struktur_geologi = '';
-                                                $ket_struktur_geologii = '';
-                                                if($konversi_meter_1 > 1000){
-                                                    $nilai_kemampuan_struktur_geologi = 1 ;
-                                                    $ket_struktur_geologii = '4a';
-                                                }elseif (( $konversi_meter_1 >= 100 ) || ($konversi_meter_1 <= 1000)) {
-                                                    $nilai_kemampuan_struktur_geologi = 2;
-                                                    $ket_struktur_geologii = '4b';
-                                                }
-                                                elseif($konversi_meter_1 < 100){
-                                                    $nilai_kemampuan_struktur_geologi = 4 ;
-                                                    $ket_struktur_geologii = '4c';
-                                                }     
-                                                
+                                                //akhir menentukan nilai kemampuan pga
                                             
                                                     $ket_geologi_fisikk = '';
                                                     if($data->id_geologi_fisik == 1)
@@ -216,11 +198,25 @@ class DataUjiGempaLamaController extends Controller
                                                         $ket_lerengg = '2d';
                                                     }
 
+                                                    $nilai_kemampuan_struktur_geologii = '';
+                                                    $ket_struktur_geologii = '';
+                                                    if($konversi_meter_1 > 1000){
+                                                        $nilai_kemampuan_struktur_geologii = 1 ;
+                                                        $ket_struktur_geologii = '4a';
+                                                    }elseif (( $konversi_meter_1 >= 100 ) || ($konversi_meter_1 <= 1000)) {
+                                                        $nilai_kemampuan_struktur_geologii = 2;
+                                                        $ket_struktur_geologii = '4b';
+                                                    }
+                                                    elseif($konversi_meter_1 < 100){
+                                                        $nilai_kemampuan_struktur_geologii = 4 ;
+                                                        $ket_struktur_geologii = '4c';
+                                                    }  
+
 
                                                     $hasil_kali_bobot_geologi_fisikk = $data->id_geologi_fisik * 3;
                                                     $hasil_kali_bobot_lerengg = $data->id_kemiringan_lereng * 3;
                                                     $hasil_kali_pgaa = $nilai_kemampuan_pga* 5;
-                                                    $hasil_kali_bobot_struktur_geologii = $nilai_kemampuan_struktur_geologi * 4;
+                                                    $hasil_kali_bobot_struktur_geologii = $nilai_kemampuan_struktur_geologii * 4;
                                                     
                                                     $skor_akhirr = $hasil_kali_bobot_geologi_fisikk + $hasil_kali_bobot_lerengg + $hasil_kali_pgaa + $hasil_kali_bobot_struktur_geologii ;
                                                     
@@ -251,7 +247,7 @@ class DataUjiGempaLamaController extends Controller
                                                         'hasil_kali_bobot_pga' => $hasil_kali_pgaa ,
 
                                                         'hasil_jarak_struktur_geologi' =>$hasil_1,
-                                                        'nilai_kemampuan_struktur_geologi' => $nilai_kemampuan_struktur_geologi ,
+                                                        'nilai_kemampuan_struktur_geologi' => $nilai_kemampuan_struktur_geologii ,
                                                         'ket_struktur_geologi' => $ket_struktur_geologii,
                                                         'hasil_kali_bobot_struktur_geologi'  => $hasil_kali_bobot_struktur_geologii,   
                                                         'skor_akhir' => $skor_akhirr,
@@ -278,11 +274,43 @@ class DataUjiGempaLamaController extends Controller
                                                             $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                                                             return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
 
-                                        } else 
-                                        {
-                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                            return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));                                                                            
-                                        }                               
+                                        }  
+                                            //jika semua data titik sudah dikalkulasi makan jalankan script berikut
+                                            else 
+                                            {
+                                                        $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa )->get();  
+                                                        $properties = [];
+
+                                                        $tipologiKawasan = tipologi_kawasan::all();
+                                                        for( $i=0; $i<count($cek_calculasi_tipologi); $i++ ) 
+                                                        {      
+                                                            foreach ($tipologiKawasan as $item ) 
+                                                            {
+                                                                        if(
+                                                                            $cek_calculasi_tipologi[$i]->ket_geologi_fisik == $item['geologi_batuan'] &&
+                                                                            $cek_calculasi_tipologi[$i]->ket_lereng == $item['lereng'] &&
+                                                                            $cek_calculasi_tipologi[$i]->ket_pga == $item['kegempaan'] &&
+                                                                            $cek_calculasi_tipologi[$i]->ket_struktur_geologi == $item['struktur_geologi']  && 
+                                                                            $cek_calculasi_tipologi[$i]->skor_akhir == $item['skor']  
+                                                                            )
+                                                                        {
+                                                                            $properties[] = array
+                                                                            (
+                                                                                'id_titik' => $cek_calculasi_tipologi[$i]->id_titik,
+                                                                                'id_cal' => $item->id,
+                                                                                'cek' => "validdd", 
+                                                                            );
+
+                                                                        }
+                                                                        
+                                                                    }
+                                                                    
+                                                                }
+                                                    
+                                                        $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                                        return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan' , 'properties'));  
+
+                                            }                               
                                                                                  
                                     } 
                                     //jika  gempa yang terpilih belum di kalkulasi
@@ -315,7 +343,7 @@ class DataUjiGempaLamaController extends Controller
                                                     $hasil_kali_bobot_geologi_fisik = $dataTitik[$i]->id_geologi_fisik * 3;
                                                     $hasil_kali_bobot_lereng = $dataTitik[$i]->id_kemiringan_lereng * 3;
                                                     $hasil_kali_pga = $nilai_kemampuan_pga * 5;
-                                                    $hasil_kali_bobot_struktur_geologi = $a * 4;
+                                                    $hasil_kali_bobot_struktur_geologi = $nilai_kemampuan_struktur_geologi * 4;
                                                     
                                                     $skor_akhir = $hasil_kali_bobot_geologi_fisik + $hasil_kali_bobot_lereng + 
                                                                   $hasil_kali_pga + $hasil_kali_bobot_struktur_geologi ;
@@ -343,7 +371,7 @@ class DataUjiGempaLamaController extends Controller
                                                         'ket_pga' => $ket_pga,
                                                         'hasil_kali_bobot_pga' => $hasil_kali_pga ,
                                                         'hasil_jarak_struktur_geologi' =>$hasil,
-                                                        'nilai_kemampuan_struktur_geologi' => $a ,
+                                                        'nilai_kemampuan_struktur_geologi' => $nilai_kemampuan_struktur_geologi ,
                                                         'ket_struktur_geologi' => $ket_struktur_geologi,
                                                         'hasil_kali_bobot_struktur_geologi'  => $hasil_kali_bobot_struktur_geologi,   
                                                         'skor_akhir' => $skor_akhir,
@@ -354,22 +382,23 @@ class DataUjiGempaLamaController extends Controller
 
                                             //setelah semua nilai didapatkan maka proses penentuan tipologi
                                             $cek_calculasi_tipologi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
+                                            $tipologiKawasan = tipologi_kawasan::all();
+                                            $properties = [];
                                             for($m =0; $m<count($cek_calculasi_tipologi); $m++)
                                                 {      
-                                                    $tipologiKawasan = tipologi_kawasan::all();
                                                     foreach ($tipologiKawasan as $value) 
                                                     {
-                                                        if(($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
-                                                            ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
-                                                            ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
-                                                            ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
-                                                        {
-                                                            calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
-                                                                'id_tipologi' => $value->id
-                                                            ]);   
-                                                        } 
+                                                        // if(($value->geologi_batuan == $cek_calculasi_tipologi[$m]->ket_geologi_fisik) && 
+                                                        //     ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
+                                                        //     ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
+                                                        //     ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
+                                                        // {
+                                                        //     calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
+                                                        //         'id_tipologi' => $value->id
+                                                        //     ]);   
+                                                        // } 
                                                         
-                                                        else if(
+                                                        if(
                                                             ($value->lereng == $cek_calculasi_tipologi[$m]->ket_lereng) &&
                                                             ($value->kegempaan == $cek_calculasi_tipologi[$m]->ket_pga) && 
                                                             ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
@@ -410,12 +439,32 @@ class DataUjiGempaLamaController extends Controller
                                                         
                                                     }
                                                 }
+
+                                                for( $i=0; $i<count($cek_calculasi_tipologi); $i++ ) 
+                                                {      
+                                                    foreach ($tipologiKawasan as $item ) 
+                                                    {
+                                                                if(
+                                                                    $cek_calculasi_tipologi[$i]->ket_geologi_fisik == $item['geologi_batuan'] &&
+                                                                    $cek_calculasi_tipologi[$i]->ket_lereng == $item['lereng'] &&
+                                                                    $cek_calculasi_tipologi[$i]->ket_pga == $item['kegempaan'] &&
+                                                                    $cek_calculasi_tipologi[$i]->ket_struktur_geologi == $item['struktur_geologi']  && 
+                                                                    $cek_calculasi_tipologi[$i]->skor_akhir == $item['skor']  
+                                                                    )
+                                                                {
+                                                                    $properties[] = array
+                                                                    (
+                                                                        'id_titik' => $cek_calculasi_tipologi[$i]->id_titik,
+                                                                        'id_cal' => $item->id,
+                                                                        'cek' => "validdd", 
+                                                                    );
+                                                                }
+                                                        }
+                                                            
+                                                }
                                     
-                                            
-                                            $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                            return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
-               
-        
+                                                $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                                return view('admin.main.kalkulasi_metode.proses_metode', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan', 'properties'));         
     }
    
 }

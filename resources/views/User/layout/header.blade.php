@@ -44,15 +44,29 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero">
 
-  @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi')
+  @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.hipotesis'  || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi')
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/template-user/assets/img/breadcrumbs-bg.jpg');">
-      <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
+      <div class=" info d-flex align-items-center container position-relative d-flex flex-column align-items-center" data-aos="fade">
   
+        
+        @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi') --}}
         <h2>Pengujian Data</h2>
         <ol>
           <li><a href="{{ route('homepage'); }}">Home</a></li>
           <li>Data Gempa Lama</li>
         </ol>
+        @elseif(Route::current()->getName() == 'user.data-uji-gempa-lama.hipotesis')
+        <h2>Hipotesis Titik</h2>
+        <ol>
+          <li><a href="{{ route('user.data-uji-gempa-lama') }}">Data Gempa Lama</a></li>
+          <li>Hipotesis Titik</li>
+        </ol>
+        @endif
+
+        @if(Route::current()->getName() == 'user.data-uji-gempa-lama')
+        <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-gempa-lama.hipotesis') }}" class="btn-get-started">Hipotesis Titik</a>
+        @endif
+
   
       </div>
     </div><!-- End Breadcrumbs -->
@@ -77,7 +91,11 @@
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
           <h2 data-aos="fade-down"> Selamat Datang  <br><span> e-kerawanan </span></h2>
-          <p data-aos="fade-up">website ini merupakan penelitian mahasiswa teknik informatika universitas bengkulu yang mana sistem ini menghasilkan referensi tingkat kerawanan disuatu titik berdasakan parameter-parameter dari bidang sipil dan object nya adalah gempa </p>
+          <p data-aos="fade-up">website ini merupakan penelitian mahasiswa teknik informatika 
+            universitas bengkulu yang mana sistem ini memberikan informasi berupa
+            tingkat resiko kawasan rawan gempa dan saran bangunan yang tepat untuk titik tersebut  
+            berdasarkan parameter-parameter pendukung dengan pedoman
+            peraturan menteri pekerjaan umum no 21 tahun 2007</p>
           <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-gempa-lama') }}" class="btn-get-started">Uji Data Lama</a>
           
           <a data-aos="fade-up" data-aos-delay="200" href="{{ route('user.data-uji-realtime') }}" class="btn-get-started">Uji Data Realtime</a>
@@ -109,4 +127,6 @@
 
   
 </section><!-- End Hero Section -->
+
+
 

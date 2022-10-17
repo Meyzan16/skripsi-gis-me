@@ -71,12 +71,13 @@ Route::group([
     });
 
 //user    
-Route::group(['prefix' => 'data-uji-gempa-lama'], function(){
-        Route::get('/', [UserdataujilamaController::Class, 'index'] )->name('user.data-uji-gempa-lama');
-        route::POST('/proses-kalkulasi', [UserdataujilamaController::class, 'proses_kalkulasi'])->name('user.data-uji-gempa-lama.proses-kalkulasi');
+Route::group(['prefix' => 'data-uji'], function(){
+        Route::get('/gempa-terdahulu', [UserdataujilamaController::Class, 'index'] )->name('user.data-uji-gempa-lama');
         Route::get('/realtime', [UjiDataRealtimeController::Class, 'index'] )->name('user.data-uji-realtime');
-});
-    
+        route::post('/proses-kalkulasi', [UserdataujilamaController::class, 'proses_kalkulasi'])->name('user.data-uji-gempa-lama.proses-kalkulasi');
+        route::get('/hipotesis-titik', [UserdataujilamaController::class, 'hipotesis_titik'])->name('user.data-uji-gempa-lama.hipotesis');
+        // route::POST('/uji-hipotesis', [UserdataujilamaController::class, 'ujihipotesis'])->name('user.data-uji-gempa-lama.uji-hipotesis');
+}); 
     
     Route::get('/connexion', [LoginController::Class, 'index'] )->name('connexion');
     Route::post('/connexion', [LoginController::Class, 'authenticate'] )->name('proses_connexion');

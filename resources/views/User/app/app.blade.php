@@ -14,6 +14,8 @@
   <link href="/template-user/assets/img/favicon.png" rel="icon">
   <link href="/template-user/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -147,23 +147,75 @@ var marker;
     var longitude = {{ $data->longitude }};
 
 function initMap(){
-        var propertiPeta = {
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            center: {lat:latitude, lng:longitude},
-        }
-        //tampilkan maps
-        var map = new google.maps.Map(document.getElementById('map'), propertiPeta);
+                    var propertiPeta = {
+                        zoom: 16,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        center: {lat:latitude, lng:longitude},
+                    }
+                    //tampilkan maps
+                    var map = new google.maps.Map(document.getElementById('map'), propertiPeta);
 
 
-        marker = new google.maps.Marker({
-                                position: {lat:latitude, lng:longitude},
-                                map: map,
-                                zoom: 19,
-                                icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",                      
-        });
+                    marker = new google.maps.Marker({
+                                            position: {lat:latitude, lng:longitude},
+                                            map: map,
+                                            zoom: 19,
+                                            icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",                      
+                    });
+
+                    jsonPolygon(map);
+
+    
         
 }
+
+
+///fungsi untuk membuat polygon
+function jsonPolygon(map){
+                    var infowindow = new google.maps.InfoWindow();
+
+                    let data = {!! json_encode($string)  !!};
+                    // console.log(data);
+                    for (let s = 0; s < data['features'].length; s++) {
+                    var pathCoordinates = [];            
+
+                    for (let i = 0; i < data['features'][s]['geometry']['coordinates'].length; i++) {
+                        for (let y = 0; y < data['features'][s]['geometry']['coordinates'][i].length; y++) {
+                            for (let z = 0; z < data['features'][s]['geometry']['coordinates'][i][y].length; z++) {
+                                pathCoordinates.push({
+                                    lat: data['features'][s]['geometry']['coordinates'][i][y][z][1],
+                                    lng: data['features'][s]['geometry']['coordinates'][i][y][z][0]
+                                });
+                            }
+                        }
+                    }
+                                
+                    var polygon = new google.maps.Polygon({
+                        paths: pathCoordinates,
+                        strokeColor: data['features'][s]['properties']['warna'],
+                        strokeOpacity: 1.0,
+                        strokeWeight: 3.0,
+                        fillColor: data['features'][s]['properties']['warna'],
+                        fillOpacity: 0.3,
+                        map: map,
+                        name: data['features'][s]['properties']['batuan'],
+                        value: data['features'][s]['properties']['nilai'],
+                    });
+                    polygon.setMap(map);
+                 
+                    google.maps.event.addListener(polygon, 'click', function ( event ) {
+                            var contentString = "jenis batuan : " + this.name + "<br> nilai kemampuan : "+this.value+"" ;
+
+                            infowindow.setContent(contentString);
+                            infowindow.setPosition(event.latLng);
+                            infowindow.open(map);         
+                    });
+                }
+
+            
+
+}
+
 
 
 </script>

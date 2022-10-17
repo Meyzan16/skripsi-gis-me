@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('data_titiks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_geologi_fisik')->nullable();
+            $table->string('bebatuan',200)->nullable();
             $table->foreignId('id_kemiringan_lereng')->nullable();
             $table->integer('ketinggian')->nullable();
             $table->double('jarak')->nullable();

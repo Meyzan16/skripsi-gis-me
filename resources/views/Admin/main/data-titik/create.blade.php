@@ -33,11 +33,13 @@
                                             
 
                                                 <div class="col-md-4">
-                                                    <label>Kecamatan</label>
+                                                    <label>Bebatuan</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" class="form-control" name="batuan" id="batuan" value="" readonly>
                                                 </div>
+
+                                                <input type="hidden" class="form-control" name="id_kemampuan_bebatuan" id="id_kemampuan_bebatuan" value="" readonly>
 
                                                 <div class="col-md-4">
                                                     <label>Ketinggian</label>
@@ -321,7 +323,8 @@ function initMap() {
                                     //     console.log(polygon.name);
                                     // }
                                     
-                                    document.getElementById('batuan').value = polygon.value;
+                                    document.getElementById('batuan').value = polygon.name;
+                                    document.getElementById('id_kemampuan_bebatuan').value = polygon.value;
 
                                     document.getElementById('location').value = results[0].formatted_address;
                                     document.getElementById('searchInput').value = results[0].formatted_address;
