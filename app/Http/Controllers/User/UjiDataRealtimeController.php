@@ -16,6 +16,7 @@ class UjiDataRealtimeController extends Controller
 {
     public function index (Request $request)
     {
+        
          $client = new Client();
          $response = $client->request('GET', 'https://data.bmkg.go.id/DataMKG/TEWS/gempadirasakan.json');
          $status = $response->getStatusCode();
@@ -46,7 +47,14 @@ class UjiDataRealtimeController extends Controller
             );
         };
 
+        return view('User.main.testApi', compact('properties'));
         // return $properties;
+
+
+
+
+
+
 
         //hitung jarak terdekat gempa dengan bengkulu
         $R = 6371; 
@@ -83,9 +91,6 @@ class UjiDataRealtimeController extends Controller
                         );
                     }             
         }
-
-        // return $aaaaaaaa;
-        
         // return $dataArray ;
 
 

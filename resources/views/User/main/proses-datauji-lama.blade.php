@@ -80,27 +80,23 @@
                                     $a = "text-danger";
                               @endphp
                                       <h4>{{ $dataa->data_titik->alamat }}</h4>
-                                      <time class="{{ $a }}">kategori rawan : {{ $dataa->kategori }} |  tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} |
+                                      <time class="{{ $a }}">kategori rawan : {{ $dataa->kategori }} | 
+                                        
+                                               @if($dataa->id_tipologi!= null)
+                                                    tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} |
+                                                @else
+                                                        Tipologi Kawasang : Tidak ada |
+                                                @endif
+                                                
 
                                           <a href="" class="{{ $a; }}" data-bs-toggle="modal" data-bs-target="#saran_bangunan{{ $dataa->id_titik }}"> tipe saran bangunan, klik disini </a> |
                                 
-                                            {{-- jika array tidak ada data sama sekali --}}
-                                            @if (empty($properties)) 
-                                                <a href="" class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
-                                            
-                                            {{-- jika ada data tapi id titik kosong  --}}
-                                            @elseif(!empty($properties))
 
-                                              {{-- @foreach ($properties as $item) --}}
-                                                      
-                                                  {{-- @if ($item['id_titik'] == "") --}}
-                                                    {{-- <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> |  --}}
+                                           @if($dataa->label_tipologi == 'N')    
                                                   
-                                                  {{-- @endif     --}}
-                                              {{-- @endforeach --}}
-                                                  
-                                                
+                                                <a href="" class="badge bg-danger" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
                                             @endif
+
                                           <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a> </time>
                           
                             </div>

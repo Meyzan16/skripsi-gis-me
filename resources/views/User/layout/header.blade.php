@@ -79,7 +79,10 @@
       <ol>
         <li><a href="{{ route('homepage'); }}">Home</a></li>
         <li>Data Realtime</li>
+      
+     
       </ol>
+        <p class=" text-center mt-2 text-warning" data-aos="fade-up"> Sumber data diambil dari BMKG (Badan Meteorologi, Klimatologi, dan Geofisika) </p>
 
     </div>
   </div><!-- End Breadcrumbs -->

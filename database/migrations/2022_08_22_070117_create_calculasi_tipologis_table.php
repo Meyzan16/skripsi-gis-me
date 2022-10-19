@@ -39,6 +39,7 @@ return new class extends Migration
             $table->integer('skor_akhir')->nullable();
             $table->enum('kategori', ['rendah','sedang','tinggi'])->nullable();
             $table->foreignId('id_tipologi')->nullable();
+            $table->enum('label_tipologi', ['Y','N'])->nullable();
             $table->timestamps();
         });
     }

@@ -79,14 +79,20 @@
                                             <h6>Tahun : {{ $dataGempa->tanggal }}</h6>
 
                                             @foreach ($calculasi_tipologi as $dataa)
-                                                <br>{{ $dataa->data_titik->alamat }} <br> kategori rawan : {{ $dataa->kategori }} |  tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} | 
+                                                <br>{{ $dataa->data_titik->alamat }} <br> kategori rawan : {{ $dataa->kategori }} |  id_tipologi : {{ $dataa->id_tipologi }} | 
                                                 
-                                                {{-- jika array tidak ada data sama sekali --}}
-                                                    @if (empty($properties)) 
-                                                    <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
-                                                @elseif(!empty($properties))
-                                                    
+                                                @if($dataa->id_tipologi!= null)
+                                                   
+                                                    tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} | 
+                                                @else
+                                                        Tipologi Kawasang : Tidak ada |
                                                 @endif
+
+                                                
+                                                @if($dataa->label_tipologi == 'N')    
+                                                    <a href="" style="color:goldenrod" data-bs-toggle="modal" data-bs-target="#informasi_penting{{ $dataa->id_titik }}"> informasi penting, klik disini</a> | 
+                                                @endif
+
 
                                                 <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa->id_titik }}">  <i class="fa fa-edit"> </i> Detail </a> <br>
 
@@ -124,16 +130,20 @@
                 <h6>Kecamatan : {{ $item1->data_titik->kecamatan }}</h6>
                 <h6>Geologi Fisik : {{ $item1->data_titik->geologi_fisik->kelas_informasi }}</h6>
                 <h6>Kemiringan Lereng : {{ $item1->data_titik->kemiringan_lereng->kelas_informasi }}</h6>
+
+                
+
                 <h6>Hasil PGA : {{ round($item1->hasil_pga,2) }} g</h6>
                 <h6>Jarak Dalam KM dari pusat Gempa : {{ $item1->hasil_jarak_struktur_geologi }}</h6>
                 <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
 
-                @if(empty($item1->id_tipologi ))
-                    <h6>Tipologi Kawasan : </h6>  
-                @else
-                    
+                @if($item1->id_tipologi!= null)
                     <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi }}</h6>       
+                @else
+                    <h6>Tipologi Kawasang : Tidak ada </h6>
                 @endif
+
+
                
               </div>
 

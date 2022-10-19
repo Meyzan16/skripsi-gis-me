@@ -82,10 +82,10 @@ class TestDonovanController extends Controller
 
       //  $alfa = (1080 * EXP(0.5 * 8)) / pow($R+25,1.32);
 
-        $Ms = 0.5 * 8;
-       $alfa = (1080 * pow(2.718,$Ms)) / pow(233+25,1.32); //test punya bapakk lindung
+      //   $Ms = 0.5 * 8;
+      //   $alfa = (1080 * pow(2.718,$Ms)) / pow(233+25,1.32); //test punya bapakk lindung
 
-       return round($alfa,2);
+      //  return round($alfa,2);
 
        //karena nilai alfa pada observasi memiliki satuan g(m/s2), maka nilai alfa yang dihasilkan
        //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980
@@ -96,6 +96,19 @@ class TestDonovanController extends Controller
    //     return round($z,2);
 
     //    return round($Magnitude,3);
+
+                                
+                                // $z = round($donovan,2) * 0.0010197162;
+                                // $hasil_pga = round($z,2);
+
+                                  $hiposenter =   pow(33,2) + pow(231.00,2) ;
+                                  $a = sqrt($hiposenter);
+                            
+                                  $Ms = 0.5 * 8;
+
+                                  $alfa = 1080 * EXP($Ms) / pow($a+25,1.32);
+
+                                   return round($alfa,2);
 
     
 

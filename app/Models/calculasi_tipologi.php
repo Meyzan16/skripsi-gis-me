@@ -17,7 +17,7 @@ class calculasi_tipologi extends Model
     
     protected $fillable = [
         'id_gempa','id_titik' , 'hasil_kali_bobot_geologi_fisik', 'ket_geologi_fisik', 'hasil_kali_bobot_lereng', 'ket_lereng','hasil_detik','hasil_pga', 'nilai_kemampuan_pga', 'ket_pga', 'hasil_kali_bobot_pga', 'hasil_jarak_struktur_geologi',  'nilai_kemampuan_struktur_geologi', 'ket_struktur_geologi', 
-        'hasil_kali_bobot_struktur_geologi' , 'skor_akhir' , 'kategori', 'id_tipologi'
+        'hasil_kali_bobot_struktur_geologi' , 'skor_akhir' , 'kategori', 'id_tipologi' , 'label_tipologi'
     ];
 
     public function data_gempa()

@@ -4,7 +4,8 @@
   <!-- ======= Blog Details Section ======= -->
   <section id="blog" class="blog ">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
-      @foreach($dataArray as $item)
+    
+      {{-- @foreach($dataArray as $item)
       <div class="row mt-3">
           <div class="col-lg-4">
             <div class="card">
@@ -71,7 +72,7 @@
             </div><!-- End Blog Sidebar -->
           </div>
       </div>
-      @endforeach
+      @endforeach --}}
     </div>
   </section><!-- End Blog Details Section -->
 

@@ -1370,6 +1370,17 @@ class TipologikawasanSeeder extends Seeder
         ]);
         
 
+        data_gempa::create([
+            'tanggal' => '2022-08-23',
+            'latitude' => -5.22000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 102.95000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 6.5,
+            'kedalaman' => 12,
+            'wilayah' => "Pusat gempa berada di laut 64 km BaratDaya KAUR-BENGKULU",
+            'dirasakan' => "III Martapura, III Panimbang , III Kec. Ngaras, III Bandar Lampung, III Muara Dua, III Semaka, III Pematang Sawah, II-III Bayah, II-III Malingping, II - III Ujung Kulon, II - III Kec. Pesisir Tengah, II Kerinci, II Padang, V Kaur, IV-V Liwa, IV Kepahiang, IV Rejang Lebong, IV Lebong, IV Enggano, III-IV Kota Bengkulu, III-IV Muko-muko, III-IV Argamakmur, III-IV Manna, III-IV Putri Hijau, III-IV Musi Rawas, III-IV Oku Selatan, III-IV Lubuk Linggau, III-IV Lahat, III-IV Pagar Alam",
+        ]);
         
         data_gempa::create([
             'tanggal' => '2022-10-01',
@@ -1383,17 +1394,6 @@ class TipologikawasanSeeder extends Seeder
             'dirasakan' => "II - III kota bengkulu, II Kepahiang, III Bengkulu Utara",
         ]);
 
-        data_gempa::create([
-            'tanggal' => '2022-08-23',
-            'latitude' => -5.22000000,
-            'label_koor_lintang' => 'LS',
-            'longitude' => 102.95000000,
-            'label_koor_bujur' => 'BT',
-            'magnitude' => 6.5,
-            'kedalaman' => 12,
-            'wilayah' => "Pusat gempa berada di laut 64 km BaratDaya KAUR-BENGKULU",
-            'dirasakan' => "III Martapura, III Panimbang , III Kec. Ngaras, III Bandar Lampung, III Muara Dua, III Semaka, III Pematang Sawah, II-III Bayah, II-III Malingping, II - III Ujung Kulon, II - III Kec. Pesisir Tengah, II Kerinci, II Padang, V Kaur, IV-V Liwa, IV Kepahiang, IV Rejang Lebong, IV Lebong, IV Enggano, III-IV Kota Bengkulu, III-IV Muko-muko, III-IV Argamakmur, III-IV Manna, III-IV Putri Hijau, III-IV Musi Rawas, III-IV Oku Selatan, III-IV Lubuk Linggau, III-IV Lahat, III-IV Pagar Alam",
-        ]);
         
 
 
