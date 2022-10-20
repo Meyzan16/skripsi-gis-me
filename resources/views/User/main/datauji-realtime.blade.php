@@ -5,7 +5,7 @@
   <section id="blog" class="blog ">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
     
-      {{-- @foreach($dataArray as $item)
+      @foreach($dataArray as $item)
       <div class="row mt-3">
           <div class="col-lg-4">
             <div class="card">
@@ -62,7 +62,7 @@
                                       @endphp
 
                                       <h4>{{ $dataa['alamat'] }}</h4>
-                                      <time class={{ $a }}> kategori rawan : {{ $dataa['kategori'] }}  | Jarak dari pusat gempa : {{ $dataa['jarak'] }} KM | Percepatan Tanah : {{ round($dataa['hasil_pga'], 2) }} cm/s² |
+                                      <time class={{ $a }}> kategori rawan : {{ $dataa['kategori'] }}  | Jarak dari pusat gempa : {{ $dataa['jarak'] }} KM | Percepatan Tanah : {{ round($dataa['hasil_pga_detik'], 2) }} cm/s² |
                                       <a href="" class="badge bg-primary"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $dataa['id_titik'] }}">  <i class="fa fa-edit"> </i> Detail Data </a> </time>
                             </div>
                           </div><!-- End recent post item-->
@@ -72,7 +72,7 @@
             </div><!-- End Blog Sidebar -->
           </div>
       </div>
-      @endforeach --}}
+      @endforeach
     </div>
   </section><!-- End Blog Details Section -->
 
@@ -92,12 +92,12 @@
               <div class="modal-body">
                 @php
                   $b = "";
-                  if($item1['kemiringan_lereng'] === 1)
+                  if($item1['nilai_kemampuan_lereng'] === 1)
                   {
                       $b = "Datar – landai ";
-                  }elseif($item1['kemiringan_lereng'] === 2){
+                  }elseif($item1['nilai_kemampuan_lereng'] === 2){
                       $b = "Miring – Agak Curam ";
-                  }elseif($item1['kemiringan_lereng'] === 3){
+                  }elseif($item1['nilai_kemampuan_lereng'] === 3){
                       $b = "Curam – sangat curam ";
                   } else{
                       $b = "Terjal";

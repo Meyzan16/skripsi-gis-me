@@ -47,12 +47,8 @@ class UjiDataRealtimeController extends Controller
             );
         };
 
-        return view('User.main.testApi', compact('properties'));
+        // return view('User.main.testApi', compact('properties'));
         // return $properties;
-
-
-
-
 
 
 
@@ -123,24 +119,20 @@ class UjiDataRealtimeController extends Controller
                                 $hasil = $d = round($d, 2); //jarak yang didapatkan
                                 $konversi_meter = $hasil * 1000;
 
-                                
-                                    //donovan
-                                    //formula donovan untuk menentuka pga atau FGA (alfa)
-                                    $xx = pow($mlat - $lat_gempa , 2); //latitude
-                                    $yy = pow($mlng - $lng_gempa , 2); //longitude
-                                    $episenterr = 111* sqrt($xx + $yy);
-                                    $hiposenterr = sqrt(pow($episenterr,2) + pow($kedalaman,2));
-                                    $Magnitudee = 1.78 * $magnitude - 5.17;
-                                    // //rumus donovan
-                                    $alfaa = 1080 * EXP(0.5 * $Magnitudee) / pow($hiposenterr+25,1.32);
-                                    // //akhir formula donovan  
-                                    // //karena nilai pga dalam bentuki satuan g(m/s2), maka nilai pga yang dihasilkan
-                                    // //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980
-                                    // //dikarenakan besaran umum gravitasi adalah 9.8 m/s2.                           
-                                    $hasil_detik = $alfaa;
-                                    $konversi_ke_g = $hasil_detik * 0.0010197162; //konversi ke gravitasi
+                                     //donovan
+                                    $phytgoras =   pow($kedalaman,2) + pow($hasil,2) ;
+                                    $hiposenter = sqrt($phytgoras);
+                                    $Ms = 0.5 * $magnitude;
+                                    //rumus donovan
+                                    $alfa = 1080 * EXP($Ms) / pow($hiposenter+25,1.32);
 
-                                    $hasil_konversi = round($konversi_ke_g,5);
+                                    $hasil_detik = round($alfa,2); //nilai dalam detik 
+                                        //karena nilai pga dalam bentuki satuan g(m/s2), maka nilai pga yang dihasilkan
+                                        //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980 atau di kali 0.0010197162 
+                                        //dikarenakan besaran umum gravitasi adalah 9.8 m/s2. 
+                                    $konversi_ke_g = round($alfa,2) * 0.0010197162;
+                                    //akhir nilai PGA
+                                    $hasil_konversi = round($konversi_ke_g,2);
 
                                     // $cek_pgaa = round($konversi_ke_g,2);
                                         if($hasil_konversi < 0.05){
@@ -226,8 +218,7 @@ class UjiDataRealtimeController extends Controller
                                             'id_titik' => $dataTitik[$x]->id,
                                             'alamat_titik' => $dataTitik[$x]->alamat,
                                             'bebatuan' => $dataTitik[$x]->bebatuan,
-                                            'kemiringan_lereng' => $dataTitik[$x]->id_kemiringan_lereng,
-                                            'hasil_pga' => $hasil_detik,
+                                            'hasil_pga_detik' => $hasil_detik,
                                             'konversi_ke_gravitasi' => $hasil_konversi,
                                             'nilai_kemampuan_pga' => $nilai_kemampuan_pga,
                                             'ket_pga' => $ket_pgaa,

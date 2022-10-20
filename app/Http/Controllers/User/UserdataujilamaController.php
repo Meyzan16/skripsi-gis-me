@@ -68,8 +68,6 @@ class UserdataujilamaController extends Controller
                             //dikarenakan besaran umum gravitasi adalah 9.8 m/s2. 
                           $z = round($alfa,2) * 0.0010197162;
                           $hasil_pga = round($z,2);
-
-
                         //akhir nilai PGA
 
                         //menentukan nilai kemampuan PGA
@@ -276,6 +274,7 @@ class UserdataujilamaController extends Controller
                                                         ->where('id_tipologi', '=' , NULL)
                                                         ->first();
                                                         
+                                                        //jika ada titk yang tidak ditemukan semua tipologi lagi makan jalankan kemiripan yang tersedia
                                                             if(!empty($cek_id_tipologi_null)){
                                                                 foreach ($tipologiKawasan as $value) 
                                                                 {
@@ -285,7 +284,7 @@ class UserdataujilamaController extends Controller
                                                                         ($value->struktur_geologi == $cek_id_tipologi_null->ket_struktur_geologi))
                                                                     {
                                                                         calculasi_tipologi::where('id', $cek_id_tipologi_null->id)->update([
-                                                                            'id_tipologi' => $value->id,
+                                                                             'id_tipologi' => $value->id,
                                                                              'label_tipologi' => 'N'
                                                                         ]); 
                     
@@ -432,58 +431,64 @@ class UserdataujilamaController extends Controller
                                     //cek jika masih ada id_tipologi yang null
                                     $cek_id_tipologi_null = calculasi_tipologi::select('*')
                                                             ->where([
-                                                                ['id_gempa', '=', 4],
+                                                                ['id_gempa', '=', $request->option_gempa],
                                                                 ['id_tipologi', '=', NULL]
                                                             ])
                                     ->get();
-                                    for($m =0; $m<count($cek_id_tipologi_null); $m++)
-                                        {      
-                                            foreach ($tipologiKawasan as $value) 
-                                            {
-                                                        if(
-                                                            ($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
-                                                            ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
-                                                            ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi))
-                                                        {
-                                                            calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                'id_tipologi' => $value->id,
-                                                                 'label_tipologi' => 'N'
-                                                            ]); 
-        
-                                                        } 
-                                                        else if(
-                                                            ($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) &&
-                                                            ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
-                                                            ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi)
-                                                        ){
-                                                            calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                'id_tipologi' => $value->id,
-                                                                  'label_tipologi' => 'N'
-                                                            ]); 
-        
-                                                        } 
-                                                        else if (($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) && 
+
+                                    if(!empty($cek_id_tipologi_null)){
+                                        for($m =0; $m<count($cek_id_tipologi_null); $m++)
+                                            {      
+                                                foreach ($tipologiKawasan as $value) 
+                                                {
+                                                            if(
                                                                 ($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
+                                                                ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
                                                                 ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi))
-                                                        {
-                                                            calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                'id_tipologi' => $value->id,
-                                                                  'label_tipologi' => 'N'
-                                                            ]);  
-                                                        } 
-        
-                                                        else if (($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) && 
-                                                        ($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
-                                                        ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) 
-                                                        )
-                                                        {
-                                                            calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                'id_tipologi' => $value->id,
-                                                                  'label_tipologi' => 'N'
-                                                            ]);  
-                                                        } 
+                                                            {
+                                                                calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
+                                                                    'id_tipologi' => $value->id,
+                                                                    'label_tipologi' => 'N'
+                                                                ]); 
+            
+                                                            } 
+                                                            else if(
+                                                                ($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) &&
+                                                                ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
+                                                                ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi)
+                                                            ){
+                                                                calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
+                                                                    'id_tipologi' => $value->id,
+                                                                    'label_tipologi' => 'N'
+                                                                ]); 
+            
+                                                            } 
+                                                            else if (($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) && 
+                                                                    ($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
+                                                                    ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi))
+                                                            {
+                                                                calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
+                                                                    'id_tipologi' => $value->id,
+                                                                    'label_tipologi' => 'N'
+                                                                ]);  
+                                                            } 
+            
+                                                            else if (($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) && 
+                                                            ($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
+                                                            ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) 
+                                                            )
+                                                            {
+                                                                calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
+                                                                    'id_tipologi' => $value->id,
+                                                                    'label_tipologi' => 'N'
+                                                                ]);  
+                                                            } 
+                                                }
                                             }
-                                        }
+                                    }
+
+
+
                                         $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                                         return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan', 'properties'));         
         

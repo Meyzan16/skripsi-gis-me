@@ -68,7 +68,7 @@
 
             <div class="col-md-6 col-12">
                 <div class="card">
-                    <div class="card-content">
+                    <div class="card-content" style="overflow: scroll; height:710px">
                         <div class="card-body">
                                 <div class="form-body">
                                     <div class="row">
