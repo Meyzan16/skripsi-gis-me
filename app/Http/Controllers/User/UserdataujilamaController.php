@@ -279,9 +279,11 @@ class UserdataujilamaController extends Controller
                                                                 foreach ($tipologiKawasan as $value) 
                                                                 {
                                                                     if(
-                                                                        ($value->lereng == $cek_id_tipologi_null->ket_lereng) &&
+                                                                        ($value->geologi_batuan == $cek_id_tipologi_null->ket_geologi_fisik) &&
                                                                         ($value->kegempaan == $cek_id_tipologi_null->ket_pga) && 
-                                                                        ($value->struktur_geologi == $cek_id_tipologi_null->ket_struktur_geologi))
+                                                                        ($value->struktur_geologi == $cek_id_tipologi_null->ket_struktur_geologi)
+
+                                                                       )
                                                                     {
                                                                         calculasi_tipologi::where('id', $cek_id_tipologi_null->id)->update([
                                                                              'id_tipologi' => $value->id,
@@ -290,9 +292,10 @@ class UserdataujilamaController extends Controller
                     
                                                                     } 
                                                                     else if(
-                                                                        ($value->geologi_batuan == $cek_id_tipologi_null->ket_geologi_fisik) &&
+                                                                        ($value->lereng == $cek_id_tipologi_null->ket_lereng) &&
                                                                         ($value->kegempaan == $cek_id_tipologi_null->ket_pga) && 
                                                                         ($value->struktur_geologi == $cek_id_tipologi_null->ket_struktur_geologi)
+                                                                       
                                                                     ){
                                                                         calculasi_tipologi::where('id', $cek_id_tipologi_null->id)->update([
                                                                             'id_tipologi' => $value->id,
@@ -442,9 +445,11 @@ class UserdataujilamaController extends Controller
                                                 foreach ($tipologiKawasan as $value) 
                                                 {
                                                             if(
-                                                                ($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
+                                                                ($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) &&
                                                                 ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
-                                                                ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi))
+                                                                ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi)
+
+                                                                )
                                                             {
                                                                 calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
                                                                     'id_tipologi' => $value->id,
@@ -452,10 +457,10 @@ class UserdataujilamaController extends Controller
                                                                 ]); 
             
                                                             } 
-                                                            else if(
-                                                                ($value->geologi_batuan == $cek_id_tipologi_null[$m]->ket_geologi_fisik) &&
-                                                                ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
-                                                                ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi)
+                                                            else if(($value->lereng == $cek_id_tipologi_null[$m]->ket_lereng) &&
+                                                            ($value->kegempaan == $cek_id_tipologi_null[$m]->ket_pga) && 
+                                                            ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi)
+                                                                
                                                             ){
                                                                 calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
                                                                     'id_tipologi' => $value->id,

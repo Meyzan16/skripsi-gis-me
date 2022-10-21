@@ -28,7 +28,8 @@
                             <h6>Bengkulu, BMKG</h6> 
                               <p>
                                   Gempa berkekuatan magnitudo {{ $item['magnitude'] }}
-                                  dengan kedalaman {{ $item['kedalaman'] }} KM yang terjadi di {{ $item['wilayah'] }}. 
+                                  dengan kedalaman {{ $item['kedalaman'] }} KM yang terjadi di {{ $item['wilayah'] }}. <br>
+                                  Area yang dirasakan : {{ $item['dirasakan'] }}
                               </p>
                           </div><!-- End post content -->
                   </article><!-- End blog post -->
@@ -39,7 +40,7 @@
           </div>
 
           <div class="col-lg-8 ">
-            <div class="sidebar " style="overflow: scroll; height:780px">
+            <div class="sidebar " style="overflow: scroll; height:800px">
                   <div class="sidebar-item search-form">
                     <h4 class="text-center sidebar-title">INFORMASI </h4>      
                     <p class="mt-2 text-center">

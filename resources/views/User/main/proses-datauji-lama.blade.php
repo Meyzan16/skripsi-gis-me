@@ -8,59 +8,67 @@
       <div class="row">
 
           <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
 
-            <article class="blog-details">
-    
-                    <form action="{{ route('user.data-uji-gempa-lama.proses-kalkulasi') }}" method="POST" >
-                        @csrf 
-                        <div class="row col-12">
+                            <article class="blog-details">
                     
-                            <h5 class="sidebar-title">Pilih Data Gempa</h5>
+                                    <form action="{{ route('user.data-uji-gempa-lama.proses-kalkulasi') }}" method="POST" >
+                                        @csrf 
+                                        <div class="row col-12">
+                                    
+                                            <h5 class="sidebar-title">Pilih Data Gempa</h5>
 
-                            <div class="col-10 ">
-                                <select name="option_gempa" id="option_gempa" class="form-control">
-                                    <option value="">-- Pilih data --</option>   
-                                    @foreach ($dataGempa_option as $item)
-                                        <option value="{{ $item->id }}">{{ $item->tanggal }}|{{ $item->magnitude }} Mg</option>   
-                                    @endforeach
-                                </select>
-                            </div>
+                                            <div class="col-10 ">
+                                                <select name="option_gempa" id="option_gempa" class="form-control">
+                                                    <option value="">-- Pilih data --</option>   
+                                                    @foreach ($dataGempa_option as $item)
+                                                        <option value="{{ $item->id }}"> {{ date("d F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
+                                                    @endforeach
+                                                </select>
+                                            </div>
 
-                            <div class="col-2 ">
-                                <button type="submit"  class="btn btn-primary me-1 mb-1">
-                                &nbsp;Cari
-                                </button>
-                            </div>
+                                            <div class="col-2 ">
+                                                <button type="submit"  class="btn btn-primary me-1 mb-1">
+                                                &nbsp;Cari
+                                                </button>
+                                            </div>
 
+                                        </div>
+                                    </form>
+                                    <div id="map" style="height:400px; width: 500;" class="content my-3"></div> 
+                                    
+                                    <h5>{{ $dataGempa->wilayah }}</h5>
+                                    {{-- <div class="meta-top">
+                                        <ul>
+                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">{{ $item['tanggal'] }}</time></a></li>
+                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">{{ $item['jam'] }}</time></a></li>
+                                        </ul>
+                                    </div><!-- End meta top --> --}}
+                                    <div class="content">
+                                        <p>
+                                            Gempa berkekuatan magnitudo {{ $item['magnitude'] }}
+                                            dengan kedalaman {{ $item['kedalaman'] }} KM yang terjadi di {{ $dataGempa->wilayah }}.
+                                            Area yang terasa {{ $dataGempa->dirasakan }}
+                                        </p>
+                                    </div><!-- End post content -->
+                            </article><!-- End blog post -->
                         </div>
-                    </form>
-                    <div id="map" style="height:400px; width: 500;" class="content my-3">
-                    </div> 
-                    
-
-                    <h5>{{ $dataGempa->wilayah }}</h5>
-
-                    
-
-                    <div class="content">
-
-                      <h6>wilayah yang dirasakan</h6>
-                        <p>
-                          {{ $dataGempa->dirasakan }}
-                        </p>
-                    </div><!-- End post content -->
-              </article><!-- End blog post -->
-          </div>
+                    </div>
+                </div>
+            </div>
 
 
           <div class="col-lg-8">
-            <div class="sidebar" style="overflow: scroll; height:710px">
+            <div class="sidebar" style="overflow: scroll; height:760px">
                   <div class="sidebar-item search-form">
                     @php
                       $tgl = $dataGempa->tanggal;
-                      $konversi = date("m F , Y", strtotime($tgl));
+                      $konversi = date("d F , Y", strtotime($tgl));
                     @endphp
                     <h4 class="sidebar-title">Gempa yang terpilih : {{ $konversi }}</h4>       
+                    <h6 class="sidebar-title mt-2">Magnitude : {{ $dataGempa->magnitude }} Mg</h6>       
                   </div><!-- End sidebar search formn-->
 
                   <div class="sidebar-item recent-posts">
