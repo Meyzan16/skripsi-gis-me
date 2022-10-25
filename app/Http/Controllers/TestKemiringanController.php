@@ -17,6 +17,7 @@ class TestKemiringanController extends Controller
     public function cek(Request $request)
     {
 
+        //ini test
         $ketinggian = $request->ketinggian;
         $jarak = $request->jarak * 1000; 
 

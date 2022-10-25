@@ -87,12 +87,17 @@ class UjiDataRealtimeController extends Controller
                         );
                     }             
         }
+
+        if(empty($dataArray))
+        {
+            // return "adsasd";
+            return view('User.main.NoDatauji-realtime'); 
+        }
+
         // return $dataArray ;
 
 
         $hasilGempaTerbaru = [];
-
-
         for ($i=0; $i<count($dataArray); $i++) 
         { 
             $dataTitik = data_titik::all();

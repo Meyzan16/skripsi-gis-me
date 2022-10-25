@@ -56,18 +56,18 @@ class UserdataujilamaController extends Controller
 
                        
                         //donovan
-                          $phytgoras =   pow($dataGempa->kedalaman,2) + pow($hasil,2) ;
-                          $hiposenter = sqrt($phytgoras);
-                          $Ms = 0.5 * $dataGempa->magnitude;
-                          //rumus donovan
-                          $alfa = 1080 * EXP($Ms) / pow($hiposenter+25,1.32);
+                        $phytgoras =   pow($dataGempa->kedalaman,2) + pow($hasil,2) ;
+                        $hiposenter = sqrt($phytgoras);
+                        $Ms = 0.5 * $dataGempa->magnitude;
+                        //rumus donovan
+                        $alfa = 1080 * EXP($Ms) / pow($hiposenter+25,1.32);
 
-                          $hasil_detik = round($alfa,2); //nilai dalam detik 
+                        $hasil_detik = round($alfa,2); //nilai dalam detik 
                             //karena nilai pga dalam bentuki satuan g(m/s2), maka nilai pga yang dihasilkan
                             //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980 atau di kali 0.0010197162 
                             //dikarenakan besaran umum gravitasi adalah 9.8 m/s2. 
-                          $z = round($alfa,2) * 0.0010197162;
-                          $hasil_pga = round($z,2);
+                        $z = round($alfa,2) * 0.0010197162;
+                        $hasil_pga = round($z,2);
                         //akhir nilai PGA
 
                         //menentukan nilai kemampuan PGA
@@ -105,9 +105,6 @@ class UserdataujilamaController extends Controller
                             $nilai_kemampuan_struktur_geologi = 4 ;
                             $ket_struktur_geologi = '4c';
                         }        
-                    
-                    
-
                             
                             //jika gempa sudah dikalkulasi jalankan jalankan script berikut
                             if(count($cek_gempa) > 0  ) 
@@ -115,8 +112,7 @@ class UserdataujilamaController extends Controller
                                 //cek  ada titik yang belum dikalkulasi atau sudah ?  jika belum kalkulasi dulu 
                                 if(count($cek_gempa) != count($dataTitik))
                                 {
-                                    $data = data_titik::orderBy('id', 'desc')->limit(1)->first();
-                                          
+                                    $data = data_titik::orderBy('id', 'desc')->limit(1)->first();       
                                     //metode haversine distance
                                     $RR = 6371;
                                     $mlat = $data->latitude;
@@ -141,9 +137,9 @@ class UserdataujilamaController extends Controller
                                     $alfaa = 1080 * EXP($Ms) / pow($hiposenter+25,1.32);
 
                                     $hasil_detikk = round($alfaa,2);
-                                        //karena nilai pga dalam bentuki satuan g(m/s2), maka nilai pga yang dihasilkan
-                                        //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980 atau di kali 0.0010197162 
-                                        //dikarenakan besaran umum gravitasi adalah 9.8 m/s2. 
+                                    //karena nilai pga dalam bentuki satuan g(m/s2), maka nilai pga yang dihasilkan
+                                    //rumus empiris donovan di ubah menjadi satuanya menjadi g(m/s2) dengan cara di bagi 980 atau di kali 0.0010197162 
+                                    //dikarenakan besaran umum gravitasi adalah 9.8 m/s2. 
                                     $konverisi_ke_g = round($alfaa,2) * 0.0010197162;
                                     $hasil_pgaa = round($konverisi_ke_g,2);                         
                                     //akhir nilai PGA
@@ -329,18 +325,16 @@ class UserdataujilamaController extends Controller
 
                                                                 $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                                                                 return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));
-                                                                                      
-
                                 }  
                                     //jika semua data titik sudah dikalkulasi makan jalankan script berikut
-                                    else 
-                                    {
+                                else 
+                                {
                                                 
                                             
                                                 $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
                                                 return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi'));  
 
-                                    }                               
+                                }                               
                                                                          
                             } 
                             //jika  gempa yang terpilih belum di kalkulasi
@@ -436,10 +430,10 @@ class UserdataujilamaController extends Controller
                                                             ->where([
                                                                 ['id_gempa', '=', $request->option_gempa],
                                                                 ['id_tipologi', '=', NULL]
-                                                            ])
-                                    ->get();
+                                                            ])->get();
 
-                                    if(!empty($cek_id_tipologi_null)){
+                                    if(!empty($cek_id_tipologi_null))
+                                    {
                                         for($m =0; $m<count($cek_id_tipologi_null); $m++)
                                             {      
                                                 foreach ($tipologiKawasan as $value) 
@@ -494,8 +488,8 @@ class UserdataujilamaController extends Controller
 
 
 
-                                        $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
-                                        return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan', 'properties'));         
+                                    $calculasi_tipologi = calculasi_tipologi::with(['data_gempa','data_titik.kemiringan_lereng', 'data_titik.geologi_fisik', 'tipologi_kawasan' , 'tipologi_kawasan.informasi_tipologi' ])->where('id_gempa', $request->option_gempa)->get();                                       
+                                    return view('User.main.proses-datauji-lama', compact('dataTitik', 'dataGempa' , 'dataGempa_option' , 'calculasi_tipologi', 'cek_calculasi_tipologi', 'tipologiKawasan', 'properties'));         
         
     }
 
@@ -690,5 +684,7 @@ class UserdataujilamaController extends Controller
 
         return view('User.main.hasilUji-hipotesis', compact('data_titik','data_gempa' , 'calculasi', 'dataGempaTerpilih'));
     }
+
+   
 
 }
