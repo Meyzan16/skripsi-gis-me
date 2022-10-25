@@ -499,11 +499,105 @@ class UserdataujilamaController extends Controller
         
     }
 
-    public function hipotesis_titik()
+    
+
+    public function hipotesis_titik(Request $request)
     {
         $data_titik = data_titik::all();
         // $data_gempa = data_gempa::all();
         $data_gempa = data_gempa::orderBy('id', 'asc')->get();
+        // return $dataGempaTerpilih;
+
+        // $borderColors = [
+        //     "rgba(255, 99, 132, 1.0)",
+        //     "rgba(22,160,133, 1.0)",
+        //     "rgba(255, 205, 86, 1.0)",
+            
+        // ];
+        // $fillColors = [
+        //     "rgba(255, 99, 132, 0.2)",
+        //     "rgba(22,160,133, 0.2)",
+        //     "rgba(255, 205, 86, 0.2)",
+        // ];
+
+        // $usersChart = new UserChart;
+        // $usersChart->title('aaa', 30, "rgb(255, 99, 132)", true);
+        // $usersChart->displaylegend(false);
+
+        
+        // $data = []; 
+        // foreach ($data_gempa as $item) {
+        //     $data[] = $item->tanggal .' | '.$item->magnitude .' Mg' ;
+        // }
+        // $usersChart->labels(
+        //             $data
+        // );
+        
+
+    
+        // $a= '';
+        // foreach ($calculasi_tipologi as  $itemm) 
+        // {
+        //     $dataa[]  =  $itemm->kategori_name;
+            
+             
+        //         if($itemm->kategori_name == 1){
+        //             $a = 'rendah';
+        //         }elseif($itemm->kategori_name == 2){
+        //             $a = 'sedang';
+        //         }else{
+        //             $a = 'tinggi';
+        
+        //         }
+        // }
+
+        // return $a;
+
+
+        // $usersChart->dataset(
+        //     foreach ($calculasi_tipologi as  $itemm) 
+        //     {
+        //         $dataa[]  =  $itemm->kategori_name;
+                
+                
+        //         if($itemm->kategori_name == 1){
+        //             $a = 'rendah';
+        //         }elseif($itemm->kategori_name == 2){
+        //             $a = 'sedang';
+        //         }else{
+        //             $a = 'tinggi';
+                    
+        //         }
+                
+        //         "Kategori : " . $a , 'line', 
+        //             $dataa 
+        //     }
+        // )
+
+
+        // ->color($borderColors)
+        // ->backgroundcolor($fillColors)
+        // ->fill(false);   
+
+            
+
+        return view('User.main.hipotesis', compact('data_titik','data_gempa',));
+    }
+
+
+
+
+
+
+
+    public function ujihipotesis(Request $request)
+    {
+        $data_titik = data_titik::all();
+        // $data_gempa = data_gempa::all();
+        $data_gempa = data_gempa::orderBy('id', 'asc')->get();
+
+        $dataGempaTerpilih = data_titik::where('id', $request->option_titik)->first();
+        // return $dataGempaTerpilih;
 
         // $borderColors = [
         //     "rgba(255, 99, 132, 1.0)",
@@ -594,62 +688,7 @@ class UserdataujilamaController extends Controller
 
             
 
-        return view('User.main.hipotesis', compact('data_titik','data_gempa' , 'calculasi'));
-    }
-
-
-
-
-
-
-
-    public function ujihipotesis(Request $request)
-    {
-        
-        $jml_titik = count(data_titik::all());
-        $data_gempa = data_gempa::all();
-
-        $gempaTerpilih = data_gempa::where('id', $request->option_gempa)->first(); 
-        $tgl = $gempaTerpilih->tanggal;
-        $konversi = date("m F , Y", strtotime($tgl));
-        
-
-
-        $rendah = calculasi_tipologi::where('id_gempa', $request->option_gempa)->wherekategori('rendah')->count();
-        $sedang = calculasi_tipologi::where('id_gempa', $request->option_gempa)->wherekategori('sedang')->count();
-        $tinggi = calculasi_tipologi::where('id_gempa', $request->option_gempa)->wherekategori('tinggi')->count();
-
-
-        
-
-        $borderColors = [
-            "rgba(255, 99, 132, 1.0)",
-            "rgba(22,160,133, 1.0)",
-            "rgba(255, 205, 86, 1.0)",
-            
-        ];
-        $fillColors = [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(22,160,133, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-        ];
-
-        $usersChart = new UserChart;
-        $usersChart->title('Gempa  '. $konversi , 30, "rgb(255, 99, 132)", true);
-        $usersChart->displaylegend(false);
-        $usersChart->labels(['Rendah', 'Sedang', 'Tinggi']);
-        $usersChart->dataset('Users by trimester', 'bar', 
-                [$rendah, $sedang, $tinggi]
-            )
-            ->color($borderColors)
-            ->backgroundcolor($fillColors)
-            ->fill(true);
-          
-
-        return view('User.main.hipotesis', [ 
-            'chartTerpilih' => $usersChart,
-            'data_gempa' => $data_gempa,
-        ] );
+        return view('User.main.hasilUji-hipotesis', compact('data_titik','data_gempa' , 'calculasi', 'dataGempaTerpilih'));
     }
 
 }

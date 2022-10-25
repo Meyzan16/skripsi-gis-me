@@ -44,18 +44,18 @@
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="hero">
 
-  @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.hipotesis'  || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi')
+  @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.hipotesis'  || Route::current()->getName() == 'user.data-uji-gempa-lama.uji-hipotesis' || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi')
     <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/template-user/assets/img/breadcrumbs-bg.jpg');">
       <div class=" info d-flex align-items-center container position-relative d-flex flex-column align-items-center" data-aos="fade">
   
         
-        @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi') --}}
+        @if(Route::current()->getName() == 'user.data-uji-gempa-lama' || Route::current()->getName() == 'user.data-uji-gempa-lama.proses-kalkulasi') 
         <h2>Pengujian Data</h2>
         <ol>
           <li><a href="{{ route('homepage'); }}">Home</a></li>
           <li>Data Gempa Lama</li>
         </ol>
-        @elseif(Route::current()->getName() == 'user.data-uji-gempa-lama.hipotesis')
+        @elseif(Route::current()->getName() == 'user.data-uji-gempa-lama.hipotesis' || Route::current()->getName() == 'user.data-uji-gempa-lama.uji-hipotesis')
         <h2>Hipotesis Titik</h2>
         <ol>
           <li><a href="{{ route('user.data-uji-gempa-lama') }}">Data Gempa Lama</a></li>

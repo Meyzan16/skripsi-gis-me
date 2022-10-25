@@ -33,22 +33,26 @@
                                     <div class="col-md-4">
                                         <label>Pilih Data Titik</label>
                                     </div>
-                                    <div class="col-md-8 form-group">
-                                       <select name="option_titik" id="option_titik" class="form-control">
 
-                                            <option value="">-- Pilih data --</option>   
-                                            @foreach ($data_titik as $item)
-                                                 <option value="{{ $item->id }}">{{ $item->alamat }}</option>   
-                                            @endforeach
+                                
+                                        <div class="col-md-8 form-group  d-flex justify-content-end">
+                                          <select name="option_titik" id="option_titik" class="form-control">
 
-                                       </select>
-                                    </div>    
- 
-                                    <div class="col-sm-12 d-flex justify-content-end">
-                                        <button type="submit"  class="btn btn-primary me-1 mb-1">
-                                        &nbsp;Cari
-                                        </button>
-                                    </div>
+                                                <option value="">-- Pilih data --</option>   
+                                                @foreach ($data_titik as $item)
+                                                    <option value="{{ $item->id }}">{{ $item->alamat }}</option>   
+                                                @endforeach
+
+                                          </select>
+                                        
+                                            <button type="submit"  class="btn btn-primary mr-3">
+                                            &nbsp;Cari
+                                            </button>
+
+
+                                        </div>
+                                    
+                                  
                 </form>
 
             <div>
@@ -61,13 +65,12 @@
                             @endif
                         </div> --}}
 
-                  
-                          
-                        <figure class="highcharts-figure">
-                          <div id="container_before"></div>
-                          <p class="highcharts-description"> </p>
+                                
+                        <figure class="highcharts-figure mt-2">
+                          <div id="container"></div>
+                          <p class="highcharts-description text-center"> Informasi terkait bksabdksdksadj </p>
                         </figure>
-                
+            
                     
 
 
@@ -85,8 +88,13 @@
 
 @endsection
 
+@php
+
+  $dataGempaTerpilih = json_encode($dataGempaTerpilih);
+  $calculasi = json_encode($calculasi);
 
 
+@endphp
 
 @push('addon-script')
 
@@ -99,10 +107,21 @@
 <script src="https://code.highcharts.com/themes/high-contrast-light.js"></script>
 
 
+  
+
 <script type="text/javascript">
+
+   
+      var dataGempaTerpilih = {!! $dataGempaTerpilih !!};
+    
+
+
+
     var colors = Highcharts.getOptions().colors;
 
-    Highcharts.chart('container_before', {
+    Highcharts.chart('container', {
+
+
       chart: {
         type: 'spline'
       },
@@ -116,7 +135,7 @@
       },
 
       subtitle: {
-        text: 'Alamat : Belum Terpilih'
+        text: dataGempaTerpilih.alamat
       },
 
       yAxis: {
@@ -135,8 +154,10 @@
         accessibility: {
           description: 'Time from December 2010 to September 2019'
         },
-        categories: [
-          
+
+        categories: 
+        [
+
           
           <?php 
               $a = '';
@@ -148,8 +169,10 @@
             }
             ?>  
               ]
-        
-        
+
+          // ['December 2010', 'May 2012', 'January 2014', 'July 2015', 'October 2017', 'September 2019']
+
+
       },
 
       tooltip: {
@@ -160,21 +183,29 @@
         series: {
           point: {
             events: {
-             
+              // click: function () {
+              //   window.location.href = this.series.options.website;
+              // }
             }
           },
           cursor: 'pointer'
         }
       },
 
-      series: [
-       {
-            name: 'Silahkan pilih alamat terlebih dahulu',
-            data: [69.6, 63.7, 63.9, 43.7, 66.0, 61.7],
-            website: 'https://www.freedomscientific.com/Products/Blindness/JAWS',
-            dashStyle: 'ShortDashDot',
-            color: colors[0]
-          }, 
+      series: 
+      
+      [
+        {
+          name: dataGempaTerpilih.alamat,
+          data: [2,2,2,1,1,1,2,1,2,1,2,2,2],
+          website: 'https://www.nvaccess.org',
+          color: colors[2],
+          accessibility: {
+            description: 'This is the most used screen reader in 2019.'
+          }
+        },  
+
+        
       ],
 
       responsive: {
@@ -201,7 +232,16 @@
         }]
       }
     });
+
+
 </script>
+  
+        
+
+
+
+
+
 
 
 
