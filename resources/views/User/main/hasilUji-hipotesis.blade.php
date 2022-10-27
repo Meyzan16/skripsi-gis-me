@@ -68,7 +68,16 @@
                                 
                         <figure class="highcharts-figure mt-2">
                           <div id="container"></div>
-                          <p class="highcharts-description text-center"> Informasi terkait bksabdksdksadj </p>
+                          <p class="highcharts-description text-center"> 
+                          Berdasarkan hasil kalkulasi dari gempa gempa sebelumnya, statistik diatas memberikan
+                          informasi tentang hipotesis tingkat kerawanan pada alamat ( 
+                            {{ $dataGempaTerpilih->alamat }} )
+                          agar masyarakat, pemerintah dan khalayak umum bisa mempertimbangkan proses pembangunan
+                          infrastruktur, permukiman dan lain lain untuk keselamatan kita semua jika terjadi gempa gempa yang
+                          tidak terduga dan berakbiat pada titik ini.
+
+  
+                           </p>
                         </figure>
             
                     
