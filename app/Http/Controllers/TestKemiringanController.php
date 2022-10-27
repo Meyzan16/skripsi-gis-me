@@ -11,6 +11,8 @@ class TestKemiringanController extends Controller
         // $a = (12 / 2260) * 100;
 
         // return $a;
+        //ini pemberitahuan
+        //test lagii
 
         return view('Admin.index');
     }
