@@ -12,6 +12,7 @@ class TestKemiringanController extends Controller
 
         // return $a;
         //ini pemberitahuan
+        //test lagii
 
         return view('Admin.index');
     }
