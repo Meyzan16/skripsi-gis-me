@@ -1358,41 +1358,164 @@ class TipologikawasanSeeder extends Seeder
 
 
         data_gempa::create([
-            'tanggal' => '2007-09-12',
-            'latitude' => -4.51700000,
+            'tanggal' => '2000-06-07',
+            'latitude' => -4.61200000,
             'label_koor_lintang' => 'LS',
-            'longitude' => 101.38200000,
-            'label_koor_bujur' => 'BT',
-            'magnitude' => 8.4,
-            'kedalaman' => 30,
-            'wilayah' => "Tengah Laut",
-            'dirasakan' => "seluruh area bengkuluuu sampai sumsel, jambi dan lampung",
-        ]);
-        
-
-        data_gempa::create([
-            'tanggal' => '2022-08-23',
-            'latitude' => -5.22000000,
-            'label_koor_lintang' => 'LS',
-            'longitude' => 102.95000000,
+            'longitude' => 101.90500000,
             'label_koor_bujur' => 'BT',
             'magnitude' => 6.5,
-            'kedalaman' => 12,
-            'wilayah' => "Pusat gempa berada di laut 64 km BaratDaya KAUR-BENGKULU",
-            'dirasakan' => "III Martapura, III Panimbang , III Kec. Ngaras, III Bandar Lampung, III Muara Dua, III Semaka, III Pematang Sawah, II-III Bayah, II-III Malingping, II - III Ujung Kulon, II - III Kec. Pesisir Tengah, II Kerinci, II Padang, V Kaur, IV-V Liwa, IV Kepahiang, IV Rejang Lebong, IV Lebong, IV Enggano, III-IV Kota Bengkulu, III-IV Muko-muko, III-IV Argamakmur, III-IV Manna, III-IV Putri Hijau, III-IV Musi Rawas, III-IV Oku Selatan, III-IV Lubuk Linggau, III-IV Lahat, III-IV Pagar Alam",
+            'kedalaman' => 33,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "Bengkulu, terasa juga di palembang, jakarta",
         ]);
-        
         data_gempa::create([
-            'tanggal' => '2022-10-01',
-            'latitude' => -3.77000000,
+            'tanggal' => '2000-06-04',
+            'latitude' => -4.70000000,
             'label_koor_lintang' => 'LS',
-            'longitude' => 101.84000000,
+            'longitude' => 102.00000000,
             'label_koor_bujur' => 'BT',
-            'magnitude' => 4.6,
-            'kedalaman' => 54,
-            'wilayah' => "Pusat gempa berada di laut 54 km barat bengkulu utara",
-            'dirasakan' => "II - III kota bengkulu, II Kepahiang, III Bengkulu Utara",
+            'magnitude' => 7.3,
+            'kedalaman' => 33,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "Bengkulu, lampung dan palembang, jakarta, terasa juga di singapur, malaysia",
         ]);
+        data_gempa::create([
+            'tanggal' => '2001-01-16',
+            'latitude' => -4.02200000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 101.77600000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 6.9,
+            'kedalaman' => 28,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "Bengkulu : V , Jakarta",
+        ]);
+        data_gempa::create([
+            'tanggal' => '2001-02-13',
+            'latitude' => -4.68000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 102.56200000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 7.4,
+            'kedalaman' => 36,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "Bengkulu : terasa kuat , Bengkulu - Jakarta : II",
+        ]);
+        data_gempa::create([
+            'tanggal' => '2004-07-25',
+            'latitude' => -2.42700000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 103.58200000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 7.3,
+            'kedalaman' => 582,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "- Bengkulu : IV Bengkulu , Padangpanjang : III , Bandung,Bogor,Sawahan dan Sukabumi : III , Jakarta : II - Mataram, Lombok., Juga terasa di selatan Johor, Malaysia dan  Singapura",
+        ]);
+        data_gempa::create([
+            'tanggal' => '2007-09-12',
+            'latitude' => -4.59000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 101.22000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 7.9,
+            'kedalaman' => 10,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "- Bengkulu : VI, Padang : V, Lampung, Palembang, Pekanbaru, dan Sibolga : IV, Jambi : III,Medan, Banten dan Serang : II,Duri : IV , ,Jakarta, Bekasi, Kuningan : III ,Malaysia,Singapura,,Bangkok,- Male ( Maladewa )",
+        ]);
+
+        data_gempa::create([
+            'tanggal' => '2007-09-13',
+            'latitude' => -2.22000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 99.41000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 7.1,
+            'kedalaman' => 30,
+            'wilayah' => "Kep.Mentawai",
+            'dirasakan' => "Bengkulu dan Padang : III , Kapahiang dan Padangpanjang, Duri,  Palembang dan Pekanbaru : II , Kuala Lumpur, Johor Bahru (Malaysia) : II - Singapura : III",
+        ]);
+
+        data_gempa::create([
+            'tanggal' => '2007-10-24',
+            'latitude' => -4.18000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 100.70000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 7.0,
+            'kedalaman' => 10,
+            'wilayah' => "Lais",
+            'dirasakan' => "- Argamakmur, Lais, Muaraaman, dan Muko-muko : IV , Kapahiang, Bengkulu, Jakarta : III , Singapura : III",
+        ]);
+
+
+        data_gempa::create([
+            'tanggal' => '2008-02-24',
+            'latitude' => -2.40500000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 99.93100000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 6.5,
+            'kedalaman' => 22,
+            'wilayah' => "Kep.Mentawai",
+            'dirasakan' => "Padang : III, bengkulu, padang",
+        ]);
+
+
+        data_gempa::create([
+            'tanggal' => '2008-09-09',
+            'latitude' => -4.04000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 103.01000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 5.6,
+            'kedalaman' => 10,
+            'wilayah' => "Bengkulu",
+            'dirasakan' => "Lahat, Kapahiang dan pagaralam, bengkulu",
+        ]);
+
+
+        data_gempa::create([
+            'tanggal' => '2016-04-10',
+            'latitude' => -4.37000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 102.07000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 5.8,
+            'kedalaman' => 61,
+            'wilayah' => "Pusat gempa berada dilaut 67 km barat daya bengkulu",
+            'dirasakan' => "Bengkulu, kepahiang,seluma"
+        ]);
+
+
+        data_gempa::create([
+            'tanggal' => '2017-08-13',
+            'latitude' => -3.78000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 101.61000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 6.4,
+            'kedalaman' => 35,
+            'wilayah' => "Bengkulu Utara, bengkulu",
+            'dirasakan' => "Pusat gempa berada di laut 71 km BD Bengkulu Utara - Bengkulu"
+        ]);
+
+        data_gempa::create([
+            'tanggal' => '2017-12-06',
+            'latitude' => -3.16000000,
+            'label_koor_lintang' => 'LS',
+            'longitude' => 102.15000000,
+            'label_koor_bujur' => 'BT',
+            'magnitude' => 5.1,
+            'kedalaman' => 10,
+            'wilayah' => "Lebong, bengkulu",
+            'dirasakan' => "Pusat gempa berada di darat 6 KM barat daya lebong-bengkulu"
+        ]);
+
+
+        
+
+       
 
         
 
