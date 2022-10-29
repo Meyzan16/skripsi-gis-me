@@ -40,12 +40,7 @@
                                     <div id="map" style="height:400px; width: 500;" class="content my-3"></div> 
                                     
                                     <h5>{{ $dataGempa->wilayah }}</h5>
-                                    {{-- <div class="meta-top">
-                                        <ul>
-                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">{{ $item['tanggal'] }}</time></a></li>
-                                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">{{ $item['jam'] }}</time></a></li>
-                                        </ul>
-                                    </div><!-- End meta top --> --}}
+                                   
                                     <div class="content">
                                         <p>
                                             Gempa berkekuatan magnitudo {{ $item['magnitude'] }}

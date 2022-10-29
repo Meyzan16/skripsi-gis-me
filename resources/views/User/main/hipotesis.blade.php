@@ -53,14 +53,7 @@
 
             <div>
 
-                        {{-- <div>
-                            @if (Route::current()->getName() == 'chartDashboard')
-                                {!! $chartTerpilih->container() !!}   
-                            @else
-                                {!! $usersChart->container() !!}   
-                            @endif
-                        </div> --}}
-
+                    
                   
                           
                         <figure class="highcharts-figure">

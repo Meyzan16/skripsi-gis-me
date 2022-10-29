@@ -5,65 +5,55 @@
   <section id="blog" class="blog">
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-      <div class="row g-5">
-
-        <div class="col-lg-8">
-
-          <article class="blog-details">
 
 
-            {{-- <div class="post-img">
-              <img src="/template-user/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
-            </div> --}}
+                                <div class="col-lg-8">
 
-   
-            <form action="{{ route('user.data-uji-gempa-lama.proses-kalkulasi') }}" method="POST" >
-                @csrf 
-                <div class="row col-12">
-            
-                    <h5 class="sidebar-title">Pilih Data Gempa</h5>
+                                        <article class="blog-details">
+                                
+                                                <form action="{{ route('user.data-uji-gempa-lama.proses-kalkulasi') }}" method="POST" >
+                                                    @csrf 
+                                                    <div class="row col-12">
+                                                
+                                                        <h5 class="sidebar-title">Pilih Data Gempa</h5>
 
-                    <div class="col-10 ">
-                        <select name="option_gempa" id="option_gempa" class="form-control">
-                            <option value="">-- Pilih data --</option>   
-                            @foreach ($dataGempa as $item)
-                                <option value="{{ $item->id }}">{{ date("m F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
-                            @endforeach
+                                                        <div class="col-10 ">
+                                                            <select name="option_gempa" id="option_gempa" class="form-control">
+                                                                <option value="">-- Pilih data --</option>   
+                                                                @foreach ($dataGempa as $item)
+                                                                    <option value="{{ $item->id }}">{{ date("m F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
+                                                                @endforeach
 
-                        </select>
-                    
-                    </div><!-- End sidebar search formn-->
+                                                            </select>
+                                                        
+                                                        </div><!-- End sidebar search formn-->
 
-                    <div class="col-2 ">
-                        <button type="submit"  class="btn btn-primary me-1 mb-1">
-                        &nbsp;Cari
-                        </button>
-                    </div>
+                                                        <div class="col-2 ">
+                                                            <button type="submit"  class="btn btn-primary me-1 mb-1">
+                                                            &nbsp;Cari
+                                                            </button>
+                                                        </div>
 
-                </div>
-            </form>
-      
+                                                    </div>
+                                                </form>
+                                    
+                                            <h2 class="title">Data titik yang tersedia</h2>
 
-            
-            
+                                            <div id="map" style="height:400px; width: 800px;" class="content my-3"></div> 
+                                            
+                                            <div class="content">
+                                            <p>
+                                                Data titik yang telah tersedia di atas merupakan titik data uji yang telah di siapkan oleh pakar geologi 
+                                                untuk menguji dan mengetahui tingkat kerawanan yang mewakili setiap kecamatan dalam kota bengkulu
+                                            </p> 
+                                            </div><!-- End post content -->
 
-            <h2 class="title">Data titik yang tersedia</h2>
+                                        </article><!-- End blog post -->
+                        
+                                </div>      
 
-            
-            <div class="content">
-
-                <div id="map" style="height:400px; width: 800px;" class="content my-3">
-                </div> 
-
-
-              <p>
-                Data titik yang telah tersedia di atas merupakan titik data uji yang telah di siapkan oleh pakar geologi 
-                untuk menguji dan mengetahui tingkat kerawanan yang mewakili setiap kecamatan dalam kota bengkulu
-              </p> 
-            </div><!-- End post content -->
-          </article><!-- End blog post -->
-        </div>        
-      </div>
+        
+    
 
     </div>
   </section><!-- End Blog Details Section -->
@@ -79,7 +69,7 @@
 @push('addon-script')
 <script>
 
-google.maps.event.addDomListener(window, 'load', initMap);
+
 
 
 function initMap() {
@@ -126,6 +116,8 @@ function showAll(map, app_dataTitik){
 
     });
 }
+
+
 
 
 </script>

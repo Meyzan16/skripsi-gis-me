@@ -120,11 +120,25 @@
 
 <script type="text/javascript">
 
-   
-      var dataGempaTerpilih = {!! $dataGempaTerpilih !!};
-    
+    var aaa; 
+    var dataArray = [];
+    var populationArray = [];
 
+    var dataGempaTerpilih = {!! $dataGempaTerpilih !!};
 
+    aaa = {!! $calculasi !!};
+
+    aaa.forEach(myFunction);
+    function myFunction(item, index, arr) {
+         populationArray.push(parseInt(item.kategori_name));
+    }
+    dataArray.push(populationArray);
+ 
+    console.log(dataArray)
+
+  
+
+      
 
     var colors = Highcharts.getOptions().colors;
 
@@ -149,10 +163,10 @@
 
       yAxis: {
         title: {
-          text: 'Percentage usage'
+          text: 'Hipotesis Kerawanan'
         },
         accessibility: {
-          description: 'Percentage usage'
+          description: 'Hipotesis Kerawanan'
         }
       },
 
@@ -179,7 +193,6 @@
             ?>  
               ]
 
-          // ['December 2010', 'May 2012', 'January 2014', 'July 2015', 'October 2017', 'September 2019']
 
 
       },
@@ -206,8 +219,7 @@
       [
         {
           name: dataGempaTerpilih.alamat,
-          data: [2,2,2,1,1,1,2,1,2,1,2,2,2],
-          website: 'https://www.nvaccess.org',
+          data: dataArray[0],
           color: colors[2],
           accessibility: {
             description: 'This is the most used screen reader in 2019.'
@@ -241,7 +253,7 @@
         }]
       }
     });
-
+ 
 
 </script>
   

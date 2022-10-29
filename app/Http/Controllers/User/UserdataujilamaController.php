@@ -621,12 +621,12 @@ class UserdataujilamaController extends Controller
 
         $calculasi = DB::table('data_titiks')
         ->select(
-            'data_titiks.*',
+            // 'data_titiks.*',
             DB::raw("CAST(calculasi_tipologis.kategori as int) AS kategori_name"),
-            'calculasi_tipologis.id_gempa'
+            // 'calculasi_tipologis.id_gempa'
             )
         ->join('calculasi_tipologis','data_titiks.id','=','calculasi_tipologis.id_titik')
-        ->where('data_titiks.id', 1)
+        ->where('data_titiks.id', $request->option_titik)
         ->orderBy('calculasi_tipologis.id_gempa', 'asc')
         ->get();
 
