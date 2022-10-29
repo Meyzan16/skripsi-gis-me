@@ -923,27 +923,119 @@ class TipologikawasanSeeder extends Seeder
 
         informasi_tipologi::create([
             'tipologi' => 'A',
-            'informasi_tipologi' => 'informasi tentang tipoligi A'
+            'informasi_tipologi' => '<ul>
+            <li>Dapat dikembangkan menjadi kawasan budi daya dan berbagai infrastruktur penunjangnya</li>
+            <li>Diizinkan untukk kegiatan permukiman dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan beton bertulang maupun tidak bertulang</li>
+                <li>Kepadatan bangunan tinggi (&gt; 60 unit/Ha), sedang (30-60 unit/Ha), dan rendah (&lt;30 unit/Ha)</li>
+                <li>Pola permukiman dapat mengelompokan maupun menyebar</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan pedagangan dan perkantoran dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Kepadatan bangunan diperbolehkan tinggi (KDB &gt; 70; KLB &gt; 200) hingga rendah (KDB &lt; 50; KLB &lt; 100 )</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan industri dengan persyaratan, pengawasan dan pengendalian yang ketat, yaitu :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Skala industri besar, sedang, maupun kecil</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan lahan usaha pertanian lahan basah, pertanian lahan kering, perikanan, perkebunan dengan syarat pemilihan jenis vegetasi yang sesuai serta mendukung konsep kelestarian lingkungan.</li>
+            <li>Diizinkan untuk pariwisata dengan jenis wisata sosio-kultural dan wisata agro-kultural</li>
+            <li>Diizinkan untuk kegiatan pertambangan rakyat, antara lain pertambangan batu dan pasir</li>
+        </ul>'
         ]);
         informasi_tipologi::create([
             'tipologi' => 'B',
-            'informasi_tipologi' => 'informasi tentang tipoligi B'
+            'informasi_tipologi' => '<ul>
+            <li>Dapat dikembangkan menjadi kawasan budi daya dan berbagai infrastruktur penunjangnya</li>
+            <li>Diizinkan untukk kegiatan permukiman dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan beton bertulang; kepadatan bangunan sedang dan rendah; pola permukiman menyebar</li>
+                <li>Kontruksi bangunan semi permanen; kepadatan bangunan tinggi, sedang dan rendah; pola permukiman mengelompok dan menyebar</li>
+                <li>Kontruksi bangunan tradisional; kepadatan bangunan tinggi,sedang dan rendah; polan permukiman mengelompok dan menyebar</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan pedagangan dan perkantoran dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Kepadatan bangunan diperbolehkan tinggi (KDB &gt; 70; KLB &gt; 200) hingga rendah (KDB &lt; 50; KLB &lt; 100 )</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan industri dengan persyaratan, pengawasan dan pengendalian yang ketat, yaitu :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Skala industri besar, sedang, maupun kecil</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan lahan usaha pertanian lahan basah, pertanian lahan kering, perikanan, perkebunan dengan syarat pemilihan jenis vegetasi yang sesuai serta mendukung konsep kelestarian lingkungan.</li>
+            <li>Diizinkan untuk pariwisata dengan jenis wisata sosio-kultural dan wisata agro-kultural</li>
+            <li>Diizinkan untuk kegiatan pertambangan rakyat, antara lain pertambangan batu dan pasir</li>
+        </ul>'
         ]);
         informasi_tipologi::create([
             'tipologi' => 'C',
-            'informasi_tipologi' => 'informasi tentang tipoligi C'
+            'informasi_tipologi' => '<ul>
+            <li>Dapat dikembangkan menjadi kawasan budi daya dan berbagai infrastruktur penunjangnya</li>
+            <li>Diizinkan untukk kegiatan permukiman dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan semi permanen; kepadatan bangunan sedang dan rendah; pola permukiman mengelompok dan menyebar</li>
+                <li>Kontruksi bangunan tradisional; kepadatan bangunan sedang dan rendah; pola permukiman mengelompok dan menyebar</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan pedagangan dan perkantoran dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Kepadatan bangunan diperbolehkan tinggi (KDB &gt; 70; KLB &gt; 200) hingga rendah (KDB &lt; 50; KLB &lt; 100 )</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan industri dengan persyaratan, pengawasan dan pengendalian yang ketat, yaitu :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Skala industri sedang dan kecil</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan lahan usaha pertanian lahan basah, pertanian lahan kering, perikanan, perkebunan dengan syarat pemilihan jenis vegetasi yang sesuai serta mendukung konsep kelestarian lingkungan.</li>
+            <li>Diizinkan untuk pariwisata dengan jenis wisata sosio-kultural dan wisata agro-kultural</li>
+        </ul>'
         ]);
         informasi_tipologi::create([
             'tipologi' => 'D',
-            'informasi_tipologi' => 'informasi tentang tipoligi D'
+            'informasi_tipologi' => '<ul>
+            <li>Dapat dikembangkan menjadi kawasan budi daya dan berbagai infrastruktur penunjangnya</li>
+            <li>Diizinkan untukk kegiatan permukiman dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan semi permanen; kepadatan bangunan rendah; pola permukiman mengelompok dan menyebar</li>
+                <li>Kontruksi bangunan tradisional; kepadatan bangunan rendah; polan permukiman mengelompok dan menyebar</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan pedagangan dan perkantoran dengan persyaratan :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Kepadatan bangunan diperbolehkan tinggi (KDB 50-70; KLB 100-200 )</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan industri dengan persyaratan, pengawasan dan pengendalian yang ketat, yaitu :
+            <ul>
+                <li>Kontruksi bangunan tahan gempa</li>
+                <li>Skala industri kecil</li>
+            </ul>
+            </li>
+            <li>Diizinkan untuk kegiatan lahan usaha pertanian lahan basah, pertanian lahan kering, perikanan, perkebunan dengan syarat pemilihan jenis vegetasi yang sesuai serta mendukung konsep kelestarian lingkungan.</li>
+            <li>Diizinkan untuk pariwisata dengan jenis wisata sosio-kultural dan wisata agro-kultural</li>
+        </ul>'
         ]);
         informasi_tipologi::create([
             'tipologi' => 'E',
-            'informasi_tipologi' => 'informasi tentang tipoligi E'
+            'informasi_tipologi' => '<h3>Ditentukan sebagai kawasan lindung</h3>'
         ]);
         informasi_tipologi::create([
             'tipologi' => 'F',
-            'informasi_tipologi' => 'informasi tentang tipoligi F'
+            'informasi_tipologi' => '<p>Ditentukan sebagai kawasan lindung</p>'
         ]);
 
 
