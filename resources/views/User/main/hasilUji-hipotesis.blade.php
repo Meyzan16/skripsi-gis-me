@@ -56,15 +56,6 @@
                 </form>
 
             <div>
-
-                        {{-- <div>
-                            @if (Route::current()->getName() == 'chartDashboard')
-                                {!! $chartTerpilih->container() !!}   
-                            @else
-                                {!! $usersChart->container() !!}   
-                            @endif
-                        </div> --}}
-
                                 
                         <figure class="highcharts-figure mt-2">
                           <div id="container"></div>
@@ -85,6 +76,7 @@
 
 
             </div><!-- End sidebar recent posts-->
+    
 
           </div><!-- End Blog Sidebar -->
 
@@ -98,11 +90,8 @@
 @endsection
 
 @php
-
   $dataGempaTerpilih = json_encode($dataGempaTerpilih);
   $calculasi = json_encode($calculasi);
-
-
 @endphp
 
 @push('addon-script')
@@ -135,6 +124,8 @@
     dataArray.push(populationArray);
  
     console.log(dataArray)
+
+ 
 
   
 
@@ -191,7 +182,7 @@
             <?php
             }
             ?>  
-              ]
+        ]
 
 
 
@@ -224,7 +215,23 @@
           accessibility: {
             description: 'This is the most used screen reader in 2019.'
           }
+        }, 
+      
+        {
+          name: '1 : rendah',
+          color: colors[3],
+          
         },  
+        {
+          name: '2 : Sedang',
+          color: colors[4],
+          
+        }, 
+        {
+          name: '3 : Tinggi',
+          color: colors[5],
+          
+        }, 
 
         
       ],
@@ -243,7 +250,17 @@
               itemWidth: 150
             },
             xAxis: {
-              categories: ['Dec. 2010', 'May 2012', 'Jan. 2014', 'July 2015', 'Oct. 2017', 'Sep. 2019'],
+              categories: [
+                <?php 
+              $a = '';
+            foreach($data_gempa as $item){
+              $a = date("d M, Y", strtotime($item->tanggal));
+              ?>
+                ['<?php echo $a ;?> | <?= $item['magnitude'] ?> Mg'], 
+            <?php
+            }
+            ?>
+              ],
               title: ''
             },
             yAxis: {
