@@ -18,6 +18,7 @@
     <thead class="">
       <tr>
         <th>Tanggal</th>
+        <th>Tanggal</th>
         <th>Jam</th>
         <th>latitude</th>
         <th>longitude</th>
@@ -33,6 +34,7 @@
             <tr>
 
                 <td>{{ $loop->iteration }}</td>
+                <td>{{ $item['tanggal'] }}</td>
                 <td>{{ $item['jam'] }}</td>
                 <td>{{ $item['lat'] }}</td>
                 <td>{{ $item['lng'] }}</td>

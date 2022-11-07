@@ -1040,18 +1040,18 @@ class TipologikawasanSeeder extends Seeder
 
 
 
-        struktur_geologi::create([
-            'kelas_informasi' => '> 1000 M jauh dari zoan sesar',
-            'nilai_kemampuan' => 1,
-        ]);
-        struktur_geologi::create([
-            'kelas_informasi' => 'Dekat dengan zona sesar (100 - 1000 M dai zona sesar)',
-            'nilai_kemampuan' => 2,
-        ]);
-        struktur_geologi::create([
-            'kelas_informasi' => 'Pada zona sesar (< 100 M )',
-            'nilai_kemampuan' => 3,
-        ]);
+        // struktur_geologi::create([
+        //     'kelas_informasi' => '> 1000 M jauh dari zoan sesar',
+        //     'nilai_kemampuan' => 1,
+        // ]);
+        // struktur_geologi::create([
+        //     'kelas_informasi' => 'Dekat dengan zona sesar (100 - 1000 M dai zona sesar)',
+        //     'nilai_kemampuan' => 2,
+        // ]);
+        // struktur_geologi::create([
+        //     'kelas_informasi' => 'Pada zona sesar (< 100 M )',
+        //     'nilai_kemampuan' => 3,
+        // ]);
 
         
 

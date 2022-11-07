@@ -26,15 +26,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $item)
+                               
                                     
                                
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $item->kelas_informasi }}</td>
-                                    <td>{{ $item->nilai_kemampuan }}</td>   
+                                    <td>1</td>
+                                    <td>> 1000 M jauh dari zoan sesar</td>
+                                    <td>1</td>
                                 </tr>
-                                @endforeach
+                                <tr>
+                                    <td>2</td>
+                                    <td>Dekat dengan zona sesar (100 - 1000 M dai zona sesar)</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Pada zona sesar (< 100 M )</td>
+                                    <td>3</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
