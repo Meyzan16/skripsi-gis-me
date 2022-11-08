@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
 <div class="page-heading">
-    <h3>Gempa Terpilih Tanggal {{ $dataGempa->tanggal }}</h3>
+    <h3>Gempa Terpilih Tanggal   {{ date("m F , Y", strtotime($dataGempa->tanggal)) }}   </h3>
 </div>
 
 <div class="page-content">
@@ -28,7 +28,7 @@
  
                                                         <option value="">-- Pilih data --</option>   
                                                         @foreach ($dataGempa_option as $item)
-                                                             <option value="{{ $item->id }}">{{ $item->tanggal }}</option>   
+                                                            <option value="{{ $item->id }}">{{ date("m F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
                                                         @endforeach
 
                                                    </select>
@@ -76,16 +76,17 @@
                                             <h5 class="text-center">Informasi Data Titik </h5>
 
                                             <h6>wilayah Gempa : {{ $dataGempa->wilayah }} </h6>
-                                            <h6>Tahun : {{ $dataGempa->tanggal }}</h6>
+                                         
+                                            <h6>Tahun :   {{ date("m F , Y", strtotime($item->tanggal)) }}   </h6>
 
                                             @foreach ($calculasi_tipologi as $dataa)
-                                                <br>{{ $dataa->data_titik->alamat }} <br> kategori rawan : {{ $dataa->kategori }} |  id_tipologi : {{ $dataa->id_tipologi }} | 
+                                                <br>{{ $dataa->data_titik->alamat }} <br> kategori rawan : {{ $dataa->kategori }}  | 
                                                 
                                                 @if($dataa->id_tipologi!= null)
                                                    
                                                     tipologi kawasan : {{   $dataa->tipologi_kawasan->informasi_tipologi->tipologi  }} | 
                                                 @else
-                                                        Tipologi Kawasang : Tidak ada |
+                                                        Tipologi Kawasan : Tidak ada |
                                                 @endif
 
                                                 
@@ -138,7 +139,7 @@
                 <h6>Kategori wilayah  : {{ $item1->kategori }} </h6>
 
                 @if($item1->id_tipologi!= null)
-                    <h6>Tipologi Kawasan : {{ $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi }}</h6>       
+                    <h6>Tipe Bangunan : {!! $item1->tipologi_kawasan->informasi_tipologi->informasi_tipologi !!}</h6>       
                 @else
                     <h6>Tipologi Kawasang : Tidak ada </h6>
                 @endif
