@@ -75,9 +75,9 @@
                                         <div class="page-heading">
                                             <h5 class="text-center">Informasi Data Titik </h5>
 
-                                            <h6>wilayah Gempa : {{ $dataGempa->wilayah }} </h6>
+                                            {{-- <h6>wilayah Gempa : {{ $dataGempa->wilayah }} </h6>
                                          
-                                            <h6>Tahun :   {{ date("m F , Y", strtotime($item->tanggal)) }}   </h6>
+                                            <h6>Tahun :   {{ date("m F , Y", strtotime($item->tanggal)) }}   </h6> --}}
 
                                             @foreach ($calculasi_tipologi as $dataa)
                                                 <br>{{ $dataa->data_titik->alamat }} <br> kategori rawan : {{ $dataa->kategori }}  | 
