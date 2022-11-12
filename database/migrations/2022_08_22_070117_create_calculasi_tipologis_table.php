@@ -23,8 +23,6 @@ return new class extends Migration
 
             $table->integer('hasil_kali_bobot_lereng')->nullable();
             $table->string('ket_lereng', 5)->nullable();
-
-            $table->string('hasil_detik', 10)->nullable();
             $table->string('hasil_pga', 50)->nullable();
             $table->integer('nilai_kemampuan_pga')->nullable();
             $table->string('ket_pga', 5)->nullable();

@@ -47,11 +47,7 @@ class UjiDataRealtimeController extends Controller
             );
         };
 
-        // return view('User.main.testApi', compact('properties'));
-        // return $properties;
-
-
-
+        //return $properties;
         //hitung jarak terdekat gempa dengan bengkulu
         $R = 6371; 
         $latArea = -3.7928; //lat bengkulu
@@ -88,12 +84,8 @@ class UjiDataRealtimeController extends Controller
                     }             
         }
 
-        // return 
-
-
         if(empty($dataArray))
         {
-            // return "adsasd";
             return view('User.main.NoDatauji-realtime'); 
         }
 

@@ -51,7 +51,7 @@ Route::group([
         
         Route::group(['prefix' => 'informasi-tipologi' ], function(){
             Route::get('/', [InformasiTipologiController::class, 'index'])->name('admin.informasitipologi.index');
-            Route::get('{id}/edit', [InformasiTipologiController::Class, 'edit'])->name('admin.informasitipologi.edit');
+            Route::get('{id}/edit', [InformasiTipologiController::class, 'edit'])->name('admin.informasitipologi.edit');
             Route::patch('{id}/update', [InformasiTipologiController::class, 'update'])->name('admin.informasitipologi.update');
         });
 
@@ -72,16 +72,16 @@ Route::group([
 
 //user    
 Route::group(['prefix' => 'data-uji'], function(){
-        Route::get('/gempa-terdahulu', [UserdataujilamaController::Class, 'index'] )->name('user.data-uji-gempa-lama');
-        Route::get('/realtime', [UjiDataRealtimeController::Class, 'index'] )->name('user.data-uji-realtime');
+        Route::get('/gempa-terdahulu', [UserdataujilamaController::class, 'index'] )->name('user.data-uji-gempa-lama');
+        Route::get('/realtime', [UjiDataRealtimeController::class, 'index'] )->name('user.data-uji-realtime');
         route::post('/proses-kalkulasi', [UserdataujilamaController::class, 'proses_kalkulasi'])->name('user.data-uji-gempa-lama.proses-kalkulasi');
         route::get('/hipotesis-titik', [UserdataujilamaController::class, 'hipotesis_titik'])->name('user.data-uji-gempa-lama.hipotesis');
         route::POST('/uji-hipotesis', [UserdataujilamaController::class, 'ujihipotesis'])->name('user.data-uji-gempa-lama.uji-hipotesis');
 }); 
 
-    Route::get('/connexion', [LoginController::Class, 'index'] )->name('connexion');
-    Route::post('/connexion', [LoginController::Class, 'authenticate'] )->name('proses_connexion');
-    Route::post('/logout-connexion', [LoginController::Class, 'logout'])->name('logout-connexion');
+    Route::get('/connexion', [LoginController::class, 'index'] )->name('connexion');
+    Route::post('/connexion', [LoginController::class, 'authenticate'] )->name('proses_connexion');
+    Route::post('/logout-connexion', [LoginController::class, 'logout'])->name('logout-connexion');
     
     
     // Route::get('/lereng', [TestKemiringanController::Class, 'index'] )->name('testLerengg');

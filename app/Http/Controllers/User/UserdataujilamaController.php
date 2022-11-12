@@ -389,7 +389,6 @@ class UserdataujilamaController extends Controller
                                                 'ket_geologi_fisik' => $ket_geologi_fisik,
                                                 'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lereng,
                                                 'ket_lereng' => $ket_lereng,
-                                                'hasil_detik' => $hasil_detik,
                                                 'hasil_pga' => $hasil_pga,
                                                 'nilai_kemampuan_pga' => $nilai_kemampuan_pga,
                                                 'ket_pga' => $ket_pga,

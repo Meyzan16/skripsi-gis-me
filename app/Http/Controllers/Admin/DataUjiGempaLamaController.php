@@ -238,8 +238,6 @@ class DataUjiGempaLamaController extends Controller
                                                         'id_lereng' =>  $data->id_kemiringan_lereng,
                                                         'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lerengg,
                                                         'ket_lereng' => $ket_lerengg,
-                                                        
-                                                        'hasil_detik' => $hasil_detikk,
                                                         'hasil_pga' => $hasil_pgaa,
                                                         'nilai_kemampuan_pga' => $nilai_kemampuan_pgaa,
                                                         'ket_pga' => $ket_pgaa,
