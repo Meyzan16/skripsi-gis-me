@@ -14,7 +14,7 @@ class BobotController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    //sadasds
+   
     public function index()
     {
         $data = data_bobot::orderBy('id', 'ASC')->get(); 
