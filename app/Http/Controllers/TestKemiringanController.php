@@ -15,7 +15,7 @@ class TestKemiringanController extends Controller
         //test lagii
 
         return view('Admin.index');
-        //sadsad
+        
     }
     public function cek(Request $request)
     {
