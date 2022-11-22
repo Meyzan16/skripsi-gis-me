@@ -46,7 +46,7 @@
                                                 </div>
 
                                                 <div class="col-md-2 form-group mt-2">
-                                                    <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $data->id }}">  <i class="fa fa-eye"> </i>  </a>
+                                                    <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $data->id_titik }}">  <i class="fa fa-eye"> </i>  </a>
                                                 </div>
                                             
                                                  
@@ -99,7 +99,7 @@
         </section>
 </div> 
 
-<div class="modal fade" id="edit_data{{ $data->id  }}" tabindex="-1" role="dialog"
+<div class="modal fade" id="edit_data{{ $data->id_titik  }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
         role="document">

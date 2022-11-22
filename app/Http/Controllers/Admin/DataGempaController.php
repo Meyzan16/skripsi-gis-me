@@ -67,9 +67,10 @@ class DataGempaController extends Controller
     }
 
    
-    public function show($id)
+    public function show($id_gempa)
     {
-        $data = data_gempa::findorfail($id);
+        $data = data_gempa::where('id_gempa',$id_gempa)->first();
+        // return $data;
 
         return view('admin.main.data-gempa.show', compact('data'));
 
@@ -78,7 +79,7 @@ class DataGempaController extends Controller
 
     public function destroy($id)
     {
-        data_gempa::findorfail($id)->delete();
+        data_gempa::where('id_gempa',$id)->delete();
         calculasi_tipologi::where('id_gempa',$id)->delete();
         return redirect()->route('data-gempa.index')->with(['success' =>  'Data Berhasil dihapus']);
     }

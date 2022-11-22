@@ -48,6 +48,9 @@ Route::group([
         Route::resource('kemiringan-lereng', KemiringanLerengController::class);
         Route::resource('data-titik', DataTitikController::class);
         Route::resource('data-gempa', DataGempaController::class);
+
+
+        
         
         Route::group(['prefix' => 'informasi-tipologi' ], function(){
             Route::get('/', [InformasiTipologiController::class, 'index'])->name('admin.informasitipologi.index');

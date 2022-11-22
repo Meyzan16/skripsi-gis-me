@@ -58,7 +58,7 @@
                                     {{-- <td>{{ $item->updated_at }}</td>    --}}
 
                                     <td>   
-                                        <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id }}">  <i class="fa fa-edit"> </i>  </a>
+                                        <a class="badge bg-warning"   data-bs-toggle="modal" data-bs-target="#edit_data{{ $item->id_kemiringan_lereng }}">  <i class="fa fa-edit"> </i>  </a>
 
                                         
                                     </td>
@@ -77,7 +77,7 @@
         
 
     @foreach ($data as $item1)
-    <div class="modal fade" id="edit_data{{ $item1->id  }}" tabindex="-1" role="dialog"
+    <div class="modal fade" id="edit_data{{ $item1->id_kemiringan_lereng  }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
             role="document">
@@ -90,7 +90,7 @@
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="{{ route('kemiringan-lereng.update', $item1->id) }}" method="POST">
+                <form action="{{ route('kemiringan-lereng.update', $item1->id_kemiringan_lereng) }}" method="POST">
                     @csrf  @method('put')
 
                     <div class="modal-body">

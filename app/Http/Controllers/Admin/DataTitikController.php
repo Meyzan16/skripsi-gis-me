@@ -100,7 +100,7 @@ class DataTitikController extends Controller
     public function show($id)
     {
         $string = json_decode(file_get_contents("geologiFisikJsonnn.geojson"), true);
-        $data = data_titik::findorfail($id);
+        $data = data_titik::where('id_titik', $id)->first();
 
         return view('admin.main.data-titik.show', compact('data', 'string'));
     }
@@ -109,7 +109,7 @@ class DataTitikController extends Controller
    
     public function destroy($id)
     {
-        data_titik::findorfail($id)->delete();
+        data_titik::where('id_titik', $id)->delete();
         calculasi_tipologi::where('id_titik',$id)->delete();
         return redirect()->route('data-titik.index')->with(['success' =>  'Data Berhasil dihapus']);
     }

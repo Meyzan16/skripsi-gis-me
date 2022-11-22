@@ -15,7 +15,7 @@ class KemiringanLerengController extends Controller
      */
     public function index()
     {
-        $data = kemiringan_lereng::orderBy('id', 'ASC')->get(); 
+        $data = kemiringan_lereng::orderBy('id_kemiringan_lereng', 'ASC')->get(); 
         
         return view('admin.main.kemiringanlereng.index',compact('data'));
     }
@@ -23,7 +23,7 @@ class KemiringanLerengController extends Controller
     
     public function update(Request $request, $id)
     {
-        kemiringan_lereng::findorfail($id)->update([
+        kemiringan_lereng::where('id_kemiringan_lereng', $id)->update([
             'kelas_informasi' => $request->kelas_informasi,
         ]);
 

@@ -64,7 +64,7 @@
                                     <td>{{ $item->longitude }}</td>
 
                                     <td class="text-center">
-                                        <a href="{{ route('data-titik.show', $item->id) }}" class="mr-3 btn btn-outline-primary block d-flex justify-content-center ">
+                                        <a href="{{ route('data-titik.show', $item->id_titik) }}" class="mr-3 btn btn-outline-primary block d-flex justify-content-center ">
                                         &nbsp; Detail Data
                                         </a>
                                     </td> 
@@ -79,7 +79,7 @@
                                             </div>
 
                                             <div class="col">
-                                                <form action="{{ route('data-titik.destroy', $item->id) }}" method="POST" >
+                                                <form action="{{ route('data-titik.destroy', $item->id_titik) }}" method="POST" >
                                                     @csrf @method('DELETE')
                                                     <button class="badge bg-danger border-0" onclick="return confirm('anda yakin menghapus data ?')" >  <i class="fa fa-trash"> </i>
                                                     </button>
@@ -104,45 +104,6 @@
     </div>
         
 
-    @foreach ($data as $item1)
-    <div class="modal fade" id="edit_data{{ $item1->id  }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable"
-            role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle"> Edit Data {{ $item1->nama_parameter }}
-                    </h5>
-                    <button type="button" class="close" data-bs-dismiss="modal"
-                        aria-label="Close">
-                        <i data-feather="x"></i>
-                    </button>
-                </div>
-                <form action="{{ route('data-bobot.update', $item1->id) }}" method="POST">
-                    @csrf  @method('put')
-                    <div class="modal-body">
-                        <h6 class="modal-title" id="exampleModalCenterTitle"> Nama  </h6>
-                        <input type="text" value="{{  old('bobot', $item1->bobot)  }}" class="form-control" name="bobot">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary"
-                            data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Kembali</span>
-                        </button>
-        
-                        
-                            <button type="submit" class="btn btn-primary ml-1">
-                                <i class="bx bx-check d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Simpan</span>
-                            </button>
-                        
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endforeach
 
 @endsection
 

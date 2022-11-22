@@ -64,7 +64,7 @@
                                     {{-- <td class="text-center"> @if($item->jam == null) {{ '-' }} @else {{ $item->jam }} @endif </td>                                     --}}
 
                                     <td class="text-center">
-                                        <a href="{{ route('data-gempa.show', $item->id) }}" class="mr-3 btn btn-outline-primary block d-flex justify-content-center ">
+                                        <a href="{{ route('data-gempa.show', $item->id_gempa) }}" class="mr-3 btn btn-outline-primary block d-flex justify-content-center ">
                                         &nbsp; detail Data
                                         </a>
                                     </td>                                 
@@ -77,7 +77,7 @@
                                             </div>
 
                                             <div class="col">
-                                                <form action="{{ route('data-gempa.destroy', $item->id) }}" method="POST" >
+                                                <form action="{{ route('data-gempa.destroy', $item->id_gempa) }}" method="POST" >
                                                     @csrf @method('DELETE')
                                                     <button class="badge bg-danger border-0" onclick="return confirm('anda yakin menghapus data ?')" >  <i class="fa fa-trash"> </i>
                                                     </button>
