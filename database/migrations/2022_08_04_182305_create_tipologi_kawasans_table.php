@@ -20,7 +20,7 @@ return new class extends Migration
             $table->char('kegempaan',2)->nullable();
             $table->char('struktur_geologi',2)->nullable();
             $table->string('skor',2)->nullable();
-            $table->foreignId('tipologi',1)->nullable();
+            $table->foreignId('id_informasi_tipologi',1)->nullable();
             $table->timestamps();
         });
     }

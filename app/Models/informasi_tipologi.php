@@ -12,7 +12,7 @@ class informasi_tipologi extends Model
 
     public function tipologi_kawasan()
     {
-        return $this->hasMany(tipologi_kawasan::class, 'tipologi');
+        return $this->hasMany(tipologi_kawasan::class, 'id');
     }
 
    

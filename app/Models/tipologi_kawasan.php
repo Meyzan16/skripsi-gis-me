@@ -18,7 +18,7 @@ class tipologi_kawasan extends Model
 
     public function informasi_tipologi()
     {
-        return $this->belongsTo(informasi_tipologi::class, 'tipologi'); //fk di tabel tipologi
+        return $this->belongsTo(informasi_tipologi::class, 'id_informasi_tipologi'); //fk di tabel tipologi_kawasans
     }
 
     
