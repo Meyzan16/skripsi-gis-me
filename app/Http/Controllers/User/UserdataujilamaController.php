@@ -418,7 +418,7 @@ class UserdataujilamaController extends Controller
                                                     ($value->struktur_geologi == $cek_calculasi_tipologi[$m]->ket_struktur_geologi))
                                                 {
                                                     calculasi_tipologi::where('id', $cek_calculasi_tipologi[$m]->id)->update([
-                                                        'id_tipologi' => $value->id,
+                                                        'id_tipologi' => $value->id_tipologi,
                                                         'label_tipologi' => 'Y'
                                                     ]);   
                                                 } 
@@ -446,7 +446,7 @@ class UserdataujilamaController extends Controller
                                                                 )
                                                             {
                                                                 calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                    'id_tipologi' => $value->id,
+                                                                    'id_tipologi' => $value->id_tipologi,
                                                                     'label_tipologi' => 'N'
                                                                 ]); 
             
@@ -457,7 +457,7 @@ class UserdataujilamaController extends Controller
                                                                 
                                                             ){
                                                                 calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                    'id_tipologi' => $value->id,
+                                                                    'id_tipologi' => $value->id_tipologi,
                                                                     'label_tipologi' => 'N'
                                                                 ]); 
             
@@ -467,7 +467,7 @@ class UserdataujilamaController extends Controller
                                                                     ($value->struktur_geologi == $cek_id_tipologi_null[$m]->ket_struktur_geologi))
                                                             {
                                                                 calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                    'id_tipologi' => $value->id,
+                                                                    'id_tipologi' => $value->id_tipologi,
                                                                     'label_tipologi' => 'N'
                                                                 ]);  
                                                             } 
@@ -478,7 +478,7 @@ class UserdataujilamaController extends Controller
                                                             )
                                                             {
                                                                 calculasi_tipologi::where('id', $cek_id_tipologi_null[$m]->id)->update([
-                                                                    'id_tipologi' => $value->id,
+                                                                    'id_tipologi' => $value->id_tipologi,
                                                                     'label_tipologi' => 'N'
                                                                 ]);  
                                                             } 

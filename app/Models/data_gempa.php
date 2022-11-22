@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+// use App\Models\calculasi_tipologi;
+
 
 class data_gempa extends Model
 {
@@ -13,6 +15,9 @@ class data_gempa extends Model
         'tanggal','latitude', 'label_koor_lintang', 'longitude', 'label_koor_bujur' , 'magnitude','kedalaman','wilayah','dirasakan'
     ];
 
-   
+    // public function calculasi_tipologi()
+    // {
+    //     return $this->hasMany(calculasi_tipologi::class, 'id_gempa');
+    // }
 
 }

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tipologi_kawasans', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_tipologi');
             $table->char('geologi_batuan',2)->nullable();
             $table->char('lereng',2)->nullable();
             $table->char('kegempaan',2)->nullable();

@@ -53,7 +53,7 @@
                                     <td>{{ $item->tipologi }}</td>
                                     <td>{!! $item->informasi_tipologi !!}</td>
                                     <td>   
-                                        <a class="badge bg-warning"  href="{{ route('admin.informasitipologi.edit', $item->id) }}">  <i class="fa fa-edit"> </i>  </a>
+                                        <a class="badge bg-warning"  href="{{ route('admin.informasitipologi.edit', $item->id_informasi_tipologi) }}">  <i class="fa fa-edit"> </i>  </a>
                                     </td>
                                     
 

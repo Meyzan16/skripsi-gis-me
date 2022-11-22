@@ -11,7 +11,7 @@ class GeologiFisikController extends Controller
   
     public function index()
     {
-        $data = geologi_fisik::orderBy('id', 'ASC')->get(); 
+        $data = geologi_fisik::orderBy('id_geologi_fisik', 'ASC')->get(); 
         
         return view('admin.main.geologifisik.index',compact('data'));
     }
@@ -20,7 +20,7 @@ class GeologiFisikController extends Controller
     public function update(Request $request, $id)
     {
 
-        geologi_fisik::findorfail($id)->update([
+        geologi_fisik::where('id_geologi_fisik', $id)->update([
             'kelas_informasi' => $request->kelas_informasi,
         ]);
 

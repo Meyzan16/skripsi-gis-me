@@ -24,18 +24,18 @@ class calculasi_tipologi extends Model
 
     public function data_gempa()
     {
-        return $this->belongsTo(data_gempa::class, 'id_gempa');
+        return $this->belongsTo(data_gempa::class, 'id_gempa', 'id_gempa');
     }
 
     public function data_titik()
     {
-        return $this->belongsTo(data_titik::class, 'id_titik');
+        return $this->belongsTo(data_titik::class, 'id_titik', 'id_titik');
     }
 
 
      public function tipologi_kawasan()
      {
-        return $this->belongsTo(tipologi_kawasan::class, 'id_tipologi');
+        return $this->belongsTo(tipologi_kawasan::class, 'id_tipologi', 'id_tipologi');
      }
 
      

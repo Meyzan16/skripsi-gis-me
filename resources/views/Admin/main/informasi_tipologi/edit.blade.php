@@ -25,7 +25,7 @@
                     <div class="card-content">
                         <div class="card-body">
                                 <div class="form-body">
-                                    <form action="{{ route('admin.informasitipologi.update', $data->id) }}" method="POST">
+                                    <form action="{{ route('admin.informasitipologi.update', $data->id_informasi_tipologi) }}" method="POST">
                                         @csrf @method('PATCH')
 
                                         <div class="row">

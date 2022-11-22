@@ -16,13 +16,13 @@ class InformasiTipologiController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $data = informasi_tipologi::where('id', $id)->first();        
+        $data = informasi_tipologi::where('id_informasi_tipologi', $id)->first();        
         return view('admin.main.informasi_tipologi.edit', compact('data'));
     }
 
     public function update(Request $request , $id)
     {
-        informasi_tipologi::where('id', $id)->update([
+        informasi_tipologi::where('id_informasi_tipologi', $id)->update([
             'informasi_tipologi' => $request->informasi_tipologi,
         ]);
 

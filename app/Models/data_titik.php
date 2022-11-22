@@ -20,7 +20,7 @@ class data_titik extends Model
 
     public function geologi_fisik()
     {
-        return $this->belongsTo(geologi_fisik::class, 'id_geologi_fisik');
+        return $this->belongsTo(geologi_fisik::class, 'id_geologi_fisik', 'id_geologi_fisik');
     }
 
     public function calculasi_tipologi()
@@ -30,7 +30,7 @@ class data_titik extends Model
 
     public function kemiringan_lereng()
     {
-        return $this->belongsTo(kemiringan_lereng::class, 'id_kemiringan_lereng');
+        return $this->belongsTo(kemiringan_lereng::class, 'id_kemiringan_lereng', 'id_kemiringan_lereng');
     }
     
     

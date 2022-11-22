@@ -49,7 +49,7 @@ class DashboardController extends Controller
         $jml_titik = count(data_titik::all());
         $data_gempa = data_gempa::all();
 
-        $gempaTerpilih = data_gempa::where('id', $request->option_gempa)->first(); 
+        $gempaTerpilih = data_gempa::where('id_gempa', $request->option_gempa)->first(); 
         $tgl = $gempaTerpilih->tanggal;
         $konversi = date("m F , Y", strtotime($tgl));
         
