@@ -28,7 +28,8 @@ class UserdataujilamaController extends Controller
     {
         $dataTitik = data_titik::all(); 
         $dataGempa_option = data_gempa::all();
-        $dataGempa = data_gempa::where('id', $request->option_gempa)->first();
+
+        $dataGempa = data_gempa::where('id_gempa', $request->option_gempa)->first();
 
         //ambil jumlah data gempa yang sudah dikalkulasi 
         $cek_gempa = calculasi_tipologi::where('id_gempa', $request->option_gempa)->get();
@@ -112,7 +113,7 @@ class UserdataujilamaController extends Controller
                                 //cek  ada titik yang belum dikalkulasi atau sudah ?  jika belum kalkulasi dulu 
                                 if(count($cek_gempa) != count($dataTitik))
                                 {
-                                    $data = data_titik::orderBy('id', 'desc')->limit(1)->first();       
+                                    $data = data_titik::orderBy('id_titik', 'desc')->limit(1)->first();       
                                     //metode haversine distance
                                     $RR = 6371;
                                     $mlat = $data->latitude;
@@ -223,7 +224,7 @@ class UserdataujilamaController extends Controller
                                             //insert tabel calculasi_tipologi
                                             calculasi_tipologi::create([
                                                 'id_gempa' => $request->option_gempa,
-                                                'id_titik' =>  $data->id,
+                                                'id_titik' =>  $data->id_titik,
                                                 'id_geologi_fisik' =>  $data->id_geologi_fisik,
                                                 'hasil_kali_bobot_geologi_fisik' => $hasil_kali_bobot_geologi_fisikk,                                                        
                                                 'ket_geologi_fisik' => $ket_geologi_fisikk,
@@ -384,7 +385,7 @@ class UserdataujilamaController extends Controller
                                             //insert tabel calculasi_tipologi
                                             calculasi_tipologi::create([
                                                 'id_gempa' => $request->option_gempa,
-                                                'id_titik' =>  $dataTitik[$i]->id,
+                                                'id_titik' =>  $dataTitik[$i]->id_titik,
                                                 'hasil_kali_bobot_geologi_fisik' => $hasil_kali_bobot_geologi_fisik,                                                        
                                                 'ket_geologi_fisik' => $ket_geologi_fisik,
                                                 'hasil_kali_bobot_lereng' => $hasil_kali_bobot_lereng,
@@ -498,80 +499,10 @@ class UserdataujilamaController extends Controller
     {
         $data_titik = data_titik::all();
         // $data_gempa = data_gempa::all();
-        $data_gempa = data_gempa::orderBy('id', 'asc')->get();
+        $data_gempa = data_gempa::orderBy('id_gempa', 'asc')->get();
         // return $dataGempaTerpilih;
 
-        // $borderColors = [
-        //     "rgba(255, 99, 132, 1.0)",
-        //     "rgba(22,160,133, 1.0)",
-        //     "rgba(255, 205, 86, 1.0)",
-            
-        // ];
-        // $fillColors = [
-        //     "rgba(255, 99, 132, 0.2)",
-        //     "rgba(22,160,133, 0.2)",
-        //     "rgba(255, 205, 86, 0.2)",
-        // ];
-
-        // $usersChart = new UserChart;
-        // $usersChart->title('aaa', 30, "rgb(255, 99, 132)", true);
-        // $usersChart->displaylegend(false);
-
-        
-        // $data = []; 
-        // foreach ($data_gempa as $item) {
-        //     $data[] = $item->tanggal .' | '.$item->magnitude .' Mg' ;
-        // }
-        // $usersChart->labels(
-        //             $data
-        // );
-        
-
-    
-        // $a= '';
-        // foreach ($calculasi_tipologi as  $itemm) 
-        // {
-        //     $dataa[]  =  $itemm->kategori_name;
-            
-             
-        //         if($itemm->kategori_name == 1){
-        //             $a = 'rendah';
-        //         }elseif($itemm->kategori_name == 2){
-        //             $a = 'sedang';
-        //         }else{
-        //             $a = 'tinggi';
-        
-        //         }
-        // }
-
-        // return $a;
-
-
-        // $usersChart->dataset(
-        //     foreach ($calculasi_tipologi as  $itemm) 
-        //     {
-        //         $dataa[]  =  $itemm->kategori_name;
-                
-                
-        //         if($itemm->kategori_name == 1){
-        //             $a = 'rendah';
-        //         }elseif($itemm->kategori_name == 2){
-        //             $a = 'sedang';
-        //         }else{
-        //             $a = 'tinggi';
-                    
-        //         }
-                
-        //         "Kategori : " . $a , 'line', 
-        //             $dataa 
-        //     }
-        // )
-
-
-        // ->color($borderColors)
-        // ->backgroundcolor($fillColors)
-        // ->fill(false);   
-
+      
             
 
         return view('User.main.hipotesis', compact('data_titik','data_gempa',));
@@ -587,35 +518,11 @@ class UserdataujilamaController extends Controller
     {
         $data_titik = data_titik::all();
         // $data_gempa = data_gempa::all();
-        $data_gempa = data_gempa::orderBy('id', 'asc')->get();
+        $data_gempa = data_gempa::orderBy('id_gempa', 'asc')->get();
 
-        $dataGempaTerpilih = data_titik::where('id', $request->option_titik)->first();
+        $dataGempaTerpilih = data_titik::where('id_titik', $request->option_titik)->first();
         // return $dataGempaTerpilih;
 
-        // $borderColors = [
-        //     "rgba(255, 99, 132, 1.0)",
-        //     "rgba(22,160,133, 1.0)",
-        //     "rgba(255, 205, 86, 1.0)",
-            
-        // ];
-        // $fillColors = [
-        //     "rgba(255, 99, 132, 0.2)",
-        //     "rgba(22,160,133, 0.2)",
-        //     "rgba(255, 205, 86, 0.2)",
-        // ];
-
-        // $usersChart = new UserChart;
-        // $usersChart->title('aaa', 30, "rgb(255, 99, 132)", true);
-        // $usersChart->displaylegend(false);
-
-        
-        // $data = []; 
-        // foreach ($data_gempa as $item) {
-        //     $data[] = $item->tanggal .' | '.$item->magnitude .' Mg' ;
-        // }
-        // $usersChart->labels(
-        //             $data
-        // );
         
 
         $calculasi = DB::table('data_titiks')
@@ -624,59 +531,12 @@ class UserdataujilamaController extends Controller
             DB::raw("CAST(calculasi_tipologis.kategori as int) AS kategori_name"),
             // 'calculasi_tipologis.id_gempa'
             )
-        ->join('calculasi_tipologis','data_titiks.id','=','calculasi_tipologis.id_titik')
-        ->where('data_titiks.id', $request->option_titik)
+        ->join('calculasi_tipologis','data_titiks.id_titik','=','calculasi_tipologis.id_titik')
+        ->where('data_titiks.id_titik', $request->option_titik)
         ->orderBy('calculasi_tipologis.id_gempa', 'asc')
         ->get();
 
-        // $calculasi =  response()->json($calculasi_tipologi);
-
-        // return $calculasi;
-
-
-        // $a= '';
-        // foreach ($calculasi_tipologi as  $itemm) 
-        // {
-        //     $dataa[]  =  $itemm->kategori_name;
-            
-             
-        //         if($itemm->kategori_name == 1){
-        //             $a = 'rendah';
-        //         }elseif($itemm->kategori_name == 2){
-        //             $a = 'sedang';
-        //         }else{
-        //             $a = 'tinggi';
-        
-        //         }
-        // }
-
-        // return $a;
-
-
-        // $usersChart->dataset(
-        //     foreach ($calculasi_tipologi as  $itemm) 
-        //     {
-        //         $dataa[]  =  $itemm->kategori_name;
-                
-                
-        //         if($itemm->kategori_name == 1){
-        //             $a = 'rendah';
-        //         }elseif($itemm->kategori_name == 2){
-        //             $a = 'sedang';
-        //         }else{
-        //             $a = 'tinggi';
-                    
-        //         }
-                
-        //         "Kategori : " . $a , 'line', 
-        //             $dataa 
-        //     }
-        // )
-
-
-        // ->color($borderColors)
-        // ->backgroundcolor($fillColors)
-        // ->fill(false);   
+       
 
 
             

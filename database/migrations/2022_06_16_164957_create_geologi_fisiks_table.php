@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('geologi_fisiks', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_geologi_fisik');
             $table->text('kelas_informasi')->nullable();
             $table->integer('nilai_kemampuan')->nullable();
             $table->timestamps();

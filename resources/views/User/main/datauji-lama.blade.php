@@ -21,7 +21,7 @@
                                                             <select name="option_gempa" id="option_gempa" class="form-control">
                                                                 <option value="">-- Pilih data --</option>   
                                                                 @foreach ($dataGempa as $item)
-                                                                    <option value="{{ $item->id }}">{{ date("d F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
+                                                                    <option value="{{ $item->id_gempa}}">{{ date("d F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
                                                                 @endforeach
 
                                                             </select>

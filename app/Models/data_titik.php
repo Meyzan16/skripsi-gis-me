@@ -25,7 +25,7 @@ class data_titik extends Model
 
     public function calculasi_tipologi()
     {
-        return $this->hasMany(calculasi_tipologi::class);
+        return $this->hasMany(calculasi_tipologi::class, 'id_titik');
     }
 
     public function kemiringan_lereng()

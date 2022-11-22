@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('data_titiks', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_titik');
             $table->foreignId('id_geologi_fisik')->nullable();
             $table->string('bebatuan',200)->nullable();
             $table->foreignId('id_kemiringan_lereng')->nullable();

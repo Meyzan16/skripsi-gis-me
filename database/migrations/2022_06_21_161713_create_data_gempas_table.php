@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('data_gempas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id_gempa');
             $table->date('tanggal')->nullable();
             // $table->time('jam')->nullable();
             // $table->decimal('latitude', 10, 8)->nullable();
