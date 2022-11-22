@@ -32,7 +32,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 31,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -40,7 +40,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 31,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -48,7 +48,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 31,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -56,7 +56,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4b',
             'skor' => 31,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
 
 
@@ -67,7 +67,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4a',
             'skor' => 32,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -75,7 +75,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4a',
             'skor' => 32,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -83,7 +83,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4a',
             'skor' => 32,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
 
 
@@ -93,7 +93,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1a',
@@ -101,7 +101,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4c',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1a',
@@ -109,7 +109,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -117,7 +117,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -125,7 +125,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4c',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -133,7 +133,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -141,7 +141,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4a',
             'skor' => 33,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
 
 
@@ -151,7 +151,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 34,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -159,7 +159,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 34,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -167,7 +167,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 34,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -175,7 +175,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 34,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -183,7 +183,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4b',
             'skor' => 34,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
 
 
@@ -193,7 +193,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 35,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1a',
@@ -201,7 +201,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 35,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1a',
@@ -209,7 +209,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 35,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -217,7 +217,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4a',
             'skor' => 35,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -225,7 +225,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4a',
             'skor' => 35,
-            'tipologi' => 1
+            'id_informasi_tipologi' => 1
         ]);
 
 
@@ -237,7 +237,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -245,7 +245,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -253,7 +253,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4c',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -261,7 +261,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -269,7 +269,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -277,7 +277,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4c',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -285,7 +285,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 36,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
 
         tipologi_kawasan::create([
@@ -294,7 +294,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 37,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -302,7 +302,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' =>37,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -310,7 +310,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' =>37,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
 
         tipologi_kawasan::create([
@@ -319,7 +319,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 38,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -327,7 +327,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 38,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -335,7 +335,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 38,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -343,7 +343,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 38,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -351,7 +351,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4a',
             'skor' => 38,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
 
         tipologi_kawasan::create([
@@ -360,7 +360,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 39,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -368,7 +368,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 39,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -376,7 +376,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 39,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -384,7 +384,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4c',
             'skor' => 39,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -392,7 +392,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 39,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -400,7 +400,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 39,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
 
         tipologi_kawasan::create([
@@ -409,7 +409,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 40,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -417,7 +417,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 40,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -425,7 +425,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4a',
             'skor' => 40,
-            'tipologi' => 2
+            'id_informasi_tipologi' => 2
         ]);
 
 
@@ -436,7 +436,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 41,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -444,7 +444,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 41,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -452,7 +452,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 41,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -460,7 +460,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 41,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -468,7 +468,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 41,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
 
 
@@ -478,7 +478,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 42,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -486,7 +486,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 42,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -494,7 +494,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 42,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -502,7 +502,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3a',
             'struktur_geologi' => '4c',
             'skor' => 42,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -510,7 +510,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 42,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
 
 
@@ -520,7 +520,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 43,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1a',
@@ -528,7 +528,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 43,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1a',
@@ -536,7 +536,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 43,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -544,7 +544,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 43,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
 
 
@@ -554,7 +554,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 44,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -562,7 +562,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 44,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -570,7 +570,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4b',
             'skor' => 44,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -578,7 +578,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 44,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
 
         tipologi_kawasan::create([
@@ -587,7 +587,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 45,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -595,7 +595,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 45,
-            'tipologi' => 3
+            'id_informasi_tipologi' => 3
         ]);
 
 
@@ -606,7 +606,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 46,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -614,7 +614,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 46,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -622,7 +622,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 46,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -630,7 +630,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 46,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -638,7 +638,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 46,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
 
         tipologi_kawasan::create([
@@ -647,7 +647,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 47,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -655,7 +655,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4b',
             'skor' => 47,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
 
 
@@ -665,7 +665,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 48,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -673,7 +673,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4a',
             'skor' => 48,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
 
 
@@ -683,7 +683,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 49,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -691,7 +691,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 49,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -699,7 +699,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 49,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -707,7 +707,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 49,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -715,7 +715,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 49,
-            'tipologi' => 4
+            'id_informasi_tipologi' => 4
         ]);
 
         tipologi_kawasan::create([
@@ -724,7 +724,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 50,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
 
         //tipologi E
@@ -734,7 +734,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 51,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1b',
@@ -742,7 +742,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 51,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
 
         tipologi_kawasan::create([
@@ -751,7 +751,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 52,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -759,7 +759,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3b',
             'struktur_geologi' => '4c',
             'skor' => 52,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -767,7 +767,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 52,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -775,7 +775,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4b',
             'skor' => 52,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
 
 
@@ -785,7 +785,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 54,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1c',
@@ -793,7 +793,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 54,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
 
         tipologi_kawasan::create([
@@ -802,7 +802,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3c',
             'struktur_geologi' => '4c',
             'skor' => 55,
-            'tipologi' => 5
+            'id_informasi_tipologi' => 5
         ]);
 
 
@@ -813,7 +813,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 57,
-            'tipologi' => 6
+            'id_informasi_tipologi' => 6
         ]);
         tipologi_kawasan::create([
             'geologi_batuan' => '1d',
@@ -821,7 +821,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 57,
-            'tipologi' => 6
+            'id_informasi_tipologi' => 6
         ]);
 
         tipologi_kawasan::create([
@@ -830,7 +830,7 @@ class TipologikawasanSeeder extends Seeder
             'kegempaan' => '3d',
             'struktur_geologi' => '4c',
             'skor' => 60,
-            'tipologi' => 6
+            'id_informasi_tipologi' => 6
         ]);
 
         geologi_fisik::create([
