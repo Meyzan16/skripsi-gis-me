@@ -4,7 +4,7 @@
 @section('content')
 <div id="main-content">
 <div class="page-heading">
-    <h3>Gempa Terpilih Tanggal   {{ date("m F , Y", strtotime($dataGempa->tanggal)) }}   </h3>
+    <h3>Gempa Terpilih Tanggal   {{ date("d F , Y", strtotime($dataGempa->tanggal)) }}   </h3>
 </div>
 
 <div class="page-content">
@@ -28,7 +28,7 @@
  
                                                         <option value="">-- Pilih data --</option>   
                                                         @foreach ($dataGempa_option as $item)
-                                                            <option value="{{ $item->id }}">{{ date("m F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
+                                                            <option value="{{ $item->id }}">{{ date("d F , Y", strtotime($item->tanggal)) }} | {{ $item->magnitude }} Mg</option>   
                                                         @endforeach
 
                                                    </select>
