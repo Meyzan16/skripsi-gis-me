@@ -67,6 +67,7 @@ class UjiDataRealtimeController extends Controller
                     $hasil = $d = round($d, 2); //jarak yang didapatkan satuan KM
                     // $konversi_meter = $hasil * 1000; //berfungsi untuk menentukan nilai kemampuan nya konverisi ke meter
 
+    
                     if($hasil < 200  )
                     {
                          $dataArray[] = array(
