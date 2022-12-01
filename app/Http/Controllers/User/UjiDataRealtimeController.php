@@ -68,7 +68,7 @@ class UjiDataRealtimeController extends Controller
                     // $konversi_meter = $hasil * 1000; //berfungsi untuk menentukan nilai kemampuan nya konverisi ke meter
 
     
-                    if($hasil < 200  )
+                    if($hasil < 300  )
                     {
                          $dataArray[] = array(
                             'tanggal' => $properties[$i]['tanggal'], 
